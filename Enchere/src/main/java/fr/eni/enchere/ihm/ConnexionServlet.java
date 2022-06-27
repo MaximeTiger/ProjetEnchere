@@ -2,7 +2,7 @@ package fr.eni.enchere.ihm;
 
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
-import fr.eni.enchere.bll.UtilisateursManager;
+import fr.eni.enchere.bll.utilisateurs.UtilisateursManager;
 import fr.eni.enchere.bo.Utilisateurs;
 
 import javax.servlet.ServletException;

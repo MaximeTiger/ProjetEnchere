@@ -1,13 +1,16 @@
-package fr.eni.enchere.dal;
+package fr.eni.enchere.dal.utilisateurs;
 
 import fr.eni.enchere.bo.Utilisateurs;
+import fr.eni.enchere.dal.ConnectionProvider;
+import fr.eni.enchere.dal.DALException;
+import fr.eni.enchere.dal.utilisateurs.UtilisateursDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UtilisateursDAOImpl implements UtilisateursDAO{
+public class UtilisateursDAOImpl implements UtilisateursDAO {
 
     private static final String SELECT_INFOS_USER = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
     private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +

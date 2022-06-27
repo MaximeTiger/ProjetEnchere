@@ -1,6 +1,8 @@
-package fr.eni.enchere.dal;
+package fr.eni.enchere.dal.enchere;
 
 import fr.eni.enchere.bo.Enchere;
+import fr.eni.enchere.dal.ConnectionProvider;
+import fr.eni.enchere.dal.DALException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
