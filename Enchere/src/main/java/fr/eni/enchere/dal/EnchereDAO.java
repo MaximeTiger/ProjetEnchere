@@ -1,4 +1,7 @@
 package fr.eni.enchere.dal;
 
-public class EnchereDAO {
+import fr.eni.enchere.bo.Enchere;
+
+public interface EnchereDAO {
+    Enchere selectById(Integer id) throws DALException;
 }
