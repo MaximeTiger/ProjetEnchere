@@ -20,11 +20,13 @@ public class UtilisateursManagerImpl implements UtilisateursManager{
     }
 
     @Override
-    public void connexion(String pseudo, String motDePasse) throws BLLException {
+    public Utilisateurs connexion(String pseudo, String motDePasse) throws BLLException {
+        Utilisateurs util = null;
         try {
-            utilisateursDAO.selectInfosUser(pseudo,motDePasse);
+            util = utilisateursDAO.selectInfosUser(pseudo,motDePasse);
         }catch (DALException e){
             e.printStackTrace();
         }
+        return util;
     }
 }

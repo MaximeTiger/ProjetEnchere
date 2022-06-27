@@ -3,6 +3,8 @@ package fr.eni.enchere.ihm;
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.UtilisateursManager;
+import fr.eni.enchere.bo.Utilisateurs;
+import fr.eni.enchere.dal.DALException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,12 +31,17 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    String pseudo = req.getParameter("pseudo");
-    String Mdp = req.getParameter("motdepasse");
-
+    Utilisateurs util;
         try {
-            mgerConn.connexion(pseudo,Mdp);
-        } catch (BLLException e) {
+            util = mgerConn.connexion(req.getParameter("pseudo"),req.getParameter("motdepasse"));
+            if (util != null) {
+                req.setAttribute("connexion","Bonjour " + util.getPseudo());
+                req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
+            } else {
+                req.setAttribute("error","Mot de passe ou Pseudo incorrect");
+                req.getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req,resp);
+            }
+        } catch (BLLException | ServletException e) {
             e.printStackTrace();
         }
 
