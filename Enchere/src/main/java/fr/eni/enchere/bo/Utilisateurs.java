@@ -36,13 +36,6 @@ public class Utilisateurs {
     }
 
 
-
-    public Utilisateurs() {
-        
-    }
-
-
-
     //accesseurs
     public int getNoUtilisateur() {
         return noUtilisateur;
