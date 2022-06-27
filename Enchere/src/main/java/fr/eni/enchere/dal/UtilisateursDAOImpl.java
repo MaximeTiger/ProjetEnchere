@@ -12,7 +12,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO{
     private static final String SELECT_INFOS_USER = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
     private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
             "code_postal,ville,mot_de_passe,credit,administrateur)" +
-            "VALUES ?,?,?,?,?,?,?,?,?,?,?";
+            "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 
     //Verifier que le pseudo et le mot de passe sont correctes
@@ -26,7 +26,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO{
             preparedStatement.executeQuery();
             ResultSet rs = preparedStatement.getResultSet();
             if(rs.next()){
-                user= new Utilisateurs(rs.getString("pseudo"),rs.getString("mot_de_passe"));
+                user= new Utilisateurs(rs.getString("pseudo"),rs.getString("motdepasse"));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -51,8 +51,8 @@ public class UtilisateursDAOImpl implements UtilisateursDAO{
             stmt.setString(7,u.getCodePostal());
             stmt.setString(8,u.getVille());
             stmt.setString(9,u.getMotDePasse());
-            stmt.setString(10,u.getCredit());
-            stmt.setBoolean(11,u.isAdministrateur());
+            stmt.setString(10,"100");
+            stmt.setBoolean(11,false);
 
             //Executer la requete
             stmt.executeQuery();
@@ -62,7 +62,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO{
                 u.setNoUtilisateur(rs.getInt(1));
             }
     } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

@@ -49,6 +49,18 @@ public class Utilisateurs {
         this.motDePasse = motDePasse;
     }
 
+    public Utilisateurs(String pseudo, String nom, String prenom, String mail, String telephone, String rue, String codePostal, String ville, String motdepasse) {
+        this.pseudo=pseudo;
+        this.nom=nom;
+        this.prenom=prenom;
+        this.email=mail;
+        this.telephone=telephone;
+        this.rue=rue;
+        this.codePostal=codePostal;
+        this.ville=ville;
+        this.motDePasse=motdepasse;
+    }
+
 
     public int getNoUtilisateur() {
         return noUtilisateur;
