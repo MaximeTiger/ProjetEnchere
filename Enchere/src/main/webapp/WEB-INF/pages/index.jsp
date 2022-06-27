@@ -7,5 +7,7 @@
 
   <h1>Acceuil</h1>
 
+<a href="${pageContext.request.contextPath}/connexion">Connexion - Inscription</a>
+
 </body>
 </html>
