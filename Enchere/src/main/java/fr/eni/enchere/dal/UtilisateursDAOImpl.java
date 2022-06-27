@@ -10,6 +10,10 @@ import java.sql.SQLException;
 public class UtilisateursDAOImpl implements UtilisateursDAO{
 
     private static final String SELECT_INFOS_USER = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
+    private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
+            "code_postal,ville,mot_de_passe,credit,administrateur)" +
+            "VALUES ?,?,?,?,?,?,?,?,?,?,?";
+
 
     //Verifier que le pseudo et le mot de passe sont correctes
     @Override
@@ -31,10 +35,6 @@ public class UtilisateursDAOImpl implements UtilisateursDAO{
         return user;
     }
 
-
-    private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
-            "code_postal,ville,mot_de_passe,credit,administrateur)" +
-            "VALUES ?,?,?,?,?,?,?,?,?,?,?";
     public void inscription(Utilisateurs u) throws DALException{
         try(Connection conn = ConnectionProvider.getConnection()){
 
