@@ -35,7 +35,6 @@ public class Utilisateurs {
         this.motDePasse = motDePasse;
     }
 
-
     //accesseurs
     public int getNoUtilisateur() {
         return noUtilisateur;
