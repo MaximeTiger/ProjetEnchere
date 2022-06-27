@@ -36,9 +36,6 @@ public class Utilisateurs {
     }
 
 
-    public Utilisateurs() {
-    }
-//accesseurs
     public int getNoUtilisateur() {
         return noUtilisateur;
     }
@@ -83,7 +80,7 @@ public class Utilisateurs {
         return telephone;
     }
 
-    public void setTéléphone(String telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
