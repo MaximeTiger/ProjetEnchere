@@ -8,15 +8,15 @@ public class Article {
     private int noArticle;
     private String nomArticle;
     private String description;
-    private LocalDate debutEncheres;
-    private LocalDate finEncheres;
+    private Date debutEncheres;
+    private Date finEncheres;
     private int prixInitial;
     private int prixVente;
     private int noUtilisateur;
     private int noCategorie;
 
     //constructeurs
-    public Article(int noArticle, String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie) {
+    public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie) {
         this.noArticle = noArticle;
         this.nomArticle = nomArticle;
         this.description = description;
@@ -61,7 +61,7 @@ public class Article {
         return debutEncheres;
     }
 
-    public void setDebutEncheres(LocalDate debutEncheres) {
+    public void setDebutEncheres(Date debutEncheres) {
         this.debutEncheres = debutEncheres;
     }
 
@@ -69,7 +69,7 @@ public class Article {
         return finEncheres;
     }
 
-    public void setFinEncheres(LocalDate finEncheres) {
+    public void setFinEncheres(Date finEncheres) {
         this.finEncheres = finEncheres;
     }
 
