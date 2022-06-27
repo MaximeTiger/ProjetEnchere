@@ -32,10 +32,6 @@ public class UtilisateursDAOImpl implements UtilisateursDAO{
     }
 
 
-
-
-
-
     private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
             "code_postal,ville,mot_de_passe,credit,administrateur)" +
             "VALUES ?,?,?,?,?,?,?,?,?,?,?";
