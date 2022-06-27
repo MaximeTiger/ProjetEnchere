@@ -1,5 +1,6 @@
 package fr.eni.enchere.bo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Article {
@@ -56,7 +57,7 @@ public class Article {
         this.description = description;
     }
 
-    public LocalDate getDebutEncheres() {
+    public Date getDebutEncheres() {
         return debutEncheres;
     }
 
@@ -64,7 +65,7 @@ public class Article {
         this.debutEncheres = debutEncheres;
     }
 
-    public LocalDate getFinEncheres() {
+    public Date getFinEncheres() {
         return finEncheres;
     }
 
