@@ -30,6 +30,11 @@ public class Utilisateurs {
         this.administrateur = administrateur;
     }
 
+    public Utilisateurs(String pseudo, String motDePasse) {
+        this.pseudo = pseudo;
+        this.motDePasse = motDePasse;
+    }
+
     public Utilisateurs() {
         super();
     }
