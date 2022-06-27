@@ -7,7 +7,7 @@ public class Utilisateurs {
     private String nom;
     private String prenom;
     private String email;
-    private String téléphone;
+    private String telephone;
     private String rue;
     private String codePostal;
     private String ville;
@@ -15,13 +15,13 @@ public class Utilisateurs {
     private String credit;
     private boolean administrateur;
 //constructeurs
-    public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String email, String téléphone, String rue, String codePostal, String ville, String motDePasse, String credit, boolean administrateur) {
+    public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, boolean administrateur) {
         this.noUtilisateur = noUtilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.téléphone = téléphone;
+        this.telephone = telephone;
         this.rue = rue;
         this.codePostal = codePostal;
         this.ville = ville;
@@ -74,12 +74,12 @@ public class Utilisateurs {
         this.email = email;
     }
 
-    public String getTéléphone() {
-        return téléphone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setTéléphone(String téléphone) {
-        this.téléphone = téléphone;
+    public void setTéléphone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getRue() {
@@ -139,7 +139,7 @@ public class Utilisateurs {
         sb.append(", nom='").append(nom).append('\'');
         sb.append(", prenom='").append(prenom).append('\'');
         sb.append(", email='").append(email).append('\'');
-        sb.append(", téléphone='").append(téléphone).append('\'');
+        sb.append(", téléphone='").append(telephone).append('\'');
         sb.append(", rue='").append(rue).append('\'');
         sb.append(", codePostal='").append(codePostal).append('\'');
         sb.append(", ville='").append(ville).append('\'');
