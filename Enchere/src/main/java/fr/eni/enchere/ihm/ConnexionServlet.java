@@ -4,7 +4,6 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.UtilisateursManager;
 import fr.eni.enchere.bo.Utilisateurs;
-import fr.eni.enchere.dal.DALException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
