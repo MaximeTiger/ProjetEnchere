@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<html lang="fr">
 <head>
     <title>Connexion</title>
 </head>
@@ -19,6 +19,8 @@
     <button type="submit">Connexion</button>
 
 </form>
+
+<p>${error}</p>
 
 <a href="${pageContext.request.contextPath}/inscription"><button>Inscription</button></a>
 
