@@ -20,8 +20,7 @@
 
 </form>
 
-
-
+<a href="${pageContext.request.contextPath}/inscription"><button>Inscription</button></a>
 
 <script>
     function Afficher() {
