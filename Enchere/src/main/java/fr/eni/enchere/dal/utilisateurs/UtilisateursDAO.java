@@ -7,4 +7,6 @@ public interface UtilisateursDAO {
     void inscription(Utilisateurs u) throws DALException;
 
     Utilisateurs selectInfosUser(String pseudo, String motDePasse) throws DALException;
+
+    void update(Utilisateurs util) throws DALException;
 }
