@@ -3,7 +3,6 @@ package fr.eni.enchere.dal.utilisateurs;
 import fr.eni.enchere.bo.Utilisateurs;
 import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
-import fr.eni.enchere.dal.utilisateurs.UtilisateursDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +15,14 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
     private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
             "code_postal,ville,mot_de_passe,credit,administrateur)" +
             "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+    private static final String UPDATE = "UPDATE ENCHERE.dbo.UTILISATEURS\n" +
+            "    SET pseudo = ?,\n" +
+            "    nom = ?, prenom = ?,\n" +
+            "    email = ?, telephone = ?,\n" +
+            "    rue = ?, code_postal = ?,\n" +
+            "    ville = ?, mot_de_passe = ?\n" +
+            "    WHERE no_utilisateur = ?";
 
 
     //Verifier que le pseudo et le mot de passe sont correctes
@@ -81,6 +88,33 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
+        }
+    }
+
+    public void update(Utilisateurs util) throws DALException{
+
+
+        try(Connection conn = ConnectionProvider.getConnection()) {
+
+            PreparedStatement stmt = conn.prepareStatement(UPDATE);
+
+            stmt.setString(1, util.getPseudo());
+            stmt.setString(2,util.getNom());
+            stmt.setString(3,util.getPrenom());
+            stmt.setString(4,util.getEmail());
+            stmt.setString(5,util.getTelephone());
+            stmt.setString(6,util.getRue());
+            stmt.setString(7,util.getCodePostal());
+            stmt.setString(8,util.getVille());
+            stmt.setString(9,util.getMotDePasse());
+            stmt.setInt(10,util.getNoUtilisateur());
+
+            stmt.executeUpdate();
+
+            //message d'erreur si un problème est rencontré
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur a la modification d'un utilisateur");
         }
     }
 }
