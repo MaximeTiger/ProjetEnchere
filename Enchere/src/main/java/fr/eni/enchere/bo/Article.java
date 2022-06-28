@@ -50,6 +50,19 @@ public class Article{
         this.noUtilisateur = utilisateur.getNoUtilisateur();
     }
 
+    public Article(String nomArticle, String description, Date debutEncheres, Date finEncheres, int prixInitial, int prixVente, Categorie categorie, String rue, String codePostale, String ville) {
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.debutEncheres = debutEncheres;
+        this.finEncheres = finEncheres;
+        this.prixInitial = prixInitial;
+        this.prixVente = prixVente;
+        this.categorie = categorie;
+        this.rue = rue;
+        this.codePostale = codePostale;
+        this.ville = ville;
+    }
+
     //accesseurs
     public int getNoArticle() {
         return noArticle;
