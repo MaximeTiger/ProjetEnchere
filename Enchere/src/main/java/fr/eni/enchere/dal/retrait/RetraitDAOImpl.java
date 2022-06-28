@@ -30,9 +30,9 @@ public class RetraitDAOImpl implements RetraitDAO{
 
             ResultSet rs = stmt.getGeneratedKeys();
 
-            if (rs.next()) {
+            /*if (rs.next()) {
                 r.setNoArticle(String.valueOf(rs.getInt(1)));
-            }
+            }*/
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

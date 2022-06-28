@@ -1,0 +1,52 @@
+.inscription {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 3px 6px;
+    border: 2px solid black;
+}
+
+.inscription:hover {
+    color: black;
+}
+
+#password {
+    position: relative;
+}
+
+input {
+    font-size: 1em;
+    color: black;
+    background: transparent;
+    padding: 1rem 1.2rem;
+    width: 350px;
+    border-radius: 5px;
+    border: 2px solid #7a7a7a;
+    transition: all 0.2s;
+}
+
+#password input:focus {
+    border-color: #ff4754;
+}
+
+#password .password-icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 20px;
+    color: #000000;
+    transition: all 0.2s;
+}
+
+#password .password-icon:hover {
+    cursor: pointer;
+    color: #ff4754;
+}
+
+#password .password-icon .feather-eye-off {
+    display: none;
+}
+
