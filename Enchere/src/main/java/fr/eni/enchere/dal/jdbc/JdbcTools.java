@@ -13,9 +13,9 @@ public class JdbcTools {
     private static String passworddb;
 
     static {
-        urldb = Settings.getProperty("urldb");
-        userdb = Settings.getProperty("userdb");
-        passworddb = Settings.getProperty("passworddb");
+        urldb = Settings.getProperty("jdbc:sqlserver://localhost:1433;databasename=ENCHERE");
+        userdb = Settings.getProperty("sa");
+        passworddb = Settings.getProperty("Pa$$w0rd");
 
         System.out.println("urldb = " + urldb);
         System.out.println("userdb = " + userdb);
