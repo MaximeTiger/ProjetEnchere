@@ -10,7 +10,8 @@ public class Categorie {
 
     private List<Article> listeArticle;
 
-    //constructeurs
+
+//constructeurs
     public Categorie(int noCategorie, String libelle) {
         this.noCategorie = noCategorie;
         this.libelle = libelle;
@@ -22,6 +23,8 @@ public class Categorie {
     public Categorie(String libelle) {
         this.libelle = libelle;
     }
+
+    //acesseurs
 
     public int getNoCategorie() {
         return noCategorie;
@@ -38,6 +41,7 @@ public class Categorie {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
 
     public final List<Article> getListeaArticle(){
         return listeArticle;

@@ -46,7 +46,7 @@
 
 </form>
 
-<a href="${pageContext.request.contextPath}/WEB-INF/pages/index.jsp">Retour</a>
+<a href="acceuil?action=connecter">Retour</a>
 
 </body>
 </html>

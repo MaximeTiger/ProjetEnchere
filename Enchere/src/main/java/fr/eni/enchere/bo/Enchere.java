@@ -40,7 +40,6 @@ public class Enchere {
     public Enchere() {
     }
     //accesseurs
-
     public int getNoEnchere() {
         return noEnchere;
     }
@@ -98,7 +97,6 @@ public class Enchere {
     }
 
 //affichage
-
     @Override
     public String toString() {
         return "Enchere{" + "nomUtilisateur=" + nomUtilisateur +
