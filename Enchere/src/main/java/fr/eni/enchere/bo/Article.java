@@ -3,7 +3,7 @@ package fr.eni.enchere.bo;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class Article {
+public class Article extends Categorie{
 //attributs
     private int noArticle;
     private String nomArticle;
@@ -97,28 +97,14 @@ public class Article {
         this.noUtilisateur = noUtilisateur;
     }
 
+    @Override
     public int getNoCategorie() {
         return noCategorie;
     }
-
+    @Override
     public void setNoCategorie(int noCategorie) {
         this.noCategorie = noCategorie;
     }
     //
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Article{");
-        sb.append("noArticle=").append(noArticle);
-        sb.append(", nomArticle='").append(nomArticle).append('\'');
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", debutEncheres=").append(debutEncheres);
-        sb.append(", finEncheres=").append(finEncheres);
-        sb.append(", prixInitial=").append(prixInitial);
-        sb.append(", prixVente=").append(prixVente);
-        sb.append(", noUtilisateur=").append(noUtilisateur);
-        sb.append(", noCategorie=").append(noCategorie);
-        sb.append('}');
-        return sb.toString();
-    }
 }
