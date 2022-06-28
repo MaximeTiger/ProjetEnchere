@@ -1,5 +1,7 @@
 package fr.eni.enchere.bo;
 
+import java.util.List;
+
 public class Utilisateurs {
 //attributs
     private int noUtilisateur;
@@ -14,6 +16,8 @@ public class Utilisateurs {
     private String motDePasse;
     private String credit;
     private boolean administrateur;
+
+    private List<Enchere> listeEnchere;
 
 //constructeurs
 
@@ -81,7 +85,23 @@ public class Utilisateurs {
         this.motDePasse=motdepasse;
     }
 
+    public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, boolean administrateur, List<Enchere> listeEnchere) {
+        this.noUtilisateur = noUtilisateur;
+        this.pseudo = pseudo;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.rue = rue;
+        this.codePostal = codePostal;
+        this.ville = ville;
+        this.motDePasse = motDePasse;
+        this.credit = credit;
+        this.administrateur = administrateur;
+        this.listeEnchere = listeEnchere;
+    }
 
+    //Accesseurs
     public int getNoUtilisateur() {
         return noUtilisateur;
     }
@@ -177,7 +197,12 @@ public class Utilisateurs {
     public void setAdministrateur(boolean administrateur) {
         this.administrateur = administrateur;
     }
-    //affichage
+
+
+    public List<Enchere> getListeEnchere() { return listeEnchere; }
+
+
+    public void setListeEnchere(List<Enchere> listeEnchere) { this.listeEnchere = listeEnchere; }
 
     @Override
     public String toString() {
@@ -194,6 +219,7 @@ public class Utilisateurs {
         sb.append(", motDePasse='").append(motDePasse).append('\'');
         sb.append(", credit='").append(credit).append('\'');
         sb.append(", administrateur=").append(administrateur);
+        sb.append(", liste d'enchere ='").append(listeEnchere);
         sb.append('}');
         return sb.toString();
     }

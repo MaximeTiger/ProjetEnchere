@@ -15,7 +15,7 @@ public class RetraitDAOImpl implements RetraitDAO{
 
     public void insertRetrait(Retrait r) throws DALException {
         Retrait retrait = null;
-        
+
         try(Connection conn = ConnectionProvider.getConnection()){
 
             //Faire l'insert
