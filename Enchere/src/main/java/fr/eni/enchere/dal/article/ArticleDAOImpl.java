@@ -16,7 +16,7 @@ public class ArticleDAOImpl implements ArticleDAO {
         "VALUES (?,?,?,?,?,?)";
 
 
-    public void vendreUnArticle (Article a) throws DALException {
+    public void insertUnArticle (Article a) throws DALException {
 
         try (Connection conn = ConnectionProvider.getConnection();){
             PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);

@@ -4,5 +4,5 @@ import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.dal.DALException;
 
 public interface ArticleDAO {
-    public void vendreUnArticle (Article a) throws DALException;
+    void insertUnArticle(Article a) throws DALException;
 }

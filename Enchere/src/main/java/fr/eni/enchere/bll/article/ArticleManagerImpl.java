@@ -1,0 +1,55 @@
+package fr.eni.enchere.bll.article;
+
+import fr.eni.enchere.bll.BLLException;
+import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.dal.DALException;
+import fr.eni.enchere.dal.DAOFactory;
+import fr.eni.enchere.dal.article.ArticleDAO;
+
+public class ArticleManagerImpl implements ArticleManager{
+
+    //attributs
+    private ArticleDAO articleDAO;
+
+    //constructeur pour instancier le data access object
+    public ArticleManagerImpl() {
+        articleDAO= DAOFactory.getArticleDAO();
+    }
+
+    //ajouter un article
+    @Override
+    public void ajouterUnArticle(Article a) throws BLLException {
+        try {
+            articleDAO.insertUnArticle(a);
+        } catch (DALException e) {
+            throw new BLLException("Erreur ajout article",e);
+        }
+    }
+
+    //Valider un article
+    @SuppressWarnings("null")
+    public void validerUnArticle (Article article) throws BLLException {
+        StringBuilder message = new StringBuilder() ;
+
+        if (article == null) {
+            message.append(" Article null");
+        }else {
+            if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
+                message.append(" Erreur nom obligatoire");
+            }
+            if(article.getDescription() == null || article.getDescription().isBlank()){
+                message.append(" Erreur marque obligatoire");
+            }
+            if(article.getPrixInitial() <= 0) {
+                message.append(" Erreur prix unitaire doit Ãªtre positif");
+            }
+            if(article.getPrixVente() <= 0) {
+                message.append(" Erreur prix de vente doit Ãªtre positif");
+            }
+        }
+        if(!message.toString().isBlank()) {
+            throw new BLLException(message.toString());
+        }
+
+    }
+}
