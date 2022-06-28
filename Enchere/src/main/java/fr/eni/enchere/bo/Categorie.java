@@ -1,19 +1,26 @@
 package fr.eni.enchere.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Categorie {
+    //attributs
     private int noCategorie;
     private String libelle;
 
+    private List<Article> listeArticle;
+
+    //constructeurs
     public Categorie(int noCategorie, String libelle) {
         this.noCategorie = noCategorie;
         this.libelle = libelle;
     }
-
+    public Categorie(){
+        this.listeArticle = new ArrayList<Article>();
+    }
+    //accesseurs
     public Categorie(String libelle) {
         this.libelle = libelle;
-    }
-
-    public Categorie() {
     }
 
     public int getNoCategorie() {
@@ -32,6 +39,11 @@ public class Categorie {
         this.libelle = libelle;
     }
 
+    public final List<Article> getListeaArticle(){
+        return listeArticle;
+    }
+
+    //methode
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Categorie{");
