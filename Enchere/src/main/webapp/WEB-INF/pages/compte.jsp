@@ -7,7 +7,9 @@
 
 <h1>Compte</h1>
 
-<form action="inscription" method="post">
+<form action="compte" method="post">
+
+    <input type="hidden" name="NoUtilisateur" value="${utilisateur.noUtilisateur}">
 
     <label for="pseudo">Pseudo :</label>
     <input type="text" name="pseudo" id="pseudo" value="${utilisateur.pseudo}" ${modif}>
@@ -40,11 +42,11 @@
     <input type="password" name="confirmationMotdepasse" id="confirmationMotdepasse" value="${utilisateur.motDePasse}" ${modif}>
 
     <a href="compte?action=modifier">Modifier</a>
-    <button type="submit">Enregistrer</button>
+    <button type="submit" ${modif}>Enregistrer</button>
 
 </form>
 
-<a href="${pageContext.request.contextPath}/acceuil">Retour</a>
+<a href="${pageContext.request.contextPath}/WEB-INF/pages/index.jsp">Retour</a>
 
 </body>
 </html>

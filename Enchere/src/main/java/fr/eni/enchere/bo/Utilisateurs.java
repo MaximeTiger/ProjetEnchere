@@ -16,6 +16,12 @@ public class Utilisateurs {
     private boolean administrateur;
 
 //constructeurs
+
+
+    public Utilisateurs(int noUtilisateur) {
+        this.noUtilisateur = noUtilisateur;
+    }
+
     public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, boolean administrateur) {
         this.noUtilisateur = noUtilisateur;
         this.pseudo = pseudo;
@@ -62,7 +68,18 @@ public class Utilisateurs {
         this.motDePasse=motdepasse;
     }
 
-
+    public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String mail, String telephone, String rue, String codePostal, String ville, String motdepasse) {
+        this.noUtilisateur = noUtilisateur;
+        this.pseudo=pseudo;
+        this.nom=nom;
+        this.prenom=prenom;
+        this.email=mail;
+        this.telephone=telephone;
+        this.rue=rue;
+        this.codePostal=codePostal;
+        this.ville=ville;
+        this.motDePasse=motdepasse;
+    }
 
 
     public int getNoUtilisateur() {

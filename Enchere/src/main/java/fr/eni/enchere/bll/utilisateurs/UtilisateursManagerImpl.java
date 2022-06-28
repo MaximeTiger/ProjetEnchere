@@ -30,4 +30,13 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
         }
         return util;
     }
+
+    @Override
+    public void update(Utilisateurs util) throws BLLException {
+        try {
+            utilisateursDAO.update(util);
+        } catch (DALException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
