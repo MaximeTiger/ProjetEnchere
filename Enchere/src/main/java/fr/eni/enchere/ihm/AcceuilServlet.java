@@ -12,6 +12,9 @@ public class AcceuilServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.setAttribute("connexion", "<a href=\"connexion\">Connexion - Inscription</a>\n<br>\n");
+
         req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
     }
 }

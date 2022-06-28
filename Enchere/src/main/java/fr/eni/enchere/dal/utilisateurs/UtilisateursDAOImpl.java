@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class  UtilisateursDAOImpl implements UtilisateursDAO {
 
-    private static final String SELECT_INFOS_USER = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
+    private static final String SELECT_INFOS_USER = "SELECT * FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
     private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
             "code_postal,ville,mot_de_passe,credit,administrateur)" +
             "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -29,7 +29,20 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
             preparedStatement.executeQuery();
             ResultSet rs = preparedStatement.getResultSet();
             if(rs.next()){
-                user= new Utilisateurs(rs.getString("pseudo"),rs.getString("mot_de_passe"));
+                user= new Utilisateurs(
+                        rs.getInt("no_utilisateur"),
+                        rs.getString("pseudo"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getString("email"),
+                        rs.getString("telephone"),
+                        rs.getString("rue"),
+                        rs.getString("code_postal"),
+                        rs.getString("ville"),
+                        rs.getString("mot_de_passe"),
+                        rs.getString("credit"),
+                        rs.getBoolean("administrateur")
+                );
             }
         }catch (SQLException e){
             e.printStackTrace();
