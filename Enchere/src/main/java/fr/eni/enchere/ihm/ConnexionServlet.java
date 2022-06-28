@@ -33,6 +33,7 @@ public class ConnexionServlet extends HttpServlet {
     Utilisateurs util;
         try {
             util = mgerConn.connexion(req.getParameter("pseudo"),req.getParameter("motdepasse"));
+            System.out.println(util);
             if (util != null) {
                 req.setAttribute("connexion","Bonjour " + util.getPseudo());
                 req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);

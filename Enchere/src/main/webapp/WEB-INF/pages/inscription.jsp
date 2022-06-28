@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="fr">
 <head>
     <title>Inscription</title>
@@ -56,7 +56,7 @@
             return false;
         } else {
             alert("Les mots de passe correspondent.");
-            return false;
+            return true;
         }
     }
 
