@@ -20,16 +20,16 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
     //Verifier que le pseudo et le mot de passe sont correctes
     @Override
-    public Utilisateurs selectInfosUser(String pseudo, String motDePasse) throws DALException {
+    public Utilisateurs selectInfosUser(String pseudo, String motdepasse) throws DALException {
         Utilisateurs user = null;
         try(Connection connection = ConnectionProvider.getConnection() ){
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_INFOS_USER);
             preparedStatement.setString(1,pseudo);
-            preparedStatement.setString(2,motDePasse);
+            preparedStatement.setString(2,motdepasse);
             preparedStatement.executeQuery();
             ResultSet rs = preparedStatement.getResultSet();
             if(rs.next()){
-                user= new Utilisateurs(rs.getString("pseudo"),rs.getString("motdepasse"));
+                user= new Utilisateurs(rs.getString("pseudo"),rs.getString("mot_de_passe"));
             }
         }catch (SQLException e){
             e.printStackTrace();
