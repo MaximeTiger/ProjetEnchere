@@ -31,7 +31,9 @@ public class EnchereDAOImpl implements EnchereDAO {
     public Enchere selectById(Integer id) throws DALException {
 
         Enchere ench = null;
-        try(Connection conn = ConnectionProvider.getConnection()) {
+        try(
+                Connection conn = ConnectionProvider.getConnection()
+        ) {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 
@@ -94,8 +96,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 
    @Override
     public List<Enchere> selectByCategorie(String libelle) throws DALException {
-
-       try(Connection conn = ConnectionProvider.getConnection()) {
+       try(
+               Connection conn = ConnectionProvider.getConnection()
+       ) {
 
            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_CATEGORIE);
 
@@ -126,8 +129,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 
     @Override
     public List<Enchere> selectByNomArticle(String nomArt) throws DALException {
-
-        try(Connection conn = ConnectionProvider.getConnection()) {
+        try(
+                Connection conn = ConnectionProvider.getConnection()
+        ) {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
 
