@@ -1,7 +1,6 @@
 package fr.eni.enchere.bo;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class Enchere {
     //attributs
@@ -22,6 +21,7 @@ public class Enchere {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
+        assert false;
         this.nomUtilisateur = utilisateurs.getNom();
         this.nomArticle = article.getNomArticle();
     }
@@ -101,14 +101,12 @@ public class Enchere {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Enchere{");
-        sb.append("nomUtilisateur=").append(nomUtilisateur);
-        sb.append(", nomArticle=").append(nomArticle);
-        sb.append(", noEnchere=").append(noEnchere);
-        sb.append(", dateEnchere=").append(dateEnchere);
-        sb.append(", montantEnchere=").append(montantEnchere);
-        sb.append('}');
-        return sb.toString();
+        return "Enchere{" + "nomUtilisateur=" + nomUtilisateur +
+                ", nomArticle=" + nomArticle +
+                ", noEnchere=" + noEnchere +
+                ", dateEnchere=" + dateEnchere +
+                ", montantEnchere=" + montantEnchere +
+                '}';
     }
 
 }

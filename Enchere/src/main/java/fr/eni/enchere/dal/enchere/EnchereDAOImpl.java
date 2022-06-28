@@ -18,14 +18,13 @@ public class EnchereDAOImpl implements EnchereDAO {
     private static final String SELECT_ALL = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
             "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS";
 
+    private static final String SELECT_BY_NOM_ARTICLE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom " +
+            "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE nom_article=?";
+
     private static final String SELECT_BY_CATEGORIE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
             "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle" +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS,CATEGORIES WHERE libelle=?";
-
-    private static final String SELECT_BY_NOM_ARTICLE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
-            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom" +
-            "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE nom_article=?";
-
     @Override
     public Enchere selectById(Integer id) throws DALException {
 
@@ -99,19 +98,21 @@ public class EnchereDAOImpl implements EnchereDAO {
     }
 */
     @Override
-    public List<Enchere> selectByNomArticle(Article art) throws DALException {
+    public List<Enchere> selectByNomArticle(String nomArt) throws DALException {
         List<Enchere> listEnchere = new ArrayList<>();
+        Enchere enchere = new Enchere();
+        nomArt = enchere.getNomArticle();
         try(Connection conn = ConnectionProvider.getConnection()) {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
 
-            stmt.setString(1,art.getNomArticle());
+            stmt.setString(1,nomArt);
 
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
                 //Créer l'enchère
-                Enchere enchere = new Enchere(
+                enchere = new Enchere(
                         rs.getInt("no_enchere"),
                         rs.getDate("date_enchere"),
                         rs.getInt("montant_enchere"),
