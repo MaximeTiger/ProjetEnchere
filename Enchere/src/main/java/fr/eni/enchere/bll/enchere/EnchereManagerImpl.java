@@ -5,7 +5,6 @@ import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.enchere.EnchereDAO;
-import fr.eni.enchere.dal.utilisateurs.UtilisateursDAO;
 
 public class EnchereManagerImpl implements  EnchereManager{
 
@@ -16,11 +15,11 @@ public class EnchereManagerImpl implements  EnchereManager{
 
     @Override
     public Enchere afficherEnchere(Integer id) throws BLLException {
-        Enchere enchere = null;
+        Enchere enchere;
         try {
             enchere = enchereDAO.selectById(id);
         } catch (DALException e) {
-            throw new RuntimeException(e);
+            throw new BLLException("erreur BLL affichage enchère",e);
         }
         return enchere;
     }

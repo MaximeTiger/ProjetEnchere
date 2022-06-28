@@ -1,7 +1,6 @@
 package fr.eni.enchere.bll.utilisateurs;
 
 import fr.eni.enchere.bll.BLLException;
-import fr.eni.enchere.bll.utilisateurs.UtilisateursManager;
 import fr.eni.enchere.bo.Utilisateurs;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
@@ -17,17 +16,17 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
         try {
             utilisateursDAO.inscription(u);
         }catch (DALException e){
-            e.printStackTrace();
+            throw new BLLException("erreur bll suscribe failed",e);
         }
     }
 
     @Override
     public Utilisateurs connexion(String pseudo, String motDePasse) throws BLLException {
-        Utilisateurs util = null;
+        Utilisateurs util;
         try {
             util = utilisateursDAO.selectInfosUser(pseudo,motDePasse);
         }catch (DALException e){
-            e.printStackTrace();
+            throw new BLLException("erreur bll connexion failed",e);
         }
         return util;
     }

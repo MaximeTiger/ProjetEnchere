@@ -9,7 +9,7 @@ import fr.eni.enchere.dal.article.ArticleDAO;
 public class ArticleManagerImpl implements ArticleManager{
 
     //attributs
-    private ArticleDAO articleDAO;
+    private final ArticleDAO articleDAO;
 
     //constructeur pour instancier le data access object
     public ArticleManagerImpl() {
