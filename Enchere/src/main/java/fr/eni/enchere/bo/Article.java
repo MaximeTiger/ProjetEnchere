@@ -57,10 +57,10 @@ public class Article{
         this.finEncheres = finEncheres;
         this.prixInitial = prixInitial;
         this.prixVente = prixVente;
-        this.categorie = categorie;
-        this.rue = rue;
-        this.codePostale = codePostale;
-        this.ville = ville;
+        this.libelle=categorie.getLibelle();
+        this.rue = retrait.getRue();
+        this.codePostale = retrait.getCodePostal();
+        this.ville = retrait.getVille();
     }
 
     //accesseurs
