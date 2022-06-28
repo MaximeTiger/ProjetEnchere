@@ -13,7 +13,11 @@ public class RetraitDAOImpl implements RetraitDAO{
 
     private static final String INSERT = "INSERT INTO RETRAITS (rue,code_postal,ville) VALUES (?,?,?)";
 
+    private static final String SELECT_BY_NOM_ARTICLE = " SELECT ARTICLES_VENDUS.nom_article, RETRAITS.no_article, RETRAITS.rue, RETRAITS.code_postal, RETRAITS.vill"
+            +"FROM ARTICLES_VENDUS, RETRAITS WHERE nom_article=?";
     public void insertRetrait(Retrait r) throws DALException {
+        Retrait retrait = null;
+
         try(Connection conn = ConnectionProvider.getConnection()){
 
             //Faire l'insert
@@ -26,15 +30,39 @@ public class RetraitDAOImpl implements RetraitDAO{
 
 
             //Executer la requete
-            stmt.executeQuery();
+            stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
 
-            /*if (rs.next()) {
+<<<<<<< HEAD
+            if (rs.next()) {
                 r.setNoArticle(String.valueOf(rs.getInt(1)));
-            }*/
+            }
+=======
+            if (rs.next()) {
+                r.setNomArticle(rs.getString(1));
+            }
+>>>>>>> e9f02953f619e090cc3f6c8771c90676f65cfd41
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+    /*public Retrait selectByNomArticle(String nomArticle){
+
+        try (Connection conn = ConnectionProvider.getConnection();){
+
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
+            stmt.setString(1,nomArticle);
+
+            ResultSet rs = stmt.executeQuery();
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nomArticle;
+    }*/
+
 }
