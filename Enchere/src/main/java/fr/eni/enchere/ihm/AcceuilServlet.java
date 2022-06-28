@@ -27,6 +27,8 @@ public class AcceuilServlet extends HttpServlet {
 
 
 
+
+
         req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
     }
 

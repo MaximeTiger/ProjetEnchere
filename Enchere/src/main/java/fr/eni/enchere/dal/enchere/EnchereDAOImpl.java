@@ -24,8 +24,9 @@ public class EnchereDAOImpl implements EnchereDAO {
             "FROM ENCHERES,ARTICLES_VENDUS, UTILISATEURS WHERE nom_article=?";
 
     private static final String SELECT_BY_CATEGORIE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
-            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle" +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle " +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS,CATEGORIES WHERE libelle=?";
+
     @Override
     public Enchere selectById(Integer id) throws DALException {
 
@@ -96,7 +97,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 
        try(Connection conn = ConnectionProvider.getConnection()) {
 
-           PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
+           PreparedStatement stmt = conn.prepareStatement(SELECT_BY_CATEGORIE);
 
            stmt.setString(1,libelle);
 
