@@ -33,7 +33,18 @@ public class EnchereManagerImpl implements  EnchereManager{
         try {
             liste = enchereDAO.selectAll();
         } catch (DALException e) {
-            throw new RuntimeException(e);
+            throw new BLLException("erreur BLL affichage liste d'enchères",e);
+        }
+        return liste;
+    }
+
+    @Override
+    public List<Enchere> enchereParArticle(String nomArt) throws BLLException {
+        List<Enchere> liste = new ArrayList<>();
+        try {
+            liste = enchereDAO.selectByNomArticle(nomArt);
+        } catch (DALException e) {
+            throw new BLLException("erreur BLL recherche par nom article",e);
         }
         return liste;
     }

@@ -43,7 +43,7 @@ public class ArticleManagerImpl implements ArticleManager{
             if(article.getLibelle() == null || article.getLibelle().isBlank())  {
                 message.append(" Erreur catégorie obligatoire");
             }
-           
+
             if(article.getPrixInitial() <= 0) {
                 message.append(" Erreur prix unitaire doit Ãªtre positif");
             }

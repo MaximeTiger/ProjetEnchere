@@ -1,10 +1,9 @@
 package fr.eni.enchere.bo;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
-public class Article extends Categorie{
-//attributs
+public class Article{
+    //attributs
     private int noArticle;
     private String nomArticle;
     private String description;
@@ -12,11 +11,28 @@ public class Article extends Categorie{
     private Date finEncheres;
     private int prixInitial;
     private int prixVente;
+
+    //association
+    private Categorie categorie;
+
+    private String libelle;
+
+    private Utilisateurs utilisateur;
+
     private int noUtilisateur;
-    private int noCategorie;
+
+    private Retrait retrait;
+
+    private String rue;
+
+    private String codePostale;
+
+    private String ville;
 
     //constructeurs
-    public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie) {
+
+
+    public Article(int noArticle, String nomArticle, String description, Date debutEncheres, Date finEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie, Categorie categorie, String rue, String codePostale, String ville) {
         this.noArticle = noArticle;
         this.nomArticle = nomArticle;
         this.description = description;
@@ -24,12 +40,14 @@ public class Article extends Categorie{
         this.finEncheres = finEncheres;
         this.prixInitial = prixInitial;
         this.prixVente = prixVente;
-        this.noUtilisateur = noUtilisateur;
-        this.noCategorie = noCategorie;
-    }
-
-    public Article() {
-        super();
+        this.setRetrait(retrait);
+        this.rue = retrait.getRue();
+        this.codePostale = retrait.getCodePostal();
+        this.ville = retrait.getVille();
+        this.setCategorie(categorie);
+        this.libelle=categorie.getLibelle();
+        this.setUtilisateur(utilisateur);
+        this.noUtilisateur = utilisateur.getNoUtilisateur();
     }
 
     //accesseurs
@@ -89,22 +107,51 @@ public class Article extends Categorie{
         this.prixVente = prixVente;
     }
 
-    public int getNoUtilisateur() {
-        return noUtilisateur;
-    }
+    //Accesseurs par association
+    public String getLibelle() { return libelle; }
 
-    public void setNoUtilisateur(int noUtilisateur) {
-        this.noUtilisateur = noUtilisateur;
-    }
 
-    @Override
-    public int getNoCategorie() {
-        return noCategorie;
-    }
-    @Override
-    public void setNoCategorie(int noCategorie) {
-        this.noCategorie = noCategorie;
-    }
-    //
+    public int getNoUtilisateur() { return noUtilisateur;}
 
+
+    public void setLibelle(String libelle) { this.libelle = libelle; }
+
+
+    public void setNoUtilisateur(int noUtilisateur) { this.noUtilisateur = noUtilisateur; }
+
+
+    public Categorie getCategorie() { return categorie; }
+
+
+    public Utilisateurs getUtilisateur() { return utilisateur; }
+
+
+    public void setCategorie(Categorie categorie) { this.categorie = categorie; }
+
+
+    public void setUtilisateur(Utilisateurs utilisateur) { this.utilisateur = utilisateur; }
+
+
+    public Retrait getRetrait() { return retrait; }
+
+
+    public String getRue() { return rue; }
+
+
+    public String getCodePostale() { return codePostale; }
+
+
+    public String getVille() { return ville; }
+
+
+    public void setRetrait(Retrait retrait) { this.retrait = retrait; }
+
+
+    public void setRue(String rue) { this.rue = rue; }
+
+
+    public void setCodePostale(String codePostale) { this.codePostale = codePostale; }
+
+
+    public void setVille(String ville) { this.ville = ville; }
 }

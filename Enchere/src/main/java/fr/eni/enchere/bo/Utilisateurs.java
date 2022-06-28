@@ -14,6 +14,7 @@ public class Utilisateurs {
     private String motDePasse;
     private String credit;
     private boolean administrateur;
+
 //constructeurs
 
 
