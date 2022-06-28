@@ -24,13 +24,16 @@ public class EnchereDAOImpl implements EnchereDAO {
             "FROM ENCHERES,ARTICLES_VENDUS, UTILISATEURS WHERE nom_article=?";
 
     private static final String SELECT_BY_CATEGORIE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
-            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle" +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle " +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS,CATEGORIES WHERE libelle=?";
+
     @Override
     public Enchere selectById(Integer id) throws DALException {
 
         Enchere ench = null;
-        try(Connection conn = ConnectionProvider.getConnection()) {
+        try(
+                Connection conn = ConnectionProvider.getConnection()
+        ) {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 
@@ -93,10 +96,11 @@ public class EnchereDAOImpl implements EnchereDAO {
 
    @Override
     public List<Enchere> selectByCategorie(String libelle) throws DALException {
+       try(
+               Connection conn = ConnectionProvider.getConnection()
+       ) {
 
-       try(Connection conn = ConnectionProvider.getConnection()) {
-
-           PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
+           PreparedStatement stmt = conn.prepareStatement(SELECT_BY_CATEGORIE);
 
            stmt.setString(1,libelle);
 
@@ -125,8 +129,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 
     @Override
     public List<Enchere> selectByNomArticle(String nomArt) throws DALException {
-
-        try(Connection conn = ConnectionProvider.getConnection()) {
+        try(
+                Connection conn = ConnectionProvider.getConnection()
+        ) {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
 
