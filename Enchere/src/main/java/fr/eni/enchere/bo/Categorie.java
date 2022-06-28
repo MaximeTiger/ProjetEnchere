@@ -1,9 +1,10 @@
 package fr.eni.enchere.bo;
 
 public class Categorie {
+    //accesseurs
     private int noCategorie;
     private String libelle;
-
+//constructeurs
     public Categorie(int noCategorie, String libelle) {
         this.noCategorie = noCategorie;
         this.libelle = libelle;
@@ -15,7 +16,7 @@ public class Categorie {
 
     public Categorie() {
     }
-
+    //acesseurs
     public int getNoCategorie() {
         return noCategorie;
     }
@@ -31,7 +32,7 @@ public class Categorie {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
-
+//affichage
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Categorie{");

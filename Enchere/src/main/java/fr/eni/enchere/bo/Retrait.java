@@ -25,9 +25,6 @@ public class Retrait {
     }
 
     //accesseurs : getteurs
-    public String getNoArticle() {
-        return nomArticle;
-    }
     public String getRue() {
         return rue;
     }
@@ -38,9 +35,6 @@ public class Retrait {
         return ville;
     }
     //accesseurs :setteurs
-    public void setNoArticle(String noArticle) {
-        this.nomArticle = nomArticle;
-    }
     public void setRue(String rue) {
         this.rue = rue;
     }
@@ -50,11 +44,23 @@ public class Retrait {
     public void setVille(String ville) {
         this.ville = ville;
     }
+    public String getNomArticle() {
+        return nomArticle;
+    }
+    public void setNomArticle(String nomArticle) {
+        this.nomArticle = nomArticle;
+    }
+    public Article getArticle() {
+        return article;
+    }
+    public void setArticle(Article article) {
+        this.article = article;
+    }
 
     @java.lang.Override
     public java.lang.String toString() {
         final java.lang.StringBuilder sb = new java.lang.StringBuilder("Retrait{");
-        sb.append("noArticle='").append(nomArticle).append('\'');
+        sb.append("nomArticle='").append(nomArticle).append('\'');
         sb.append(", rue='").append(rue).append('\'');
         sb.append(", codePostal='").append(codePostal).append('\'');
         sb.append(", ville='").append(ville).append('\'');
