@@ -38,8 +38,12 @@ public class ArticleManagerImpl implements ArticleManager{
                 message.append(" Erreur nom obligatoire");
             }
             if(article.getDescription() == null || article.getDescription().isBlank()){
-                message.append(" Erreur marque obligatoire");
+                message.append(" Erreur description obligatoire");
             }
+            if(article.getLibelle() == null || article.getLibelle().isBlank())  {
+                message.append(" Erreur catégorie obligatoire");
+            }
+           
             if(article.getPrixInitial() <= 0) {
                 message.append(" Erreur prix unitaire doit Ãªtre positif");
             }
