@@ -6,6 +6,9 @@ import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.enchere.EnchereDAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EnchereManagerImpl implements  EnchereManager{
 
 
@@ -23,5 +26,17 @@ public class EnchereManagerImpl implements  EnchereManager{
         }
         return enchere;
     }
+
+    @Override
+    public List<Enchere> enchereEnCours() throws BLLException {
+        List<Enchere> liste = new ArrayList<>();
+        try {
+            liste = enchereDAO.selectAll();
+        } catch (DALException e) {
+            throw new RuntimeException(e);
+        }
+        return liste;
+    }
+
 
 }
