@@ -1,5 +1,7 @@
 package fr.eni.enchere.ihm;
 
+import fr.eni.enchere.bll.enchere.EnchereManager;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +22,8 @@ public class AcceuilServlet extends HttpServlet {
         } else {
             req.setAttribute("connexion", "<a href=\"connexion\">Connexion - Inscription</a>\n<br>\n");
         }
+
+
 
 
 
