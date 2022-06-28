@@ -13,6 +13,8 @@ public class RetraitDAOImpl implements RetraitDAO{
 
     private static final String INSERT = "INSERT INTO RETRAITS (rue,code_postal,ville) VALUES (?,?,?)";
 
+    private static final String SELECT_BY_NOM_ARTICLE = " SELECT ARTICLES_VENDUS.nom_article, RETRAITS.no_article, RETRAITS.rue, RETRAITS.code_postal, RETRAITS.vill"
+            +"FROM ARTICLES_VENDUS, RETRAITS WHERE nom_article=?";
     public void insertRetrait(Retrait r) throws DALException {
         Retrait retrait = null;
 
@@ -28,7 +30,7 @@ public class RetraitDAOImpl implements RetraitDAO{
 
 
             //Executer la requete
-            stmt.executeQuery();
+            stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
 
@@ -39,4 +41,22 @@ public class RetraitDAOImpl implements RetraitDAO{
             throw new RuntimeException(e);
         }
     }
+
+    /*public Retrait selectByNomArticle(String nomArticle){
+
+        try (Connection conn = ConnectionProvider.getConnection();){
+
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
+            stmt.setString(1,nomArticle);
+
+            ResultSet rs = stmt.executeQuery();
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nomArticle;
+    }*/
+
 }
