@@ -12,19 +12,6 @@ public interface EnchereDAO {
     List<Enchere> selectAll() throws DALException;
     List<Enchere> selectByNomArticle(String nomArt) throws DALException;
 
-    /* je ne sais pas encore comment faire *Bryan
-        @Override
-         public List<Enchere> selectByCategorie(Categorie cat) throws DALException {
-             return null;
-         }
-     */
-
-    /* je ne sais pas encore comment faire *Bryan
-        @Override
-         public List<Enchere> selectByCategorie(Categorie cat) throws DALException {
-             return null;
-         }
-     */
-    /* List<Enchere> selectByCategorie(Categorie cat) throws DALException;*/
+    List<Enchere> selectByCategorie(String libelle) throws DALException;
 
 }
