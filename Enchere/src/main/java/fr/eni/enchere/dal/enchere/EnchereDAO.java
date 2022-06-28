@@ -10,7 +10,15 @@ import java.util.List;
 public interface EnchereDAO {
     Enchere selectById(Integer id) throws DALException;
     List<Enchere> selectAll() throws DALException;
-   /* Enchere selectByCategorie(Categorie cat) throws DALException;
-    Enchere selectByNomArticle(Article art) throws DALException;*/
+
+    /* je ne sais pas encore comment faire *Bryan
+        @Override
+         public List<Enchere> selectByCategorie(Categorie cat) throws DALException {
+             return null;
+         }
+     */
+    List<Enchere> selectByNomArticle(Article art) throws DALException;
+   /* List<Enchere> selectByCategorie(Categorie cat) throws DALException;
+    List<Enchere> selectByNomArticle(Article art) throws DALException;*/
 
 }

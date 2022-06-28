@@ -5,21 +5,25 @@ import java.time.LocalDate;
 
 public class Enchere {
     //attributs
+
+    private String nomUtilisateur;
+
+    private String nomArticle;
     private int noEnchere;
     private Date dateEnchere;
     private int montantEnchere;
 
-    private int noArticle;
+    private Utilisateurs utilisateurs;
 
-    private int noUtilisateur;
+    private Article article;
 //constructeurs
 
-    public Enchere(int noEnchere, Date dateEnchere, int montantEnchere, int noArticle, int noUtilisateur) {
+    public Enchere(int noEnchere, Date dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
-        this.noArticle = noArticle;
-        this.noUtilisateur = noUtilisateur;
+        this.nomUtilisateur = utilisateurs.getNom();
+        this.nomArticle = article.getNomArticle();
     }
 
     public Enchere(int noEnchere, Date dateEnchere, int montantEnchere) {
@@ -61,34 +65,51 @@ public class Enchere {
         this.montantEnchere = montantEnchere;
     }
 
-    public int getNoArticle() {
-        return noArticle;
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
     }
 
-    public void setNoArticle(int noArticle) {
-        this.noArticle = noArticle;
+    public void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
     }
 
-    public int getNoUtilisateur() {
-        return noUtilisateur;
+    public String getNomArticle() {
+        return nomArticle;
     }
 
-    public void setNoUtilisateur(int noUtilisateur) {
-        this.noUtilisateur = noUtilisateur;
+    public void setNomArticle(String nomArticle) {
+        this.nomArticle = nomArticle;
     }
 
-    //affichage
+    public Utilisateurs getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(Utilisateurs utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+
+//affichage
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Enchere{");
-        sb.append("noEnchere=").append(noEnchere);
+        sb.append("nomUtilisateur=").append(nomUtilisateur);
+        sb.append(", nomArticle=").append(nomArticle);
+        sb.append(", noEnchere=").append(noEnchere);
         sb.append(", dateEnchere=").append(dateEnchere);
         sb.append(", montantEnchere=").append(montantEnchere);
-        sb.append(", noArticle=").append(noArticle);
-        sb.append(", noUtilisateur=").append(noUtilisateur);
         sb.append('}');
         return sb.toString();
     }
+
 }
 

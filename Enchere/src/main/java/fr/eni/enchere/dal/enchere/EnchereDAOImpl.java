@@ -1,7 +1,6 @@
 package fr.eni.enchere.dal.enchere;
 
 import fr.eni.enchere.bo.Article;
-import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
@@ -12,18 +11,20 @@ import java.util.List;
 
 public class EnchereDAOImpl implements EnchereDAO {
 
-    private static final String SELECT_BY_ID = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur " +
-            "FROM ENCHERES WHERE no_enchere= ?";
+    private static final String SELECT_BY_ID = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom " +
+            "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE no_enchere= ?";
 
-    private static final String SELECT_ALL = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM ENCHERES";
+    private static final String SELECT_ALL = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS";
 
-    private static final String SELECT_BY_CATEGORIE = "SELECT ARTICLES_VENDUS.nom_article,ENCHERES.date_enchere,ENCHERES.montant_enchere," +
-            "UTILISATEURS.nom FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS,CATEGORIES " +
-            "WHERE libelle=?";
+    private static final String SELECT_BY_CATEGORIE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle" +
+            "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS,CATEGORIES WHERE libelle=?";
 
-    private static final String SELECT_BY_NOM_ARTICLE = "SELECT ARTICLES_VENDUS.nom_article,ENCHERES.date_enchere,ENCHERES.montant_enchere," +
-            "UTILISATEURS.nom FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS " +
-            "WHERE nom_article=?";
+    private static final String SELECT_BY_NOM_ARTICLE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom" +
+            "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE nom_article=?";
 
     @Override
     public Enchere selectById(Integer id) throws DALException {
@@ -42,8 +43,8 @@ public class EnchereDAOImpl implements EnchereDAO {
                         rs.getInt("no_enchere"),
                         rs.getDate("date_enchere"),
                         rs.getInt("montant_enchere"),
-                        rs.getInt("no_article"),
-                        rs.getInt("no_utilisateur")
+                        rs.getString("nom_article"),
+                        rs.getString("nom")
                 );
             }
         }
@@ -70,11 +71,12 @@ public class EnchereDAOImpl implements EnchereDAO {
 
             while (rs.next()){
                 //Créer l'enchère
-                Enchere enchere = new Enchere(rs.getInt("no_enchere"),
+                Enchere enchere = new Enchere(
+                        rs.getInt("no_enchere"),
                         rs.getDate("date_enchere"),
                         rs.getInt("montant_enchere"),
-                        rs.getInt("no_article"),
-                        rs.getInt("no_utilisateur")
+                        rs.getString("nom_article"),
+                        rs.getString("nom")
                 );
                 //Ajoute l'enchère à la liste
                 listEnchere.add(enchere);
@@ -92,12 +94,39 @@ public class EnchereDAOImpl implements EnchereDAO {
 
    /* je ne sais pas encore comment faire *Bryan
    @Override
-    public Enchere selectByCategorie(Categorie cat) throws DALException {
+    public List<Enchere> selectByCategorie(Categorie cat) throws DALException {
         return null;
     }
-
+*/
     @Override
-    public Enchere selectByNomArticle(Article art) throws DALException {
-        return null;
-    }*/
+    public List<Enchere> selectByNomArticle(Article art) throws DALException {
+        List<Enchere> listEnchere = new ArrayList<>();
+        try(Connection conn = ConnectionProvider.getConnection()) {
+
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
+
+            stmt.setString(1,art.getNomArticle());
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                //Créer l'enchère
+                Enchere enchere = new Enchere(
+                        rs.getInt("no_enchere"),
+                        rs.getDate("date_enchere"),
+                        rs.getInt("montant_enchere"),
+                        rs.getString("nom_article"),
+                        rs.getString("nom")
+                );
+                //Ajoute l'enchère à la liste
+                listEnchere.add(enchere);
+            }
+        }
+
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur dal a la recherche d'une enchère");
+        }
+        return listEnchere;
+    }
 }

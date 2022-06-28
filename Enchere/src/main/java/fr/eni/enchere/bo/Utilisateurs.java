@@ -14,6 +14,7 @@ public class Utilisateurs {
     private String motDePasse;
     private String credit;
     private boolean administrateur;
+
 //constructeurs
     public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String credit, boolean administrateur) {
         this.noUtilisateur = noUtilisateur;
