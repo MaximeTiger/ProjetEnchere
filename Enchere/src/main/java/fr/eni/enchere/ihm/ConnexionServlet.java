@@ -7,22 +7,30 @@ import fr.eni.enchere.bo.Utilisateurs;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/connexion")
 public class ConnexionServlet extends HttpServlet {
 
+    HttpSession session;
     private final UtilisateursManager mgerConn;
 
     public ConnexionServlet(){
         mgerConn = BLLFactory.getUtilisateursManager();
     }
 
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String action = req.getParameter("action");
+
+        if ("deconnexion".equals(action)){
+            doDeconnexion(req, resp);
+        }
+
         req.getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req,resp);
     }
 
@@ -33,9 +41,12 @@ public class ConnexionServlet extends HttpServlet {
     Utilisateurs util;
         try {
             util = mgerConn.connexion(req.getParameter("pseudo"),req.getParameter("motdepasse"));
-            System.out.println(util);
             if (util != null) {
-                req.setAttribute("connexion","Bonjour " + util.getPseudo());
+                req.setAttribute("bonjour","Bonjour " + util.getPseudo());
+                session = req.getSession();
+                session.setAttribute("utilisateur",util);
+                session.setAttribute("compte","<a href=\"compte\">Compte</a>\n");
+                session.setAttribute("deco","<a href=\"connexion?action=deconnexion\">Deconnexion</a>");
                 req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
             } else {
                 req.setAttribute("error","Mot de passe ou Pseudo incorrect");
@@ -47,4 +58,8 @@ public class ConnexionServlet extends HttpServlet {
 
     }
 
+    protected void doDeconnexion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        session.invalidate();
+        req.getRequestDispatcher("acceuil").forward(req,resp);
+    }
 }

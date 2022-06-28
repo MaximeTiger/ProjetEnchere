@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 
-    private static DataSource dataSource;
+    private static final DataSource dataSource;
 
     static {
         try {
