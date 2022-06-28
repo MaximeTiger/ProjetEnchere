@@ -24,4 +24,5 @@ public class EnchereManagerImpl implements  EnchereManager{
         }
         return enchere;
     }
+
 }
