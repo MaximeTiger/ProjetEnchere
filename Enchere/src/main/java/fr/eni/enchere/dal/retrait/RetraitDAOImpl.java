@@ -14,6 +14,8 @@ public class RetraitDAOImpl implements RetraitDAO{
     private static final String INSERT = "INSERT INTO RETRAITS (rue,code_postal,ville) VALUES (?,?,?)";
 
     public void insertRetrait(Retrait r) throws DALException {
+        Retrait retrait = null;
+        
         try(Connection conn = ConnectionProvider.getConnection()){
 
             //Faire l'insert
@@ -31,7 +33,7 @@ public class RetraitDAOImpl implements RetraitDAO{
             ResultSet rs = stmt.getGeneratedKeys();
 
             if (rs.next()) {
-                r.setNoArticle(String.valueOf(rs.getInt(1)));
+                r.setNomArticle(rs.getString(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
