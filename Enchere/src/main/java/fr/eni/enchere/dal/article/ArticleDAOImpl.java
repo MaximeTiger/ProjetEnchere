@@ -39,4 +39,10 @@ public class ArticleDAOImpl implements ArticleDAO {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public Article select() throws DALException {
+
+        return null;
+    }
 }
