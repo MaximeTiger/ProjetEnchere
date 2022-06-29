@@ -57,14 +57,15 @@ public class AcceuilServlet extends HttpServlet {
     }
 
     //affichage depuis l'accueil de la page de vente d'un nouvel article
-    /*@Override
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
+        debutEnchere = req.getParameter("debutEncheres");
 
 
         Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("descritption"),
-                req.getParameter("debutEncheres"), req.getParameter("finEncheres"),prixInitial
+                debutEnchere, req.getParameter("finEncheres"),prixInitial
                 ,req.getParameter("libelle"), req.getParameter("rue"), req.getParameter("codePostal")
                 ,req.getParameter("ville"));
         if(!req.getParameter("noArticle").isBlank()){
@@ -77,5 +78,5 @@ public class AcceuilServlet extends HttpServlet {
             e.printStackTrace();
         }
         resp.sendRedirect(req.getContextPath()+"");
-    }*/
+    }
 }
