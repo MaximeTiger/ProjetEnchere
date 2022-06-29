@@ -34,11 +34,6 @@ public class RetraitDAOImpl implements RetraitDAO{
 
             ResultSet rs = stmt.getGeneratedKeys();
 
-
-            if (rs.next()) {
-                r.setNoArticle(String.valueOf(rs.getInt(1)));
-            }
-
             if (rs.next()) {
                 r.setNomArticle(rs.getString(1));
             }
