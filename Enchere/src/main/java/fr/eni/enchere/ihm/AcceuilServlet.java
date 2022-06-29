@@ -61,12 +61,18 @@ public class AcceuilServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
+        debutEnchere = req.getParameter("debutEncheres");
+
+
+        Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("descritption"),
+                debutEnchere, req.getParameter("finEncheres"),prixInitial
         LocalDate debut = LocalDate.parse(req.getParameter("debutEncheres"));
         LocalDate fin = LocalDate.parse(req.getParameter("finEncheres"));
 
 
         Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("descritption"),
                 debut, fin,prixInitial
+>>>>>>> 8dbc67c7889e7c019a27df5dc52c2defac3e6653
                 ,req.getParameter("libelle"), req.getParameter("rue"), req.getParameter("codePostal")
                 ,req.getParameter("ville"));
         if(!req.getParameter("noArticle").isBlank()){
