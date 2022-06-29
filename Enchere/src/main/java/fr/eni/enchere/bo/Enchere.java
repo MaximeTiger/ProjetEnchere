@@ -31,6 +31,7 @@ public class Enchere {
         this.montantEnchere = montantEnchere;
     }
 
+
     public Enchere(Date dateEnchere, int montantEnchere) {
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
@@ -64,7 +65,7 @@ public class Enchere {
     }
 
     public String getNomUtilisateur() {
-        return nomUtilisateur;
+        return utilisateurs.getNom();
     }
 
     public void setNomUtilisateur(String nomUtilisateur) {
