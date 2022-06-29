@@ -30,7 +30,7 @@ public class ArticleServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        req.getRequestDispatcher("/WEB-INF/pages/article.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
 
     }
 
