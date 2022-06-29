@@ -12,6 +12,21 @@
 ${connexion}
 ${compte}
 <br>
+
+  <c:forEach var="enchere" items="${enchere}">
+
+      <div>
+          <div>
+              <p>${enchere.noEnchere}</p>
+              <p>${enchere.nomArticle}</p>
+              <p>${enchere.dateEnchere}</p>
+              <p>${enchere.montantEnchere}</p>
+              <p>${enchere.nomUtilisateur}</p>
+          </div>
+      </div>
+
+  </c:forEach>
+  <br>
 ${deco}
 
 
