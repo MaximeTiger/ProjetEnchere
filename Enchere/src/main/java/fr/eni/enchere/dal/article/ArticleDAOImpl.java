@@ -3,12 +3,8 @@ package fr.eni.enchere.dal.article;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
-import fr.eni.enchere.dal.article.ArticleDAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ArticleDAOImpl implements ArticleDAO {
 
@@ -18,13 +14,13 @@ public class ArticleDAOImpl implements ArticleDAO {
 
     public void insertUnArticle (Article a) throws DALException {
 
-        try (Connection conn = ConnectionProvider.getConnection();){
+        try (Connection conn = ConnectionProvider.getConnection()){
             PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1,a.getNomArticle());
             stmt.setString(2,a.getDescription());
-            stmt.setDate(3,a.getDebutEncheres());
-            stmt.setDate(4,a.getFinEncheres());
+            stmt.setObject(3, Date.valueOf(a.getDebutEncheres()));
+            stmt.setObject(3, Date.valueOf(a.getFinEncheres()));
             stmt.setInt(5,a.getPrixInitial());
             stmt.setInt(6,a.getPrixVente());
 
@@ -38,5 +34,11 @@ public class ArticleDAOImpl implements ArticleDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Article select() throws DALException {
+
+        return null;
     }
 }

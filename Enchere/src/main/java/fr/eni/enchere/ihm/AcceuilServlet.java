@@ -1,14 +1,10 @@
 package fr.eni.enchere.ihm;
 
-
 import fr.eni.enchere.bll.BLLException;
-<<<<<<< HEAD
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bo.Article;
-=======
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.enchere.EnchereManager;
->>>>>>> 7c43e67086e29e7e53a5e3e899c0855ff90dacd1
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,7 +57,7 @@ public class AcceuilServlet extends HttpServlet {
     }
 
     //affichage depuis l'accueil de la page de vente d'un nouvel article
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
@@ -81,5 +77,5 @@ public class AcceuilServlet extends HttpServlet {
             e.printStackTrace();
         }
         resp.sendRedirect(req.getContextPath()+"");
-    }
+    }*/
 }
