@@ -34,21 +34,21 @@ public class RetraitDAOImpl implements RetraitDAO{
 
             ResultSet rs = stmt.getGeneratedKeys();
 
-<<<<<<< HEAD
+
             if (rs.next()) {
                 r.setNoArticle(String.valueOf(rs.getInt(1)));
             }
-=======
+
             if (rs.next()) {
                 r.setNomArticle(rs.getString(1));
             }
->>>>>>> e9f02953f619e090cc3f6c8771c90676f65cfd41
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    /*public Retrait selectByNomArticle(String nomArticle){
+    public Retrait selectByNomArticle(String nomArticle){
 
         try (Connection conn = ConnectionProvider.getConnection();){
 
@@ -63,6 +63,6 @@ public class RetraitDAOImpl implements RetraitDAO{
             throw new RuntimeException(e);
         }
         return nomArticle;
-    }*/
+    }
 
 }
