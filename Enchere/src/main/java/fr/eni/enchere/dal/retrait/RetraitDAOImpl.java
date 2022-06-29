@@ -17,7 +17,6 @@ public class RetraitDAOImpl implements RetraitDAO{
     private static final String SELECT_BY_NOM_ARTICLE = "SELECT ARTICLES_VENDUS.nom_article, RETRAITS.no_article, RETRAITS.rue, RETRAITS.code_postal, RETRAITS.ville "
             +"FROM ARTICLES_VENDUS, RETRAITS WHERE nom_article=?";
     public void insertRetrait(Retrait r) throws DALException {
-        Retrait retrait = null;
 
         try(Connection conn = ConnectionProvider.getConnection()){
 
