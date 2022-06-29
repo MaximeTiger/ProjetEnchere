@@ -17,11 +17,11 @@ ${compte}
 
       <div>
           <div>
-              <p>${enchere.noEnchere}</p>
+              <%--<p>${enchere.noEnchere}</p>
               <p>${enchere.nomArticle}</p>
               <p>${enchere.dateEnchere}</p>
               <p>${enchere.montantEnchere}</p>
-              <p>${enchere.nomUtilisateur}</p>
+              <p>${enchere.nomUtilisateur}</p>--%>
           </div>
       </div>
 

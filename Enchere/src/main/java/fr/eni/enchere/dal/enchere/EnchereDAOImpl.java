@@ -72,6 +72,7 @@ public class EnchereDAOImpl implements EnchereDAO {
             ResultSet rs = stmt.executeQuery(SELECT_ALL);
 
             while (rs.next()){
+                System.out.println(rs.getString("nom"));
                 //Créer l'enchère
                 Enchere enchere = new Enchere(
                         rs.getInt("no_enchere"),

@@ -21,9 +21,8 @@ public class Enchere {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
-        assert false;
-        this.nomUtilisateur = utilisateurs.getNom();
-        this.nomArticle = article.getNomArticle();
+        this.nomUtilisateur = nomUtilisateur;
+        this.nomArticle = nomArticle;
     }
 
     public Enchere(int noEnchere, Date dateEnchere, int montantEnchere) {
