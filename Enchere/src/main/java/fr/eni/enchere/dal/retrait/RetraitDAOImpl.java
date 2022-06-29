@@ -61,7 +61,6 @@ public class RetraitDAOImpl implements RetraitDAO{
                         rs.getString("ville")
                 );
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
