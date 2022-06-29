@@ -59,5 +59,14 @@ public class EnchereManagerImpl implements  EnchereManager{
         }
         return liste;    }
 
+    @Override
+    public void faireEnchere(Enchere enchere) throws BLLException {
+        try {
+            enchereDAO.insertEnchere(enchere);
+        } catch (DALException e) {
+            throw new BLLException("erreur BLL insert de l'enchère",e);
+        }
+    }
+
 
 }

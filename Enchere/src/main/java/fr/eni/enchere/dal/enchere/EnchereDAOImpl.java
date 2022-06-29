@@ -29,6 +29,9 @@ public class EnchereDAOImpl implements EnchereDAO {
             "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom, CATEGORIES.libelle " +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS,CATEGORIES WHERE libelle=?";
 
+    private static final String INSERT = "INSERT INTO ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur) " +
+            "VALUES (?,?,?,?)";
+
     @Override
     public Enchere selectById(Integer id) throws DALException {
 
@@ -134,6 +137,36 @@ public class EnchereDAOImpl implements EnchereDAO {
        }
        return listeEnchere;
    }
+
+    @Override
+    public void insertEnchere(Enchere enchere) throws DALException {
+        try (
+                //Try with resources
+                Connection conn = ConnectionProvider.getConnection()
+        )
+        {
+
+            //Faire l'insert
+            PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            //Valoriser les parametres
+            stmt.setDate(1,enchere.getDateEnchere());
+            stmt.setString(2, String.valueOf(enchere.getMontantEnchere()));
+            stmt.setString(3, String.valueOf(enchere.getArticle().getNoArticle()));
+            stmt.setString(4, String.valueOf(enchere.getUtilisateurs().getNoUtilisateur()));
+
+            //Executer la requete
+            stmt.executeQuery();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()){
+                enchere.setNoEnchere(rs.getInt(1));
+            }
+        }
+        catch (SQLException e) {
+            throw new DALException("Erreur insert ", e);
+        }
+    }
 
     @Override
     public List<Enchere> selectByNomArticle(String nomArt) throws DALException {
