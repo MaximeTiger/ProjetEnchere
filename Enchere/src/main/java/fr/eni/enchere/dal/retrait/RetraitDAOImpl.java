@@ -52,6 +52,8 @@ public class RetraitDAOImpl implements RetraitDAO{
 
             ResultSet rs = stmt.executeQuery();
 
+            
+
 
 
         } catch (SQLException e) {
