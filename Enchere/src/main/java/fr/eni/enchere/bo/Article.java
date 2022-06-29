@@ -62,6 +62,16 @@ public class Article{
         this.ville = retrait.getVille();
     }
 
+    public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial, String rue, String codePostale, String ville) {
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.debutEncheres = debutEncheres;
+        this.finEncheres = finEncheres;
+        this.prixInitial = prixInitial;
+        this.rue = retrait.getRue();
+        this.codePostale = retrait.getCodePostal();
+        this.ville = retrait.getVille();
+    }
 
 
     //accesseurs

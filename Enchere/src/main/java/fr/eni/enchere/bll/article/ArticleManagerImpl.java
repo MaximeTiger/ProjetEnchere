@@ -26,6 +26,17 @@ public class ArticleManagerImpl implements ArticleManager{
         }
     }
 
+    @Override
+    public Article afficherUnArticle(String nomArticle) throws BLLException {
+        Article a;
+        try {
+            a = articleDAO.selectByNomArticle(nomArticle);
+        } catch (DALException e) {
+            throw new RuntimeException(e);
+        }
+        return a;
+    }
+
     //Valider un article
     public void validerUnArticle (Article article) throws BLLException {
         StringBuilder message = new StringBuilder() ;
