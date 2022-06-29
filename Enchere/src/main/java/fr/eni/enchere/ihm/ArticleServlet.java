@@ -1,5 +1,6 @@
 package fr.eni.enchere.ihm;
 
+import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 
@@ -21,7 +22,13 @@ public class ArticleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("article",articleManager);
+        String nomArticle = req.getParameter("nomArticle");
+
+        try {
+            req.setAttribute("article",articleManager.afficherUnArticle(nomArticle));
+        } catch (BLLException e) {
+            throw new RuntimeException(e);
+        }
 
         req.getRequestDispatcher("/WEB-INF/pages/article.jsp").forward(req,resp);
 
