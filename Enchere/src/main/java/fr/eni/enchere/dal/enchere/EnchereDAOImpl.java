@@ -5,6 +5,7 @@ import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class EnchereDAOImpl implements EnchereDAO {
             if (rs.next()){
                 ench = new Enchere(
                         rs.getInt("no_enchere"),
-                        rs.getDate("date_enchere"),
+                        rs.getObject("date_enchere",LocalDate.class),
                         rs.getInt("montant_enchere"),
                         rs.getString("nom_article"),
                         rs.getString("nom")
@@ -83,7 +84,7 @@ public class EnchereDAOImpl implements EnchereDAO {
                 //Créer l'enchère
                 Enchere enchere = new Enchere(
                         rs.getInt("no_enchere"),
-                        rs.getDate("date_enchere"),
+                        rs.getObject("date_enchere",LocalDate.class),
                         rs.getInt("montant_enchere"),
                         rs.getString("nom"),
                         rs.getString("nom_article")
@@ -121,7 +122,7 @@ public class EnchereDAOImpl implements EnchereDAO {
                //Créer l'enchère
                Enchere enchere = new Enchere(
                        rs.getInt("no_enchere"),
-                       rs.getDate("date_enchere"),
+                       rs.getObject("date_enchere",LocalDate.class),
                        rs.getInt("montant_enchere"),
                        rs.getString("nom_article"),
                        rs.getString("nom")
@@ -150,7 +151,7 @@ public class EnchereDAOImpl implements EnchereDAO {
             PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 
             //Valoriser les parametres
-            stmt.setDate(1,enchere.getDateEnchere());
+            stmt.setDate(1,Date.valueOf(enchere.getDateEnchere()));
             stmt.setString(2, String.valueOf(enchere.getMontantEnchere()));
             stmt.setString(3, String.valueOf(enchere.getArticle().getNoArticle()));
             stmt.setString(4, String.valueOf(enchere.getUtilisateurs().getNoUtilisateur()));
@@ -187,7 +188,7 @@ public class EnchereDAOImpl implements EnchereDAO {
                 //Créer l'enchère
                 Enchere enchere = new Enchere(
                         rs.getInt("no_enchere"),
-                        rs.getDate("date_enchere"),
+                        rs.getObject("date_enchere",LocalDate.class),
                         rs.getInt("montant_enchere"),
                         rs.getString("nom_article"),
                         rs.getString("nom")

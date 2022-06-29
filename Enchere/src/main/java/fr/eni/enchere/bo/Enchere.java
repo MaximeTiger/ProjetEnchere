@@ -1,6 +1,7 @@
 package fr.eni.enchere.bo;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Enchere {
     //attributs
@@ -9,7 +10,7 @@ public class Enchere {
 
     private String nomArticle;
     private int noEnchere;
-    private Date dateEnchere;
+    private LocalDate dateEnchere;
     private int montantEnchere;
 
     private Utilisateurs utilisateurs;
@@ -17,7 +18,7 @@ public class Enchere {
     private Article article;
 //constructeurs
 
-    public Enchere(int noEnchere, Date dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
+    public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
@@ -25,14 +26,14 @@ public class Enchere {
         this.nomArticle = nomArticle;
     }
 
-    public Enchere(int noEnchere, Date dateEnchere, int montantEnchere) {
+    public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere) {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
     }
 
 
-    public Enchere(Date dateEnchere, int montantEnchere) {
+    public Enchere(LocalDate dateEnchere, int montantEnchere) {
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
     }
@@ -48,11 +49,11 @@ public class Enchere {
         this.noEnchere = noEnchere;
     }
 
-    public Date getDateEnchere() {
+    public LocalDate getDateEnchere() {
         return dateEnchere;
     }
 
-    public void setDateEnchere(Date dateEnchere) {
+    public void setDateEnchere(LocalDate dateEnchere) {
         this.dateEnchere = dateEnchere;
     }
 

@@ -4,7 +4,6 @@ public class Retrait {
 
     //attributs
     private String nomArticle;
-
     private Article article;
     private String rue;
     private String codePostal;
