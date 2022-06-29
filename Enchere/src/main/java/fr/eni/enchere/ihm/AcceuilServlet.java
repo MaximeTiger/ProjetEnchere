@@ -24,7 +24,7 @@ import java.util.Date;
 
 @WebServlet("/acceuil")
 public class AcceuilServlet extends HttpServlet {
-    
+
     private ArticleManager articleMger;
     private int prixInitial;
 
