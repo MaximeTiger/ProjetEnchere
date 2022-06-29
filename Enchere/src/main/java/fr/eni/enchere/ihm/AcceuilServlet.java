@@ -57,7 +57,7 @@ public class AcceuilServlet extends HttpServlet {
     }
 
     //affichage depuis l'accueil de la page de vente d'un nouvel article
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
@@ -77,5 +77,5 @@ public class AcceuilServlet extends HttpServlet {
             e.printStackTrace();
         }
         resp.sendRedirect(req.getContextPath()+"");
-    }
+    }*/
 }
