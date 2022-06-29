@@ -35,7 +35,7 @@ public class AcceuilServlet extends HttpServlet {
         try {
             req.setAttribute("enchere",enchereManager.enchereEnCours());
         } catch (BLLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
 

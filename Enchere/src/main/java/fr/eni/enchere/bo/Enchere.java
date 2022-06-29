@@ -99,12 +99,11 @@ public class Enchere {
 //affichage
     @Override
     public String toString() {
-        return "Enchere{" + "nomUtilisateur=" + nomUtilisateur +
-                ", nomArticle=" + nomArticle +
-                ", noEnchere=" + noEnchere +
-                ", dateEnchere=" + dateEnchere +
-                ", montantEnchere=" + montantEnchere +
-                '}';
+        return "nom Utilisateur = " + nomUtilisateur + "\n" +
+                " nomArticle = " + nomArticle + "\n" +
+                " noEnchere = " + noEnchere + "\n" +
+                " dateEnchere = " + dateEnchere + "\n" +
+                " montantEnchere = " + montantEnchere + "\n";
     }
 
 }

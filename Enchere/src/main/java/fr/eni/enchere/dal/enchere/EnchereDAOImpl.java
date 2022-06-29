@@ -10,14 +10,16 @@ import java.util.List;
 
 public class EnchereDAOImpl implements EnchereDAO {
 
-    public List<Enchere> listEnchere = new ArrayList<>();
+    /*public List<Enchere> listEnchere = new ArrayList<>();*/
 
     private static final String SELECT_BY_ID = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
             "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom " +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE no_enchere= ?";
 
-    private static final String SELECT_ALL = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
-            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS";
+    private static final String SELECT_ALL = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere," +
+            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article,UTILISATEURS.nom " +
+            "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS " +
+            "WHERE UTILISATEURS.no_utilisateur = ENCHERES.no_utilisateur AND ARTICLES_VENDUS.no_article = ENCHERES.no_article";
 
     private static final String SELECT_BY_NOM_ARTICLE = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
             "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom " +
@@ -61,6 +63,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 
     @Override
     public List<Enchere> selectAll() throws DALException {
+
+        List<Enchere> listeEnchere = new ArrayList<>();
+
         try (
                 //Try with resources
                 Connection conn = ConnectionProvider.getConnection()
@@ -72,17 +77,16 @@ public class EnchereDAOImpl implements EnchereDAO {
             ResultSet rs = stmt.executeQuery(SELECT_ALL);
 
             while (rs.next()){
-                System.out.println(rs.getString("nom"));
                 //Créer l'enchère
                 Enchere enchere = new Enchere(
                         rs.getInt("no_enchere"),
                         rs.getDate("date_enchere"),
                         rs.getInt("montant_enchere"),
-                        rs.getString("nom_article"),
-                        rs.getString("nom")
+                        rs.getString("nom"),
+                        rs.getString("nom_article")
                 );
                 //Ajoute l'enchère à la liste
-                listEnchere.add(enchere);
+                listeEnchere.add(enchere);
             }
 
         }
@@ -92,11 +96,14 @@ public class EnchereDAOImpl implements EnchereDAO {
             System.out.println(e.getMessage());
             throw new DALException("Erreur dal a la selection des encheres");
         }
-        return listEnchere;
+        return listeEnchere;
     }
 
    @Override
     public List<Enchere> selectByCategorie(String libelle) throws DALException {
+
+       List<Enchere> listeEnchere = new ArrayList<>();
+
        try(
                Connection conn = ConnectionProvider.getConnection()
        ) {
@@ -117,7 +124,7 @@ public class EnchereDAOImpl implements EnchereDAO {
                        rs.getString("nom")
                );
                //Ajoute l'enchère à la liste
-               listEnchere.add(enchere);
+               listeEnchere.add(enchere);
            }
        }
 
@@ -125,11 +132,14 @@ public class EnchereDAOImpl implements EnchereDAO {
            System.out.println(e.getMessage());
            throw new DALException("Erreur dal a la recherche d'une enchère");
        }
-       return listEnchere;
+       return listeEnchere;
    }
 
     @Override
     public List<Enchere> selectByNomArticle(String nomArt) throws DALException {
+
+        List<Enchere> listeEnchere = new ArrayList<>();
+
         try(
                 Connection conn = ConnectionProvider.getConnection()
         ) {
@@ -150,7 +160,7 @@ public class EnchereDAOImpl implements EnchereDAO {
                         rs.getString("nom")
                 );
                 //Ajoute l'enchère à la liste
-                listEnchere.add(enchere);
+                listeEnchere.add(enchere);
             }
         }
 
@@ -158,6 +168,6 @@ public class EnchereDAOImpl implements EnchereDAO {
             System.out.println(e.getMessage());
             throw new DALException("Erreur dal a la recherche d'une enchère");
         }
-        return listEnchere;
+        return listeEnchere;
     }
 }
