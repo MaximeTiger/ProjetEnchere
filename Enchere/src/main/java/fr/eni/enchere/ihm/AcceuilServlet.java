@@ -2,8 +2,13 @@ package fr.eni.enchere.ihm;
 
 
 import fr.eni.enchere.bll.BLLException;
+<<<<<<< HEAD
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bo.Article;
+=======
+import fr.eni.enchere.bll.BLLFactory;
+import fr.eni.enchere.bll.enchere.EnchereManager;
+>>>>>>> 7c43e67086e29e7e53a5e3e899c0855ff90dacd1
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +24,15 @@ import java.util.Date;
 
 @WebServlet("/acceuil")
 public class AcceuilServlet extends HttpServlet {
-
+    
     private ArticleManager articleMger;
     private int prixInitial;
 
+    private final EnchereManager enchereManager;
+
+    public AcceuilServlet() {
+        enchereManager = BLLFactory.getEnchereManager();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,11 +44,12 @@ public class AcceuilServlet extends HttpServlet {
         } else {
             req.setAttribute("connexion", "<a href=\"connexion\">Connexion - Inscription</a>\n<br>\n");
         }
-
-
-
-
-
+//affichage de la liste d'enchères en mode déconnecter
+        try {
+            req.setAttribute("enchere",enchereManager.enchereEnCours());
+        } catch (BLLException e) {
+            e.printStackTrace();
+        }
 
 
         req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);

@@ -21,9 +21,8 @@ public class Enchere {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
-        assert false;
-        this.nomUtilisateur = utilisateurs.getNom();
-        this.nomArticle = article.getNomArticle();
+        this.nomUtilisateur = nomUtilisateur;
+        this.nomArticle = nomArticle;
     }
 
     public Enchere(int noEnchere, Date dateEnchere, int montantEnchere) {
@@ -31,6 +30,7 @@ public class Enchere {
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
     }
+
 
     public Enchere(Date dateEnchere, int montantEnchere) {
         this.dateEnchere = dateEnchere;
@@ -65,7 +65,7 @@ public class Enchere {
     }
 
     public String getNomUtilisateur() {
-        return nomUtilisateur;
+        return utilisateurs.getNom();
     }
 
     public void setNomUtilisateur(String nomUtilisateur) {
@@ -99,12 +99,11 @@ public class Enchere {
 //affichage
     @Override
     public String toString() {
-        return "Enchere{" + "nomUtilisateur=" + nomUtilisateur +
-                ", nomArticle=" + nomArticle +
-                ", noEnchere=" + noEnchere +
-                ", dateEnchere=" + dateEnchere +
-                ", montantEnchere=" + montantEnchere +
-                '}';
+        return "nom Utilisateur = " + nomUtilisateur + "\n" +
+                " nomArticle = " + nomArticle + "\n" +
+                " noEnchere = " + noEnchere + "\n" +
+                " dateEnchere = " + dateEnchere + "\n" +
+                " montantEnchere = " + montantEnchere + "\n";
     }
 
 }

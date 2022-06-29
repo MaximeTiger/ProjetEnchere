@@ -49,5 +49,15 @@ public class EnchereManagerImpl implements  EnchereManager{
         return liste;
     }
 
+    @Override
+    public List<Enchere> enchereParCategorie(String libelle) throws BLLException {
+        List<Enchere> liste = new ArrayList<>();
+        try {
+            liste = enchereDAO.selectByCategorie(libelle);
+        } catch (DALException e) {
+            throw new BLLException("erreur BLL recherche par nom article",e);
+        }
+        return liste;    }
+
 
 }
