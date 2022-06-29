@@ -20,7 +20,7 @@ import java.util.Date;
 
 @WebServlet("/acceuil")
 public class AcceuilServlet extends HttpServlet {
-    
+
     private ArticleManager articleMger;
     private int prixInitial;
 
@@ -66,6 +66,13 @@ public class AcceuilServlet extends HttpServlet {
 
         Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("descritption"),
                 debutEnchere, req.getParameter("finEncheres"),prixInitial
+        LocalDate debut = LocalDate.parse(req.getParameter("debutEncheres"));
+        LocalDate fin = LocalDate.parse(req.getParameter("finEncheres"));
+
+
+        Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("descritption"),
+                debut, fin,prixInitial
+>>>>>>> 8dbc67c7889e7c019a27df5dc52c2defac3e6653
                 ,req.getParameter("libelle"), req.getParameter("rue"), req.getParameter("codePostal")
                 ,req.getParameter("ville"));
         if(!req.getParameter("noArticle").isBlank()){
