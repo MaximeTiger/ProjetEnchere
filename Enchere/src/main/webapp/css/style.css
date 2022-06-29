@@ -57,7 +57,7 @@ input {
 }
 
 body{
-    background-image: url(/img/bibliotheque_connexion.jpg);
+    background-image: url(../img/bibliotheque_connexion.jpg);
     background-size: 100vw;
     display: flex;
     justify-content: center;
