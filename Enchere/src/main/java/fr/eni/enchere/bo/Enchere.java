@@ -25,6 +25,12 @@ public class Enchere {
         this.nomUtilisateur = nomUtilisateur;
         this.nomArticle = nomArticle;
     }
+    public Enchere(LocalDate dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
+        this.dateEnchere = dateEnchere;
+        this.montantEnchere = montantEnchere;
+        this.nomUtilisateur = nomUtilisateur;
+        this.nomArticle = nomArticle;
+    }
 
     public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere) {
         this.noEnchere = noEnchere;
