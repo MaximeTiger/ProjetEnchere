@@ -28,7 +28,7 @@
                 </div>
                 <div class="m-3">
                     <label id="password">
-                        <input type="password" placeholder="Mot de passe">
+                        <input type="password" placeholder="Mot de passe" name="motdepasse">
                         <div class="password-icon">
                             <i data-feather="eye"></i>
                             <i data-feather="eye-off"></i>
