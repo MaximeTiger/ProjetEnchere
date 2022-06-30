@@ -22,11 +22,6 @@ public class InscriptionServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/inscription.jsp").forward(req,resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Utilisateurs util = new Utilisateurs(req.getParameter("pseudo"),req.getParameter("nom"),
                 req.getParameter("prenom"),req.getParameter("mail"),req.getParameter("telephone"),

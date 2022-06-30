@@ -1,13 +1,13 @@
-.inscription {
+.inscriptionbtn {
     text-decoration: none;
     color: black;
 }
 
-.inscription:hover {
+.inscriptionbtn:hover {
     color: black;
 }
 
-#password {
+.password {
     position: relative;
 }
 
@@ -33,9 +33,7 @@ input {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
-
-
-#password .password-icon {
+.password .password-icon {
     display: flex;
     align-items: center;
     position: absolute;
@@ -47,27 +45,28 @@ input {
     transition: all 0.2s;
 }
 
-#password .password-icon:hover {
+.password .password-icon:hover {
     cursor: pointer;
     color: black;
 }
 
-#password .password-icon .feather-eye-off {
+.password .password-icon .feather-eye-off {
     display: none;
 }
 
 body{
     background-image: url(../img/bibliotheque_connexion.jpg);
-    background-size: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
+    overflow-y: hidden;
 }
 
 .connexion{
     backdrop-filter: blur(4px);
     margin: 7em 0;
-    width: 30em;
-    height: 30em;
+    max-width: 25vw;
     text-align: center;
     border-radius: 7%;
 }
@@ -82,7 +81,7 @@ body{
     justify-content: space-around;
 }
 
-#h1connexion{
+.h1connexion{
     text-decoration: underline;
 }
 
@@ -165,4 +164,54 @@ body{
 
 .input-bouton{
     margin : 1em;
+}
+
+.ensemble-input{
+    width: auto;
+}
+
+.size-div-gauche{
+    width: 45%;
+    display: flex;
+    justify-content: end;
+    margin-right: 2em;
+}
+
+.size-div-droite{
+    width: 45%;
+    display: flex;
+    justify-content: start;
+    margin-left: 2em;
+}
+
+.fit-div{
+    width: 100%;
+}
+
+.color{
+    color: rgb(77, 75, 75);
+}
+
+.retour{
+    padding-top: 12px;
+}
+
+.center{
+    padding-top:20%;
+}
+
+.retourbtn{
+    border: none;
+    border-radius: 100%;
+}
+
+.error{
+    color: red;
+}
+
+.effect {
+    transition: all .2s ease-in-out;
+}
+.effect:hover {
+    transform: scale(1.1);
 }
