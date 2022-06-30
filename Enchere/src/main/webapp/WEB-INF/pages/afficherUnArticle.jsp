@@ -11,8 +11,8 @@
 <html>
 <head>
     <title>Title</title>
-
-  <p>${article.nomArticle}</p>
+    Article
+    <p>${article.nomArticle}</p>
 
 
 
