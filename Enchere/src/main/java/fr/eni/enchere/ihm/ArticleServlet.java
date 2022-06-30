@@ -4,6 +4,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.enchere.EnchereManager;
+import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Enchere;
 
 import javax.servlet.ServletException;
@@ -14,10 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet("/article")
+@WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
-
-
 
     private ArticleManager articleManager;
 
@@ -30,20 +29,33 @@ public class ArticleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int noArticle = Integer.parseInt(req.getParameter("noArticle"));
 
+        String action = req.getParameter("action");
+
+        if("afficher".equals(action)){
+            doAfficherUnArticle(req, resp);
+        }
+
+       // req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+        resp.sendRedirect(req.getContextPath()+"/afficherUnArticle.jsp");
+    }
+
+    protected void doAfficherUnArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        int id = Integer.parseInt(req.getParameter("noArticle"));
+
+        Article art;
         try {
-            req.setAttribute("article",articleManager.afficherUnArticle(noArticle));
+            art = articleManager.afficherUnArticle(id);
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }
 
-        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+        req.setAttribute("article",art);
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doEnchere(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         LocalDate dateEnchere = LocalDate.parse(req.getParameter("dateEnchere"));
         int montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));

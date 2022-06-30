@@ -20,8 +20,10 @@ ${compte}
           ${enchere.noEnchere}
           ${enchere.dateEnchere}
           ${enchere.montantEnchere}
+          ${enchere.nomUtilisateur}
           ${enchere.nomArticle}
-          <%--${enchere.nomUtilisateur}--%>
+          <a href="${pageContext.request.contextPath}/afficherUnArticle?action=afficher&noArticle=${enchere.noArticle}">Afficher le détail de l'article</a>
+
       </div>
       <br>
   </c:forEach>

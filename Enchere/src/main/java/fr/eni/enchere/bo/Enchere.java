@@ -15,15 +15,26 @@ public class Enchere {
 
     private Utilisateurs utilisateurs;
 
+    private int noArticle;
+
+
     private Article article;
 //constructeurs
+public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
+    this.noEnchere = noEnchere;
+    this.dateEnchere = dateEnchere;
+    this.montantEnchere = montantEnchere;
+    this.nomUtilisateur = nomUtilisateur;
+    this.nomArticle = nomArticle;
+}
 
-    public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
+    public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle, int noArticle) {
         this.noEnchere = noEnchere;
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
         this.nomUtilisateur = nomUtilisateur;
         this.nomArticle = nomArticle;
+        this.noArticle = noArticle;
     }
     public Enchere(LocalDate dateEnchere, int montantEnchere, String nomUtilisateur, String nomArticle) {
         this.dateEnchere = dateEnchere;
@@ -47,6 +58,14 @@ public class Enchere {
     public Enchere() {
     }
     //accesseurs
+
+    public int getNoArticle() {
+        return noArticle;
+    }
+
+    public void setNoArticle(int noArticle) {
+        this.noArticle = noArticle;
+    }
     public int getNoEnchere() {
         return noEnchere;
     }
@@ -72,11 +91,11 @@ public class Enchere {
     }
 
     public String getNomUtilisateur() {
-        return utilisateurs.getNom();
+        return nomUtilisateur;
     }
 
     public void setNomUtilisateur(String nomUtilisateur) {
-        this.nomUtilisateur = nomUtilisateur;
+        this.nomUtilisateur = utilisateurs.getNom();
     }
 
     public String getNomArticle() {

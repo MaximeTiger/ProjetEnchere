@@ -1,5 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="fr">
 <head>
     <title>Vendre un article</title>
@@ -39,13 +41,13 @@
 
 
     <label for="idRue">Rue : </label>
-    <input tpe="text" name="rue" id="idRue" required>
+    <input type="text" name="rue" id="idRue" value="${utilisateur.rue}"required>
 
     <label for="idCodePostal">Code postal : </label>
-    <input tpe="text" name="codePostal" id="idCodePostal" required>
+    <input type="text" name="codePostal" id="idCodePostal" value="${utilisateur.codePostal}" required>
 
     <label for="idVille">Ville : </label>
-    <input tpe="text" name="ville" id="idVille" required>
+    <input type="text" name="ville" id="idVille" value="${utilisateur.ville}" required>
 
 
     <button type="submit">Enregistrer</button>

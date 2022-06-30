@@ -16,7 +16,7 @@ public class EnchereDAOImpl implements EnchereDAO {
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE no_enchere= ?";
 
     private static final String SELECT_ALL = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere," +
-            "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article,UTILISATEURS.nom " +
+            "ENCHERES.montant_enchere,UTILISATEURS.nom, ARTICLES_VENDUS.nom_article, ENCHERES.no_article " +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS " +
             "WHERE UTILISATEURS.no_utilisateur = ENCHERES.no_utilisateur AND ARTICLES_VENDUS.no_article = ENCHERES.no_article";
 
@@ -82,11 +82,12 @@ public class EnchereDAOImpl implements EnchereDAO {
                 //Créer l'enchère
                 Enchere enchere = new Enchere(
                         rs.getInt("no_enchere"),
-                        rs.getObject("date_enchere",LocalDate.class),
+                        rs.getObject("date_enchere", LocalDate.class),
                         rs.getInt("montant_enchere"),
                         rs.getString("nom"),
-                        rs.getString("nom_article")
-                );
+                        rs.getString("nom_article"),
+                        rs.getInt("no_article")
+                        );
                 //Ajoute l'enchère à la liste
                 listeEnchere.add(enchere);
             }
