@@ -7,7 +7,7 @@ public interface ArticleManager {
     //ajouter un article
     void ajouterUnArticle(Article a) throws BLLException;
 
-    Article afficherUnArticle(String nomArticle) throws BLLException;
+    Article afficherUnArticle(int noArticle) throws BLLException;
 
 
 }

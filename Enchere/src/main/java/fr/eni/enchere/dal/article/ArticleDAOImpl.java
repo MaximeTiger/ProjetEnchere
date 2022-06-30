@@ -12,8 +12,8 @@ public class ArticleDAOImpl implements ArticleDAO {
     private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
         "VALUES (?,?,?,?,?,?)";
 
-    private static final String SELECT_BY_NOM_ARTICLE = "SELECT nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,rue,code_postal,ville " +
-            "FROM ARTICLES_VENDUS,RETRAITS WHERE ARTICLES_VENDUS.nom_article = ? AND ARTICLES_VENDUS.no_article=RETRAITS.no_article";
+    private static final String SELECT_BY_ID = "SELECT nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,rue,code_postal,ville " +
+            "FROM ARTICLES_VENDUS,RETRAITS WHERE ARTICLES_VENDUS.no_article = ? AND ARTICLES_VENDUS.no_article=RETRAITS.no_article";
 
 
     public void insertUnArticle (Article a) throws DALException {
@@ -41,14 +41,14 @@ public class ArticleDAOImpl implements ArticleDAO {
     }
 
     @Override
-    public Article selectByNomArticle(String nomArticle) throws DALException {
+    public Article selectByNomArticle(int noArticle) throws DALException {
         Article art = null;
 
         try (Connection conn = ConnectionProvider.getConnection()) {
 
-            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 
-            stmt.setString(1, nomArticle);
+            stmt.setString(1, String.valueOf(noArticle));
 
             ResultSet rs = stmt.executeQuery();
 

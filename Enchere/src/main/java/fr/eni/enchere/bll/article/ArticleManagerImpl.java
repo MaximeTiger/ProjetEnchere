@@ -27,10 +27,10 @@ public class ArticleManagerImpl implements ArticleManager{
     }
 
     @Override
-    public Article afficherUnArticle(String nomArticle) throws BLLException {
+    public Article afficherUnArticle(int noArticle) throws BLLException {
         Article a;
         try {
-            a = articleDAO.selectByNomArticle(nomArticle);
+            a = articleDAO.selectByNomArticle(noArticle);
         } catch (DALException e) {
             throw new RuntimeException(e);
         }

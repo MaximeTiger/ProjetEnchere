@@ -17,6 +17,8 @@ import java.time.LocalDate;
 @WebServlet("/article")
 public class ArticleServlet extends HttpServlet {
 
+
+
     private ArticleManager articleManager;
 
     private EnchereManager enchereManager;
@@ -28,10 +30,10 @@ public class ArticleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nomArticle = req.getParameter("nomArticle");
+        int noArticle = Integer.parseInt(req.getParameter("noArticle"));
 
         try {
-            req.setAttribute("article",articleManager.afficherUnArticle(nomArticle));
+            req.setAttribute("article",articleManager.afficherUnArticle(noArticle));
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }
@@ -57,6 +59,5 @@ public class ArticleServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-
     }
 }
