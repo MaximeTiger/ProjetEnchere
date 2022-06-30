@@ -70,7 +70,7 @@ public class AcceuilServlet extends HttpServlet {
                 ,req.getParameter("ville"));
         
         if(!req.getParameter("noArticle").isBlank()){
-            Integer no = Integer.parseInt(req.getParameter("noArticle"));
+            int no = Integer.parseInt(req.getParameter("noArticle"));
             saisie.setNoArticle(no);
         }
         try{
