@@ -9,5 +9,7 @@ public interface ArticleManager {
 
     Article afficherUnArticle(int noArticle) throws BLLException;
 
+    void validerUnArticle (Article article) throws BLLException;
 
-}
+
+    }
