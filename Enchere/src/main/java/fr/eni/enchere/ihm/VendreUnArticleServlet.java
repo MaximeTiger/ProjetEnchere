@@ -19,7 +19,7 @@ public class VendreUnArticleServlet extends HttpServlet {
     private ArticleManager articleManager;
     private int prixInitial;
     private ArticleManager articleMger;
-    public VendreUnArticleServlet(ArticleManager articleManager) {
+    public VendreUnArticleServlet( ) {
         articleManager = BLLFactory.getArticleManager();
     }
 
