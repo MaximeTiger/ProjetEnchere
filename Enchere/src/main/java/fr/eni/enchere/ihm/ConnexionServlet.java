@@ -41,6 +41,8 @@ public class ConnexionServlet extends HttpServlet {
     Utilisateurs util;
         try {
             util = mgerConn.connexion(req.getParameter("pseudo"),req.getParameter("motdepasse"));
+            System.out.println("Pseudo = " + req.getParameter("pseudo"));
+            System.out.println("mdp = " + req.getParameter("motdepasse"));
             if (util != null) {
                 req.setAttribute("bonjour","Bonjour " + util.getPseudo());
                 session = req.getSession();
