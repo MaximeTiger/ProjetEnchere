@@ -43,14 +43,14 @@ public class RetraitDAOImpl implements RetraitDAO{
         }
     }
 
-    public Retrait selectByNoArticle(String noArticle){
+    public Retrait selectByNoArticle(Integer noArticle){
 
         Retrait retrait = null;
 
         try (Connection conn = ConnectionProvider.getConnection();){
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NO_ARTICLE);
-            stmt.setString(1,noArticle);
+            stmt.setInt(1,noArticle);
 
             ResultSet rs = stmt.executeQuery();
 
