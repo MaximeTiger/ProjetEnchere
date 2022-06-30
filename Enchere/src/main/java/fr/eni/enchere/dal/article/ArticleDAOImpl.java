@@ -41,14 +41,14 @@ public class ArticleDAOImpl implements ArticleDAO {
     }
 
     @Override
-    public Article selectByNomArticle(int noArticle) throws DALException {
+    public Article selectById(int noArticle) throws DALException {
         Article art = null;
 
         try (Connection conn = ConnectionProvider.getConnection()) {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 
-            stmt.setString(1, String.valueOf(noArticle));
+            stmt.setInt(1,noArticle);
 
             ResultSet rs = stmt.executeQuery();
 
