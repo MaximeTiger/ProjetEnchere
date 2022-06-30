@@ -37,7 +37,7 @@ public class ArticleServlet extends HttpServlet {
         }
 
        // req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
-        resp.sendRedirect("/WEB-INF/pages/afficherUnArticle.jsp");
+        resp.sendRedirect(req.getContextPath()+"/afficherUnArticle.jsp");
     }
 
     protected void doAfficherUnArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -28,7 +28,7 @@ ${compte}
       <br>
   </c:forEach>
 
-  <a href="${pageContext.request.contextPath}/vendreUnArticle.jsp">vendre un article</a>
+  <a href="${pageContext.request.contextPath}/vendreUnArticle">vendre un article</a>
 
   <br>
 ${deco}
