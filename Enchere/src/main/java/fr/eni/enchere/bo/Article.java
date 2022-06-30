@@ -35,6 +35,14 @@ public class Article{
     //constructeurs
 
 
+    public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial) {
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.debutEncheres = debutEncheres;
+        this.finEncheres = finEncheres;
+        this.prixInitial = prixInitial;
+    }
+
     public Article(int noArticle, String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie, Categorie categorie, String rue, String codePostale, String ville) {
         this.noArticle = noArticle;
         this.nomArticle = nomArticle;
