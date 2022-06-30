@@ -11,8 +11,6 @@ import java.util.List;
 
 public class EnchereDAOImpl implements EnchereDAO {
 
-    /*public List<Enchere> listEnchere = new ArrayList<>();*/
-
     private static final String SELECT_BY_ID = "SELECT ENCHERES.no_enchere, ENCHERES.date_enchere, " +
             "ENCHERES.montant_enchere, ARTICLES_VENDUS.nom_article, UTILISATEURS.nom " +
             "FROM ENCHERES,ARTICLES_VENDUS,UTILISATEURS WHERE no_enchere= ?";

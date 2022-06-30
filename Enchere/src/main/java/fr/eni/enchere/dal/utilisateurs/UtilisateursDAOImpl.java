@@ -16,12 +16,12 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
             "code_postal,ville,mot_de_passe,credit,administrateur)" +
             "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
-    private static final String UPDATE = "UPDATE ENCHERE.dbo.UTILISATEURS\n" +
-            "    SET pseudo = ?,\n" +
-            "    nom = ?, prenom = ?,\n" +
-            "    email = ?, telephone = ?,\n" +
-            "    rue = ?, code_postal = ?,\n" +
-            "    ville = ?, mot_de_passe = ?\n" +
+    private static final String UPDATE = "UPDATE UTILISATEURS" +
+            "    SET pseudo = ?," +
+            "    nom = ?, prenom = ?," +
+            "    email = ?, telephone = ?," +
+            "    rue = ?, code_postal = ?," +
+            "    ville = ?, mot_de_passe = ?" +
             "    WHERE no_utilisateur = ?";
 
 

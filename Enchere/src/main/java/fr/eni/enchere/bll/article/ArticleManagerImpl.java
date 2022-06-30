@@ -30,7 +30,7 @@ public class ArticleManagerImpl implements ArticleManager{
     public Article afficherUnArticle(int noArticle) throws BLLException {
         Article a;
         try {
-            a = articleDAO.selectByNomArticle(noArticle);
+            a = articleDAO.selectById(noArticle);
         } catch (DALException e) {
             throw new RuntimeException(e);
         }
