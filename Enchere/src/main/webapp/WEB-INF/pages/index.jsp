@@ -22,9 +22,8 @@ ${compte}
           ${enchere.montantEnchere}
           ${enchere.nomUtilisateur}
           ${enchere.nomArticle}
-          <a href="${pageContext.request.contextPath}/afficherUnArticle?action=afficher&noArticle=${enchere.noArticle}">Afficher l'article</a>
+          <a href="${pageContext.request.contextPath}/afficherUnArticle?action=afficher&noArticle=${enchere.noArticle}">Afficher le détail de l'article</a>
 
-      <%--${enchere.nomUtilisateur}--%>
       </div>
       <br>
   </c:forEach>
