@@ -22,7 +22,7 @@ public class ArticleServlet extends HttpServlet {
 
     private EnchereManager enchereManager;
 
-    public ArticleServlet(ArticleManager articleManager, EnchereManager enchereManager) {
+    public ArticleServlet() {
         enchereManager = BLLFactory.getEnchereManager();
         articleManager = BLLFactory.getArticleManager();
     }
@@ -30,14 +30,13 @@ public class ArticleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String action = req.getParameter("action");
+       String action = req.getParameter("action");
 
         if("afficher".equals(action)){
             doAfficherUnArticle(req, resp);
         }
-
-       // req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
-        resp.sendRedirect(req.getContextPath()+"/afficherUnArticle.jsp");
+       req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+       //resp.sendRedirect(req.getContextPath()+"/afficherUnArticle.jsp");
     }
 
     protected void doAfficherUnArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,9 +52,10 @@ public class ArticleServlet extends HttpServlet {
 
         req.setAttribute("article",art);
 
+
     }
 
-    protected void doEnchere(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    /*protected void doEnchere(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         LocalDate dateEnchere = LocalDate.parse(req.getParameter("dateEnchere"));
         int montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
@@ -71,5 +71,5 @@ public class ArticleServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-    }
+    }*/
 }
