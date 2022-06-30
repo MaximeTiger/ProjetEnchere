@@ -64,7 +64,7 @@ public class AcceuilServlet extends HttpServlet {
         LocalDate debut = LocalDate.parse(req.getParameter("debutEncheres"));
         LocalDate fin = LocalDate.parse(req.getParameter("finEncheres"));
 
-        Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("descritption"),
+        Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("description"),
                 debut, fin,prixInitial
                 ,req.getParameter("libelle"), req.getParameter("rue"), req.getParameter("codePostal")
                 ,req.getParameter("ville"));
