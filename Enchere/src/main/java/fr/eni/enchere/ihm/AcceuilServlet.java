@@ -12,11 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 
 @WebServlet("/acceuil")
 public class AcceuilServlet extends HttpServlet {
@@ -81,18 +77,6 @@ public class AcceuilServlet extends HttpServlet {
         resp.sendRedirect(req.getContextPath()+"");
 
 
-        int id = Integer.parseInt(req.getParameter("noArticle"));
-
-       Article art;
-        try {
-            art = articleMger.afficherUnArticle(id);
-        } catch (BLLException e) {
-            throw new RuntimeException(e);
-        }
-
-        req.setAttribute("article",art);
-
-        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
-
     }
+
 }

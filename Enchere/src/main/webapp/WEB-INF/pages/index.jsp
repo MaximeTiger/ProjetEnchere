@@ -22,14 +22,14 @@ ${compte}
           ${enchere.montantEnchere}
           ${enchere.nomUtilisateur}
           ${enchere.nomArticle}
-          <a href="afficherUnArticle">${enchere.noArticle}</a>
+          <a href="${pageContext.request.contextPath}/afficherUnArticle?action=afficher&noArticle=${enchere.noArticle}">Afficher l'article</a>
 
       <%--${enchere.nomUtilisateur}--%>
       </div>
       <br>
   </c:forEach>
 
-  <a href="${pageContext.request.contextPath}/vendreUnArticle">vendre un article</a>
+  <a href="${pageContext.request.contextPath}/vendreUnArticle.jsp">vendre un article</a>
 
   <br>
 ${deco}
