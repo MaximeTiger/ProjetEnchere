@@ -17,9 +17,6 @@ import java.time.LocalDate;
 @WebServlet("/acceuil")
 public class AcceuilServlet extends HttpServlet {
 
-    private ArticleManager articleMger;
-    private int prixInitial;
-
     private final EnchereManager enchereManager;
 
     public AcceuilServlet() {
@@ -49,33 +46,6 @@ public class AcceuilServlet extends HttpServlet {
 
     protected void doConnect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("connexion", "");
-
-    }
-
-    //affichage depuis l'accueil de la page de vente d'un nouvel article
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
-        LocalDate debut = LocalDate.parse(req.getParameter("debutEncheres"));
-        LocalDate fin = LocalDate.parse(req.getParameter("finEncheres"));
-
-        Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("description"),
-                debut, fin,prixInitial
-                ,req.getParameter("libelle"), req.getParameter("rue"), req.getParameter("codePostal")
-                ,req.getParameter("ville"));
-        
-        if(!req.getParameter("noArticle").isBlank()){
-            int no = Integer.parseInt(req.getParameter("noArticle"));
-            saisie.setNoArticle(no);
-        }
-        try{
-            articleMger.ajouterUnArticle(saisie);
-        }catch(BLLException e) {
-            e.printStackTrace();
-        }
-        resp.sendRedirect(req.getContextPath()+"");
-
 
     }
 
