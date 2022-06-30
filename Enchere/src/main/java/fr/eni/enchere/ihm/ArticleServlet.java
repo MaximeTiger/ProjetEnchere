@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet("/article")
+@WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
 
 
@@ -31,6 +31,7 @@ public class ArticleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int noArticle = Integer.parseInt(req.getParameter("noArticle"));
+
 
         try {
             req.setAttribute("article",articleManager.afficherUnArticle(noArticle));

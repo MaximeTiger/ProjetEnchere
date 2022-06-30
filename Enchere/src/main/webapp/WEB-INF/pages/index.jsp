@@ -20,8 +20,11 @@ ${compte}
           ${enchere.noEnchere}
           ${enchere.dateEnchere}
           ${enchere.montantEnchere}
+          ${enchere.nomUtilisateur}
           ${enchere.nomArticle}
-          <%--${enchere.nomUtilisateur}--%>
+          <a href="afficherUnArticle">${enchere.noArticle}</a>
+
+      <%--${enchere.nomUtilisateur}--%>
       </div>
       <br>
   </c:forEach>

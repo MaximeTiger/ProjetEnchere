@@ -79,5 +79,20 @@ public class AcceuilServlet extends HttpServlet {
             e.printStackTrace();
         }
         resp.sendRedirect(req.getContextPath()+"");
+
+
+        int id = Integer.parseInt(req.getParameter("noArticle"));
+
+       Article art;
+        try {
+            art = articleMger.afficherUnArticle(id);
+        } catch (BLLException e) {
+            throw new RuntimeException(e);
+        }
+
+        req.setAttribute("article",art);
+
+        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+
     }
 }
