@@ -12,9 +12,10 @@ public class ArticleDAOImpl implements ArticleDAO {
     private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
         "VALUES (?,?,?,?,?,?)";
 
-    private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,ARTICLES_VENDUS.date_debut_encheres,\n" +
-            "       ARTICLES_VENDUS.date_fin_encheres,ARTICLES_VENDUS.prix_initial " +
-            "FROM ARTICLES_VENDUS WHERE ARTICLES_VENDUS.no_article = ?";
+    private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,ARTICLES_VENDUS.date_debut_encheres," +
+            " ARTICLES_VENDUS.date_fin_encheres,ARTICLES_VENDUS.prix_initial," +
+            " RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville " +
+            "FROM ARTICLES_VENDUS,RETRAITS WHERE ARTICLES_VENDUS.no_article = ? AND ARTICLES_VENDUS.no_article = RETRAITS.no_article";
 
 
     public void insertUnArticle (Article a) throws DALException {
@@ -59,10 +60,10 @@ public class ArticleDAOImpl implements ArticleDAO {
                         rs.getString("description"),
                         rs.getObject("date_debut_encheres",LocalDate.class),
                         rs.getObject("date_fin_encheres",LocalDate.class),
-                        rs.getInt("prix_initial")
-/*                        rs.getString("rue"),
+                        rs.getInt("prix_initial"),
+                        rs.getString("rue"),
                         rs.getString("code_postal"),
-                        rs.getString("ville")*/
+                        rs.getString("ville")
                         );
             }
         }
