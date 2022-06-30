@@ -1,6 +1,7 @@
 package fr.eni.enchere.bo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Article{
     //attributs
@@ -28,6 +29,8 @@ public class Article{
     private String codePostale;
 
     private String ville;
+
+    private List<Enchere> listEnchere;
 
     //constructeurs
 
