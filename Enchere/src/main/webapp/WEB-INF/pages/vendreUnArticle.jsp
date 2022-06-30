@@ -11,13 +11,14 @@
 <form action="vendreUnArticle" method="post">
 
     <label for="idNom">Article : </label>
-    <input type="text" name="nom" id="idNom">
+    <input type="text" name="nom" id="idNom" required>
 
     <label for="idDescription">Description : </label>
-    <input type="textarea" name="description" id="idDescription">
+    <input type="textarea" name="description" id="idDescription" required>
 
     <label for="idCategorie">Categorie </label>
-        <select name="categorie" id="idCategorie">
+        <select name="categorie" id="idCategorie" required>
+            <option value="">-- Choisir une catégorie --</option>
             <option value="0">Informatique</option>
             <option value="1">Ameublement</option>
             <option value="2">Vêtement</option>
@@ -28,23 +29,23 @@
     <button>UPLOADER</button>
 
     <label for="idMiseAPrix">Mise à prix : </label>
-    <input type="number" name="miseAPrix" id="idMiseAPrix">
+    <input type="number" name="miseAPrix" id="idMiseAPrix" required>
 
     <label for="idDebutEnchere">Début de l'enchère : </label>
-    <input type="date" name="debutEnchere" id="idDebutEnchere">
+    <input type="date" name="debutEnchere" id="idDebutEnchere" required>
 
     <label for="idFinEnchere">Fin de l'enchère : </label>
-    <input type="date" name="finEnchere" id="idFinEnchere">
+    <input type="date" name="finEnchere" id="idFinEnchere" required>
 
 
     <label for="idRue">Rue : </label>
-    <input tpe="text" name="rue" id="idRue">
+    <input tpe="text" name="rue" id="idRue" required>
 
     <label for="idCodePostal">Code postal : </label>
-    <input tpe="text" name="codePostal" id="idCodePostal">
+    <input tpe="text" name="codePostal" id="idCodePostal" required>
 
     <label for="idVille">Ville : </label>
-    <input tpe="text" name="ville" id="idVille">
+    <input tpe="text" name="ville" id="idVille" required>
 
 
     <button type="submit">Enregistrer</button>
