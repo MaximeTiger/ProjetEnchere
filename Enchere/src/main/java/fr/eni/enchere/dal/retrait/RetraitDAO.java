@@ -6,4 +6,6 @@ import fr.eni.enchere.dal.DALException;
 public interface RetraitDAO {
     void insertRetrait(Retrait r) throws DALException;
 
+
+
 }
