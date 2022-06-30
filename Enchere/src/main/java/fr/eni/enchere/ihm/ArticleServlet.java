@@ -18,9 +18,9 @@ import java.time.LocalDate;
 @WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
 
-    private ArticleManager articleManager;
+    private final ArticleManager articleManager;
 
-    private EnchereManager enchereManager;
+    private final EnchereManager enchereManager;
 
     public ArticleServlet() {
         enchereManager = BLLFactory.getEnchereManager();
@@ -36,7 +36,6 @@ public class ArticleServlet extends HttpServlet {
             doAfficherUnArticle(req, resp);
         }
        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
-       //resp.sendRedirect(req.getContextPath()+"/afficherUnArticle.jsp");
     }
 
     protected void doAfficherUnArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
