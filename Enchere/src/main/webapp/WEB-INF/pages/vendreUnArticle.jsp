@@ -45,7 +45,7 @@
         </div>
 
 <!-----------------------------------------------------Formulaire-----------------------------------------------------!>
-
+    <div>
         <div>
             <form action="vendreUnArticle" method="post">
                 <div>
@@ -99,7 +99,7 @@
             <button type="submit">Enregistrer</button>
 
             <button type="reset">Annuler</button>
-
+    </div>
         </form>
 
     </main>
