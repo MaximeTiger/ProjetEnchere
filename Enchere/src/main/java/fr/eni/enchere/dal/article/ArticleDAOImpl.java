@@ -5,17 +5,23 @@ import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
 
 import java.sql.*;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 public class ArticleDAOImpl implements ArticleDAO {
 
     private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
         "VALUES (?,?,?,?,?,?)";
 
-    private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,ARTICLES_VENDUS.date_debut_encheres," +
-            " ARTICLES_VENDUS.date_fin_encheres,ARTICLES_VENDUS.prix_initial," +
-            " RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville " +
-            "FROM ARTICLES_VENDUS,RETRAITS WHERE ARTICLES_VENDUS.no_article = ? AND ARTICLES_VENDUS.no_article = RETRAITS.no_article";
+    private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description," +
+            "CATEGORIES.libelle,ARTICLES_VENDUS.prix_vente," +
+            "ARTICLES_VENDUS.date_fin_encheres,RETRAITS.rue," +
+            "RETRAITS.code_postal,RETRAITS.ville,ARTICLES_VENDUS.no_utilisateur " +
+            "FROM ARTICLES_VENDUS,RETRAITS,CATEGORIES " +
+            "WHERE ARTICLES_VENDUS.no_article = ? " +
+            "AND RETRAITS.no_article=ARTICLES_VENDUS.no_article " +
+            "AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie ";
 
 
     public void insertUnArticle (Article a) throws DALException {
@@ -44,6 +50,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
     @Override
     public Article selectById(int noArticle) throws DALException {
+
         Article art = null;
 
         try (Connection conn = ConnectionProvider.getConnection()) {
@@ -54,16 +61,18 @@ public class ArticleDAOImpl implements ArticleDAO {
 
             ResultSet rs = stmt.executeQuery();
 
+
             if (rs.next()) {
                 art = new Article(
                         rs.getString("nom_article"),
                         rs.getString("description"),
-                        rs.getObject("date_debut_encheres",LocalDate.class),
-                        rs.getObject("date_fin_encheres",LocalDate.class),
-                        rs.getInt("prix_initial"),
+                        rs.getString("libelle"),
+                        rs.getInt("prix_vente"),
+                        rs.getDate("date_fin_encheres"),
                         rs.getString("rue"),
                         rs.getString("code_postal"),
-                        rs.getString("ville")
+                        rs.getString("ville"),
+                        rs.getInt("no_utilisateur")
                         );
             }
         }
@@ -75,4 +84,5 @@ public class ArticleDAOImpl implements ArticleDAO {
         }
         return art;
     }
+    
 }

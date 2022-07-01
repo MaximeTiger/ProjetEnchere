@@ -14,6 +14,14 @@
 
     article =
     ${article.nomArticle}
+    ${article.description}
+    ${article.libelle}
+    ${article.prixInitial}
+    ${article.finEncheres}
+    ${article.rue}
+    ${article.codePostale}
+    ${article.ville}
+    ${article.noUtilisateur}
 
 </head>
 <body>
