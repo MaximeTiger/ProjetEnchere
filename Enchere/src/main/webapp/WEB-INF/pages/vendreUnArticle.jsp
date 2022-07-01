@@ -26,82 +26,92 @@
 <body>
 <!---------------------------------------------HEADER avec le logo ENI------------------------------------------------!>
     <header>
-
-    <a href="accueil">ENI-Enchères</a>
-
+        <div>
+            <a href="accueil">ENI-Enchères</a>
+        </div>
     </header>
 
 <!-------------------------------------------------------MAIN---------------------------------------------------------!>
     <main>
-
-<!--------------------------------------EnTete du Main avec bouton retour et titre------------------------------------!>
         <div>
+<!--------------------------------------EnTete du Main avec bouton retour et titre------------------------------------!>
             <div>
-                <a href="acceuil"><button>Retour</button></a>
+                <div>
+                    <a href="acceuil"><button>Retour</button></a>
+                </div>
+                <div>
+                    <h1>Nouvelle vente</h1>
+                </div>
             </div>
+
+<!------------------------------------Formulaire première partie description article----------------------------------!>
+
             <div>
-                <h1>Nouvelle vente</h1>
+                <form action="vendreUnArticle" method="post">
+                    <div>
+                        <div>
+                            <label for="idNom">Article :
+                                <input type="text" name="nom" id="idNom" placeholder="Exemple : Fauteuil "required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idDescription">Description :
+                                <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idCategorie">Categorie </label>
+                            <select name="categorie" id="idCategorie" required>
+                                <option value="">-- Choisir une catégorie --</option>
+                                <option value="0">Informatique</option>
+                                <option value="1" SELECTED>Ameublement</option>
+                                <option value="2">Vêtement</option>
+                                <option value="3">Sport & Loisirs</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="idMiseAPrix">Mise à prix :
+                                <input type="number" name="miseAPrix" id="idMiseAPrix" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idDebutEnchere">Début de l'enchère :
+                                <input type="date" name="debutEnchere" id="idDebutEnchere" min="2018-08-"required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idFinEnchere">Fin de l'enchère :
+                                <input type="date" name="finEnchere" id="idFinEnchere" required>
+                            </label>
+                        </div>
+                    </div>
+<!---------------------------------------Formulaire deuxième partie retrait-------------------------------------------!>
+                    <div>
+                        <div>
+                            <label for="idRue">Rue :
+                                <input type="text" name="rue" id="idRue" value="${utilisateur.rue}"required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idCodePostal">Code postal :
+                                <input type="text" name="codePostal" id="idCodePostal" value="${utilisateur.codePostal}" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idVille">Ville :
+                                <input type="text" name="ville" id="idVille" value="${utilisateur.ville}" required>
+                            </label>
+                        </div>
+                    </div>
+<!----------------------------------------Formulaire troisième partie boutons-----------------------------------------!>
+                    <div>
+                        <button type="submit">Enregistrer</button>
+                        <button type="reset">Annuler</button>
+                    </div>
+
+                </form>
             </div>
         </div>
-
-<!-----------------------------------------------------Formulaire-----------------------------------------------------!>
-    <div>
-        <div>
-            <form action="vendreUnArticle" method="post">
-                <div>
-                    <label for="idNom">
-                        <input type="text" name="nom" id="idNom" placeholder="Exemple : Fauteuil "required>
-                    </label>
-                </div>
-                <div>
-                    <label for="idDescription">Description :
-                        <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
-                    </label>
-                </div>
-                <div>
-                    <label for="idCategorie">Categorie </label>
-                    <select name="categorie" id="idCategorie" required>
-                        <option value="">-- Choisir une catégorie --</option>
-                        <option value="0">Informatique</option>
-                        <option value="1" SELECTED>Ameublement</option>
-                        <option value="2">Vêtement</option>
-                        <option value="3">Sport & Loisirs</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="idMiseAPrix">Mise à prix :
-                        <input type="number" name="miseAPrix" id="idMiseAPrix" required>
-                    </label>
-                </div>
-                <div>
-                    <label for="idDebutEnchere">Début de l'enchère :
-                        <input type="date" name="debutEnchere" id="idDebutEnchere" min="2018-08-"required>
-                    </label>
-                </div>
-                <div>
-                    <label for="idFinEnchere">Fin de l'enchère :
-                        <input type="date" name="finEnchere" id="idFinEnchere" required>
-                    </label>
-                </div>
-            </div>
-
-                                <!-------formulaire retrait--------!>
-            <label for="idRue">Rue : </label>
-            <input type="text" name="rue" id="idRue" value="${utilisateur.rue}"required>
-
-            <label for="idCodePostal">Code postal : </label>
-            <input type="text" name="codePostal" id="idCodePostal" value="${utilisateur.codePostal}" required>
-
-            <label for="idVille">Ville : </label>
-            <input type="text" name="ville" id="idVille" value="${utilisateur.ville}" required>
-
-
-            <button type="submit">Enregistrer</button>
-
-            <button type="reset">Annuler</button>
-    </div>
-        </form>
-
     </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
