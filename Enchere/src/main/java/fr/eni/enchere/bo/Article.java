@@ -1,6 +1,9 @@
 package fr.eni.enchere.bo;
 
+import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 public class Article{
@@ -12,6 +15,7 @@ public class Article{
     private LocalDate finEncheres;
     private int prixInitial;
     private int prixVente;
+
 
     //association
     private Categorie categorie;
@@ -82,6 +86,18 @@ public class Article{
         this.rue = retrait.getRue();
         this.codePostale = retrait.getCodePostal();
         this.ville = retrait.getVille();
+    }
+
+    public Article(String nom_article, String description, String libelle, int prix_initial,Date date_fin_encheres, String rue, String code_postal, String ville, int no_utilisateur) {
+        this.nomArticle = nom_article;
+        this.description = description;
+        this.libelle = libelle;
+        this.prixInitial = prix_initial;
+        this.finEncheres = getLocalDateFromDate(date_fin_encheres);
+        this.rue = rue;
+        this.codePostale = code_postal;
+        this.ville = ville;
+        this.noUtilisateur = no_utilisateur;
     }
 
 
@@ -189,4 +205,8 @@ public class Article{
 
 
     public void setVille(String ville) { this.ville = ville; }
+
+    public static LocalDate getLocalDateFromDate(Date date){
+        return LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
+    }
 }
