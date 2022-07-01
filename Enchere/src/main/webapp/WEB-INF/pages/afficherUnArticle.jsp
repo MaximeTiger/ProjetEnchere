@@ -31,14 +31,16 @@
 </head>
 <body>
 <header>
-    <div>Logo ENI</div>
+    <div>
+        <a href="acceuil">ENI-Echères</a>
+    </div>
 
 </header>
 <main>
     <div class="container">
 
         <div class="row">
-            <div class="align-center">
+            <div class="align-center mt-5">
                 <h1 >Détail vente</h1>
                 <div>
                     <p>${article.nomArticle}</p>
@@ -84,7 +86,7 @@
                     <form action="ArticleServlet" method="post">
 
                         <label for="proposition">Ma proposition :
-                        <input id="proposition" type="number" name="proposition" min="${article.prixInitial}">
+                        <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
                         </label>
                         <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enchérir</button>
                     </form>
