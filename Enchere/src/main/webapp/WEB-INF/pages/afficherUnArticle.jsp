@@ -30,27 +30,71 @@
 
 </head>
 <body>
-<div class="container">
-    <h1>Détail vente</h1>
-    <div class="row align-center">
-        <div>${article.nomArticle}</div>
-        <div>Description : ${article.description}</div>
-        <div>Catégorie : ${article.libelle}</div>
-        <div>Mise à prix : ${article.prixInitial}</div>
-        <div>Fin de l'enchère : ${article.finEncheres}</div>
-        <div>Retrait : ${article.rue}</div>
-        <div>${article.codePostale}</div>
-        <div>${article.ville}</div>
-        <div> Vendeur : ${article.noUtilisateur}</div>
+<header>
+    <div>Logo ENI</div>
 
-        <form action="ArticleServlet" method="post">
+</header>
+<main>
+    <div class="container">
 
-            <label for="proposition">Ma proposition</label>
-            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}">
+        <div class="row">
+            <div class="align-center">
+                <h1 >Détail vente</h1>
+                <div>
+                    <p>${article.nomArticle}</p>
+                </div>
+                <div>
+                    <p>Description : ${article.description}</p>
+                </div>
+                <div>
+                    <p>Catégorie : ${article.libelle}</p>
+                </div>
+                <div>
+                    <p>Mise à prix : ${article.prixInitial}</p>
+                </div>
+                <div>
+                    <p>Fin de l'enchère : ${article.finEncheres}</p>
+                </div>
+                <!----------tableau retrait---------->
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Retrait : </p>
+                                </td>
+                                <td>
+                                    <p>${article.rue}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <p>${article.codePostale} ${article.ville}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <p>Vendeur : ${article.noUtilisateur}</p>
+                </div>
+                <!----------formulaire---------->
+                <div>
+                    <form action="ArticleServlet" method="post">
 
-            <button type="submit">Enchérir</button>
-        </form>
+                        <label for="proposition">Ma proposition :
+                        <input id="proposition" type="number" name="proposition" min="${article.prixInitial}">
+                        </label>
+                        <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enchérir</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
     </div>
-</div>
+</main>
+
 </body>
 </html>
