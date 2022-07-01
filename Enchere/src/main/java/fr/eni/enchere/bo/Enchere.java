@@ -57,6 +57,13 @@ public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String 
 
     public Enchere() {
     }
+
+    public Enchere(LocalDate dateEnchere, int montantEnchere, int noUtil, int noArt) {
+        this.dateEnchere = dateEnchere;
+        this.montantEnchere = montantEnchere;
+        noUtil=utilisateurs.getNoUtilisateur();
+        noArt=article.getNoArticle();
+    }
     //accesseurs
 
     public int getNoArticle() {

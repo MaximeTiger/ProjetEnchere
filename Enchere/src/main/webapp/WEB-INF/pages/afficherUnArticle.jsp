@@ -41,15 +41,15 @@
         <div>Retrait : ${article.rue}</div>
         <div>${article.codePostale}</div>
         <div>${article.ville}</div>
-        <div>Vendeur : ${article.noUtilisateur}</div>
+        <div> Vendeur : ${article.noUtilisateur}</div>
 
-        <div>
-            <form action="" method="post">
-                <label for="proposition">Ma proposition</label>
-                <input id="proposition" type="number" min="${article.prixInitial}">
-                <input type="submit" value="Enchérir">
-            </form>
-        </div>
+        <form action="ArticleServlet" method="post">
+
+            <label for="proposition">Ma proposition</label>
+            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}">
+
+            <button type="submit">Enchérir</button>
+        </form>
     </div>
 </div>
 </body>

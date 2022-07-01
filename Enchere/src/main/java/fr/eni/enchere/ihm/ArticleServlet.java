@@ -26,23 +26,13 @@ public class ArticleServlet extends HttpServlet {
         enchereManager = BLLFactory.getEnchereManager();
         articleManager = BLLFactory.getArticleManager();
     }
-
+    Article art;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-       String action = req.getParameter("action");
-
-        if("afficher".equals(action)){
-            doAfficherUnArticle(req, resp);
-        }
-       req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
-    }
-
-    protected void doAfficherUnArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         int id = Integer.parseInt(req.getParameter("noArticle"));
 
-        Article art;
+
         try {
             art = articleManager.afficherUnArticle(id);
         } catch (BLLException e) {
@@ -51,17 +41,17 @@ public class ArticleServlet extends HttpServlet {
 
         req.setAttribute("article",art);
 
-
+       req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
 
-    /*protected void doEnchere(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        LocalDate dateEnchere = LocalDate.parse(req.getParameter("dateEnchere"));
-        int montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
+  /*  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        int montantEnchere = Integer.parseInt(req.getParameter("proposition"));
+        LocalDate dateEnchere = LocalDate.now();
 
         Enchere ench = new Enchere(
-                dateEnchere,montantEnchere,
-                req.getParameter("nomUtilisateur"),req.getParameter("nomArticle")
+                dateEnchere,montantEnchere,noUtil,art.getNoArticle()
         );
         if(req.getParameter("noEnchere").isBlank()){
             try {
@@ -70,5 +60,8 @@ public class ArticleServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
+        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+
     }*/
+
 }
