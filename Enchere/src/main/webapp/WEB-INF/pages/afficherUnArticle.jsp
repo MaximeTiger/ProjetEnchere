@@ -24,33 +24,79 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/accueil.css">
+    <link rel="stylesheet" href="css/article.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Article</title>
 
 </head>
 <body>
-<div class="container">
-    <h1>Détail vente</h1>
-    <div class="row align-center">
-        <div>${article.nomArticle}</div>
-        <div>Description : ${article.description}</div>
-        <div>Catégorie : ${article.libelle}</div>
-        <div>Mise à prix : ${article.prixInitial}</div>
-        <div>Fin de l'enchère : ${article.finEncheres}</div>
-        <div>Retrait : ${article.rue}</div>
-        <div>${article.codePostale}</div>
-        <div>${article.ville}</div>
-        <div> Vendeur : ${article.noUtilisateur}</div>
-
-        <form action="ArticleServlet" method="post">
-
-            <label for="proposition">Ma proposition</label>
-            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}">
-
-            <button type="submit">Enchérir</button>
-        </form>
+<header>
+    <div>
+        <a href="acceuil">ENI-Echères</a>
     </div>
-</div>
+
+</header>
+<main>
+    <div class="container">
+
+        <div class="row">
+            <div class="align-center mt-5">
+                <h1 >Détail vente</h1>
+                <div>
+                    <p>${article.nomArticle}</p>
+                </div>
+                <div>
+                    <p>Description : ${article.description}</p>
+                </div>
+                <div>
+                    <p>Catégorie : ${article.libelle}</p>
+                </div>
+                <div>
+                    <p>Mise à prix : ${article.prixInitial}</p>
+                </div>
+                <div>
+                    <p>Fin de l'enchère : ${article.finEncheres}</p>
+                </div>
+                <!----------tableau retrait---------->
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Retrait : </p>
+                                </td>
+                                <td>
+                                    <p>${article.rue}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <p>${article.codePostale} ${article.ville}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <p>Vendeur : ${article.noUtilisateur}</p>
+                </div>
+                <!----------formulaire---------->
+                <div>
+                    <form action="ArticleServlet" method="post">
+
+                        <label for="proposition">Ma proposition :
+                        <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
+                        </label>
+                        <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enchérir</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
 </body>
 </html>
