@@ -18,11 +18,8 @@ import java.time.LocalDate;
 
 @WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
-
     private final ArticleManager articleManager;
-
     private final UtilisateursManager utilisateursManager;
-
     private final EnchereManager enchereManager;
 
     public ArticleServlet() {
@@ -36,38 +33,33 @@ public class ArticleServlet extends HttpServlet {
 
         int id = Integer.parseInt(req.getParameter("noArticle"));
 
-
         try {
             art = articleManager.afficherUnArticle(id);
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }
 
-        /*utilisateursManager.*/
-
         req.setAttribute("article",art);
 
-       req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
 
-
-  /*  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int montantEnchere = Integer.parseInt(req.getParameter("proposition"));
         LocalDate dateEnchere = LocalDate.now();
+        int noUtil = Integer.parseInt(req.getParameter("noUtilisateur"));
+        int noArt = Integer.parseInt(req.getParameter("noArticle"));
 
         Enchere ench = new Enchere(
-                dateEnchere,montantEnchere,noUtil,art.getNoArticle()
+                dateEnchere,montantEnchere,noUtil,noArt
         );
-        if(req.getParameter("noEnchere").isBlank()){
-            try {
-                enchereManager.faireEnchere(ench);
-            } catch (BLLException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            enchereManager.faireEnchere(ench);
+        } catch (BLLException e) {
+            e.printStackTrace();
         }
         req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
 
-    }*/
-
+    }
 }

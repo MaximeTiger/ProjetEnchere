@@ -17,6 +17,8 @@ public class Enchere {
 
     private int noArticle;
 
+    private int noUtilisateur;
+
 
     private Article article;
 //constructeurs
@@ -58,13 +60,21 @@ public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String 
     public Enchere() {
     }
 
-    public Enchere(LocalDate dateEnchere, int montantEnchere, int noUtil, int noArt) {
+    public Enchere(LocalDate dateEnchere, int montantEnchere, int noArticle, int noUtilisateur) {
         this.dateEnchere = dateEnchere;
         this.montantEnchere = montantEnchere;
-        noUtil=utilisateurs.getNoUtilisateur();
-        noArt=article.getNoArticle();
+        this.noArticle = noArticle;
+        this.noUtilisateur = noUtilisateur;
     }
     //accesseurs
+
+    public int getNoUtilisateur() {
+        return noUtilisateur;
+    }
+
+    public void setNoUtilisateur(int noUtilisateur) {
+        this.noUtilisateur = noUtilisateur;
+    }
 
     public int getNoArticle() {
         return noArticle;

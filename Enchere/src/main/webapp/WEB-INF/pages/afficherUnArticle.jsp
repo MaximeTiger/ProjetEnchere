@@ -34,6 +34,9 @@
     <div>
         <a href="acceuil">ENI-Echères</a>
     </div>
+    <div>
+        <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
+    </div>
 
 </header>
 <main>
@@ -83,20 +86,18 @@
                 </div>
                 <!----------formulaire---------->
                 <div>
-                    <form action="ArticleServlet" method="post">
-
+                    <form action="afficherUnArticle" method="post">
                         <label for="proposition">Ma proposition :
-                        <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
+                            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
                         </label>
+                        <input type="hidden" id="noUtilisateur" name="noUtilisateur" value="${article.noUtilisateur}">
+                        <input type="hidden" id="noArticle" name="noArticle" value="${article.noArticle}">
                         <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enchérir</button>
                     </form>
                 </div>
-
             </div>
-
         </div>
     </div>
 </main>
-
 </body>
 </html>

@@ -152,8 +152,8 @@ public class EnchereDAOImpl implements EnchereDAO {
             //Valoriser les parametres
             stmt.setDate(1,Date.valueOf(enchere.getDateEnchere()));
             stmt.setString(2, String.valueOf(enchere.getMontantEnchere()));
-            stmt.setString(3, String.valueOf(enchere.getArticle().getNoArticle()));
-            stmt.setString(4, String.valueOf(enchere.getUtilisateurs().getNoUtilisateur()));
+            stmt.setString(3, String.valueOf(enchere.getNoArticle()));
+            stmt.setString(4, String.valueOf(enchere.getNoUtilisateur()));
 
             //Executer la requete
             stmt.executeQuery();
