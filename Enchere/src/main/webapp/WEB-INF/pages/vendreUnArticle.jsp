@@ -64,10 +64,9 @@
                                 <label for="idCategorie">Categorie </label>
                                 <select name="categorie" id="idCategorie" required>
                                     <option value="">-- Choisir une catégorie --</option>
-                                    <option value="0">Informatique</option>
-                                    <option value="1" SELECTED>Ameublement</option>
-                                    <option value="2">Vêtement</option>
-                                    <option value="3">Sport & Loisirs</option>
+                                    <c:forEach var="labelle" items="${labelle}">
+                                        <option value="${labelle}">${labelle}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div>

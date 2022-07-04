@@ -3,6 +3,7 @@ package fr.eni.enchere.ihm;
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
+import fr.eni.enchere.bll.categorie.CategorieManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.dal.DALException;
 
@@ -13,18 +14,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/vendreUnArticle")
 public class VendreUnArticleServlet extends HttpServlet {
 
     private ArticleManager articleManager;
+    private CategorieManager categorieManager;
 
     public VendreUnArticleServlet( ) {
         articleManager = BLLFactory.getArticleManager();
-    }
+        categorieManager = BLLFactory.getCategorieManager();}
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<String> nomLabelle;
+
+        try {
+            nomLabelle = categorieManager.selectName();
+        } catch (BLLException e) {
+            throw new RuntimeException(e);
+        }
+
+        req.setAttribute("labelle",nomLabelle);
 
         req.getRequestDispatcher("/WEB-INF/pages/vendreUnArticle.jsp").forward(req,resp);
     }
