@@ -24,17 +24,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <body>
-<!---------------------------------------------HEADER avec le logo ENI------------------------------------------------!>
+<!---------------------------------------------HEADER avec le logo ENI------------------------------------------------>
     <header>
         <div>
             <a href="accueil">ENI-Enchères</a>
         </div>
     </header>
 
-<!-------------------------------------------------------MAIN---------------------------------------------------------!>
+<!-------------------------------------------------------MAIN--------------------------------------------------------->
     <main>
         <div>
-<!--------------------------------------EnTete du Main avec bouton retour et titre------------------------------------!>
+<!--------------------------------------EnTete du Main avec bouton retour et titre------------------------------------>
             <div>
                 <div>
                     <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-<!------------------------------------Formulaire première partie description article----------------------------------!>
+<!------------------------------------Formulaire première partie description article---------------------------------->
 
             <div class="form">
                 <form action="vendreUnArticle" method="post" class="form formulaire">
@@ -52,7 +52,7 @@
                         <div>
                             <div>
                                 <label for="idNom">Article :
-                                    <input type="text" name="nom" id="idNom" placeholder="Exemple : Fauteuil "required>
+                                    <input type="text" name="nom" id="idNom" placeholder="Exemple : Fauteuil " required>
                                 </label>
                             </div>
                             <div>
@@ -90,17 +90,17 @@
                         <div>
                             <div>
                                 <label for="idRue">Rue :
-                                    <input type="text" name="rue" id="idRue" value="${utilisateur.rue}"required>
+                                    <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
                                 </label>
                             </div>
                             <div>
                                 <label for="idCodePostal">Code postal :
-                                    <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${utilisateur.codePostal}" required>
+                                    <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
                                 </label>
                             </div>
                             <div>
                                 <label for="idVille">Ville :
-                                    <input type="text" name="ville" id="idVille" value="${utilisateur.ville}" required>
+                                    <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
                                 </label>
                             </div>
                         </div>

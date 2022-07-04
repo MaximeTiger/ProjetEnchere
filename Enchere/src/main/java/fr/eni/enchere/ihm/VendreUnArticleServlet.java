@@ -18,9 +18,6 @@ import java.time.LocalDate;
 public class VendreUnArticleServlet extends HttpServlet {
 
     private ArticleManager articleManager;
-    private int prixInitial;
-    private ArticleManager articleMger;
-    private Article article;
 
     public VendreUnArticleServlet( ) {
         articleManager = BLLFactory.getArticleManager();
@@ -36,39 +33,36 @@ public class VendreUnArticleServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
-        LocalDate debut = LocalDate.parse(req.getParameter("debutEncheres"));
-        LocalDate fin = LocalDate.parse(req.getParameter("finEncheres"));
+        Article saisie = new Article(req.getParameter("nomArticle"),
+                req.getParameter("description"),
+                LocalDate.parse(req.getParameter("debutEnchere")),
+                LocalDate.parse(req.getParameter("finEnchere")),
+                Integer.parseInt(req.getParameter("miseAPrix")),
+                req.getParameter("libelle"),
+                req.getParameter("rue"),
+                req.getParameter("codePostal"),
+                req.getParameter("ville"));
 
-        Article saisie = new Article(req.getParameter("nomArticle"), req.getParameter("description"),
-                debut, fin,prixInitial
-                ,req.getParameter("libelle"), req.getParameter("rue"), req.getParameter("codePostal")
-                ,req.getParameter("ville"));
-
-        if(!req.getParameter("noArticle").isBlank()){
-            int no = Integer.parseInt(req.getParameter("noArticle"));
-            saisie.setNoArticle(no);
-        }
         try{
 
-            if(article.getNomArticle() == null || article.getNomArticle().isBlank()) {
+            if(saisie.getNomArticle() == null || saisie.getNomArticle().isBlank()) {
                 req.setAttribute("error", "Le nom de l'article doit etre saisie");
             }
-            else if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
+            else if(saisie.getNomArticle() == null || saisie.getNomArticle().isBlank()){
                 req.setAttribute("error","Le nom de l'article doit etre saisie");
             }
-            else if(article.getDescription() == null || article.getDescription().isBlank()){
+            else if(saisie.getDescription() == null || saisie.getDescription().isBlank()){
                 req.setAttribute("error"," La descritption doit être saisie");
             }
-            else if(article.getPrixInitial() <= 0) {
+            else if(saisie.getPrixInitial() <= 0) {
                 req.setAttribute("error", " Le prix doit être positif");
             }
-            else if(article.getPrixVente() <= 0) {
+            else if(saisie.getPrixVente() <= 0) {
                 req.setAttribute("error"," Erreur prix de vente doit être positif");
             }
 
                 req.setAttribute("errorPrixV"," Le prix doit être positif");
-            articleMger.ajouterUnArticle(saisie);
+            articleManager.ajouterUnArticle(saisie);
         }catch(BLLException e) {
             e.printStackTrace();
         }
