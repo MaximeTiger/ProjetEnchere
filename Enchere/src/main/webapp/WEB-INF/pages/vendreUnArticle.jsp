@@ -52,7 +52,7 @@
                         <div>
                             <div>
                                 <label for="idNom">Article :
-                                    <input type="text" name="nom" id="idNom" placeholder="Exemple : Fauteuil " required>
+                                    <input type="text" name="nomArticle" id="idNom" placeholder="Exemple : Fauteuil " required>
                                 </label>
                             </div>
                             <div>
