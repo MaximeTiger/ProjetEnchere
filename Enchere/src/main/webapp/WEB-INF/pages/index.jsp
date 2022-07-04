@@ -50,7 +50,7 @@
                                 <p>Numéro enchère : ${enchere.noEnchere}</p>
                             </div>
                             <div class="card-text">
-                                <a href="afficherUnArticle?action=afficher&noArticle=${enchere.noArticle}">Afficher le détail de l'article</a>
+                                <a href="afficherUnArticle?noArticle=${enchere.noArticle}">Afficher le détail de l'article</a>
                             </div>
                         </div>
 

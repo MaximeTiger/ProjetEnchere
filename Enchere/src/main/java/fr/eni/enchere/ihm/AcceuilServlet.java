@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -26,26 +27,26 @@ public class AcceuilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String action = req.getParameter("action");
+        HttpSession session = req.getSession();
 
-        if ("connecter".equals(action)){
-            doConnect(req, resp);
-        } else {
-            req.setAttribute("connexion", "<a href=\"connexion\">Connexion - Inscription</a>\n<br>\n");
+        if (session.getAttribute("SessionUtilisateur") == null){
+            session.setAttribute("connexion", "<a href=\"connexion\">Connexion - Inscription</a>\n<br>\n");
+        } else if (session.getAttribute("SessionUtilisateur") != null){
+            session.setAttribute("connexion", "");
+            session.setAttribute("compte","<a href=\"compte\">Compte</a>\n");
+            session.setAttribute("deco","<a href=\"connexion?action=deconnexion\">Deconnexion</a>");
         }
-//affichage de la liste d'enchères en mode déconnecter
+
+
+
+        //affichage de la liste d'enchères en mode déconnecter
         try {
-            req.setAttribute("enchere",enchereManager.enchereEnCours());
+            session.setAttribute("enchere",enchereManager.enchereEnCours());
         } catch (BLLException e) {
             e.printStackTrace();
         }
 
-
         req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
-    }
-
-    protected void doConnect(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("connexion", "");
 
     }
 

@@ -4,6 +4,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.enchere.EnchereManager;
+import fr.eni.enchere.bll.utilisateurs.UtilisateursManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Enchere;
 
@@ -20,11 +21,14 @@ public class ArticleServlet extends HttpServlet {
 
     private final ArticleManager articleManager;
 
+    private final UtilisateursManager utilisateursManager;
+
     private final EnchereManager enchereManager;
 
     public ArticleServlet() {
         enchereManager = BLLFactory.getEnchereManager();
         articleManager = BLLFactory.getArticleManager();
+        utilisateursManager = BLLFactory.getUtilisateursManager();
     }
     Article art;
     @Override
@@ -38,6 +42,8 @@ public class ArticleServlet extends HttpServlet {
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }
+
+        /*utilisateursManager.*/
 
         req.setAttribute("article",art);
 

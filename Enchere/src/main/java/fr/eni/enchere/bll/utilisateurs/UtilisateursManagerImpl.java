@@ -23,11 +23,8 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
     @Override
     public Utilisateurs connexion(String pseudo, String motDePasse) throws BLLException {
         Utilisateurs util;
-        System.out.println(pseudo);
-        System.out.println(motDePasse);
         try {
             util = utilisateursDAO.selectInfosUser(pseudo,motDePasse);
-            System.out.println(util);
         }catch (DALException e){
             throw new BLLException("erreur bll connexion failed",e);
         }

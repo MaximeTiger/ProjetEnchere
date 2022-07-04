@@ -50,7 +50,6 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
                         rs.getString("credit"),
                         rs.getBoolean("administrateur")
                 );
-                System.out.println(user);
             }
         }catch (SQLException e){
             e.printStackTrace();

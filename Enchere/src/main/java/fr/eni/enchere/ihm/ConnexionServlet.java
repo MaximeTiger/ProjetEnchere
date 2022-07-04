@@ -13,7 +13,6 @@ import java.io.IOException;
 @WebServlet("/connexion")
 public class ConnexionServlet extends HttpServlet {
 
-    HttpSession session;
     private final UtilisateursManager mgerConn;
 
     public ConnexionServlet(){
@@ -29,39 +28,54 @@ public class ConnexionServlet extends HttpServlet {
 
         if ("deconnexion".equals(action)){
             doDeconnexion(req, resp);
+        } else {
+            req.getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req,resp);
         }
 
-        req.getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req,resp);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    Utilisateurs util;
-        try {
-            util = mgerConn.connexion(req.getParameter("pseudo"),req.getParameter("motdepasse"));
-            System.out.println("Pseudo = " + req.getParameter("pseudo"));
-            System.out.println("mdp = " + req.getParameter("motdepasse"));
-            if (util != null) {
-                req.setAttribute("bonjour","Bonjour " + util.getPseudo());
+        HttpSession session;
+        Utilisateurs util;
+            try {
+                /*
+                 * Vérifie si l'utilisateur existe et créer une session
+                 */
+                util = mgerConn.connexion(req.getParameter("pseudo"),req.getParameter("motdepasse"));
                 session = req.getSession();
-                session.setAttribute("utilisateur",util);
-                session.setAttribute("compte","<a href=\"compte\">Compte</a>\n");
-                session.setAttribute("deco","<a href=\"connexion?action=deconnexion\">Deconnexion</a>");
-                req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
-            } else {
-                req.setAttribute("error","Mot de passe ou Pseudo incorrect");
-                req.getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req,resp);
+
+                if (util != null) {
+                    /*
+                     * Si l'utilisateur existe alors il ajoute l'utilisateur à l'attribut SessionUtilisateur
+                     * et redirige sur l'index
+                     */
+                    session.setAttribute("SessionUtilisateur",util);
+                    resp.sendRedirect("acceuil");
+
+                } else {
+                    /*
+                     * Si l'utilisateur n'existe pas alors il ajoute null à l'attribut SessionUtilisateur
+                     * et redirige sur la JSP connexion avec un message d'erreur
+                     */
+                    session.setAttribute("SessionUtilisateur",null);
+                    req.setAttribute("error","Mot de passe ou Pseudo incorrect");
+                    req.getRequestDispatcher("/WEB-INF/pages/connexion.jsp").forward(req,resp);
+
+                }
+            } catch (BLLException | ServletException e) {
+                e.printStackTrace();
             }
-        } catch (BLLException | ServletException e) {
-            e.printStackTrace();
-        }
 
     }
 
+    /*
+     * Invalide la session de l'utilisateur et le redirige sur l'accueil du site
+     */
     protected void doDeconnexion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         session.invalidate();
-        req.getRequestDispatcher("acceuil").forward(req,resp);
+        resp.sendRedirect("acceuil");
     }
 }

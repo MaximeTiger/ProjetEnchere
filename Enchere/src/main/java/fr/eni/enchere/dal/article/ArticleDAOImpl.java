@@ -57,6 +57,8 @@ public class ArticleDAOImpl implements ArticleDAO {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 
+            System.out.println(noArticle);
+
             stmt.setInt(1,noArticle);
 
             ResultSet rs = stmt.executeQuery();
