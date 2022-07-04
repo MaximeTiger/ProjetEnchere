@@ -11,37 +11,37 @@
 
 <form action="compte" method="post">
 
-    <input type="hidden" name="NoUtilisateur" value="${utilisateur.noUtilisateur}">
+    <input type="hidden" name="NoUtilisateur" value="${SessionUtilisateur.noUtilisateur}">
 
     <label for="pseudo">Pseudo :</label>
-    <input type="text" name="pseudo" id="pseudo" value="${utilisateur.pseudo}" ${modif}>
+    <input type="text" name="pseudo" id="pseudo" value="${SessionUtilisateur.pseudo}" ${modif}>
 
     <label for="nom">Nom :</label>
-    <input type="text" name="nom" id="nom" value="${utilisateur.nom}" ${modif}>
+    <input type="text" name="nom" id="nom" value="${SessionUtilisateur.nom}" ${modif}>
 
     <label for="prenom">Prenom :</label>
-    <input type="text" name="prenom" id="prenom" value="${utilisateur.prenom}" ${modif}>
+    <input type="text" name="prenom" id="prenom" value="${SessionUtilisateur.prenom}" ${modif}>
 
     <label for="mail">Mail :</label>
-    <input type="email" name="mail" id="mail" value="${utilisateur.email}" ${modif}>
+    <input type="email" name="mail" id="mail" value="${SessionUtilisateur.email}" ${modif}>
 
     <label for="telephone">Telephone : </label>
-    <input type="tel" name="telephone" id="telephone" value="${utilisateur.telephone}" ${modif}>
+    <input type="tel" name="telephone" id="telephone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" value="${SessionUtilisateur.telephone}" ${modif}>
 
     <label for="rue">Rue :</label>
-    <input type="text" name="rue" id="rue" value="${utilisateur.rue}" ${modif}>
+    <input type="text" name="rue" id="rue" value="${SessionUtilisateur.rue}" ${modif}>
 
     <label for="codePostal">Code postal :</label>
-    <input type="text" name="codePostal" id="codePostal" value="${utilisateur.codePostal}" ${modif}>
+    <input type="text" name="codePostal" id="codePostal" value="${SessionUtilisateur.codePostal}" ${modif}>
 
     <label for="ville">Ville :</label>
-    <input type="text" name="ville" id="ville" value="${utilisateur.getVille()}" ${modif}>
+    <input type="text" name="ville" id="ville" value="${SessionUtilisateur.getVille()}" ${modif}>
 
     <label for="motdepasse">Mot de Passe :</label>
-    <input type="password" name="motdepasse" id="motdepasse" value="${utilisateur.motDePasse}" ${modif}>
+    <input type="password" name="motdepasse" id="motdepasse" value="${SessionUtilisateur.motDePasse}" ${modif}>
 
     <label for="confirmationMotdepasse">Confirmation du Mot de Passe</label>
-    <input type="password" name="confirmationMotdepasse" id="confirmationMotdepasse" value="${utilisateur.motDePasse}" ${modif}>
+    <input type="password" name="confirmationMotdepasse" id="confirmationMotdepasse" value="${SessionUtilisateur.motDePasse}" ${modif}>
 
     <a href="compte?action=modifier">Modifier</a>
     <button type="submit" ${modif}>Enregistrer</button>

@@ -39,4 +39,15 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public Utilisateurs selectById(Integer id) throws BLLException {
+        Utilisateurs user;
+        try {
+            user = utilisateursDAO.selectById(id);
+        } catch (DALException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
 }

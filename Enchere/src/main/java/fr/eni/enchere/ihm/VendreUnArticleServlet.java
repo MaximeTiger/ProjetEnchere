@@ -49,7 +49,7 @@ public class VendreUnArticleServlet extends HttpServlet {
         }
         try{
 
-            if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
+            /*if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
                 req.setAttribute("error","Le nom de l'article doit etre saisie");
             }
             else if(article.getDescription() == null || article.getDescription().isBlank()){
@@ -63,7 +63,7 @@ public class VendreUnArticleServlet extends HttpServlet {
             }
             else if(article.getPrixVente() <= 0) {
                 message.append(" Erreur prix de vente doit Ãªtre positif");
-            }
+            }*/
 
             articleMger.ajouterUnArticle(saisie);
         }catch(BLLException e) {

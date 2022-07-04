@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public class  UtilisateursDAOImpl implements UtilisateursDAO {
 
     private static final String SELECT_INFOS_USER = "SELECT * FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
+    private static final String SELECT_BY_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
     private static final String INSERT = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue," +
             "code_postal,ville,mot_de_passe,credit,administrateur)" +
             "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -115,6 +116,37 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new DALException("Erreur a la modification d'un utilisateur");
+        }
+    }
+
+    public Utilisateurs selectById(Integer id) throws DALException {
+        Utilisateurs user = null;
+        try(Connection conn = ConnectionProvider.getConnection()) {
+
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_BY_ID);
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
+            if(rs.next()){
+                user= new Utilisateurs(
+                        rs.getInt("no_utilisateur"),
+                        rs.getString("pseudo"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getString("email"),
+                        rs.getString("telephone"),
+                        rs.getString("rue"),
+                        rs.getString("code_postal"),
+                        rs.getString("ville"),
+                        rs.getString("mot_de_passe"),
+                        rs.getString("credit"),
+                        rs.getBoolean("administrateur")
+                );
+            }
+            return user;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur a la selection d'un utilisateur");
         }
     }
 }

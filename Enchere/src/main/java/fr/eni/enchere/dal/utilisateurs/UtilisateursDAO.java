@@ -9,4 +9,5 @@ public interface UtilisateursDAO {
     Utilisateurs selectInfosUser(String pseudo, String motDePasse) throws DALException;
 
     void update(Utilisateurs util) throws DALException;
+    public Utilisateurs selectById(Integer id) throws DALException;
 }
