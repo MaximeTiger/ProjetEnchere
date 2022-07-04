@@ -35,6 +35,10 @@ public class CompteServlet extends HttpServlet {
             doModifier(req, resp);
         }
 
+        if ("supprimer".equals(action)){
+            doSupprimer(req, resp);
+        }
+
         req.getRequestDispatcher("/WEB-INF/pages/compte.jsp").forward(req,resp);
     }
 
@@ -66,5 +70,16 @@ public class CompteServlet extends HttpServlet {
 
     protected void doModifier(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("modif","");
+    }
+
+    protected void doSupprimer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("modif","");
+
+        int id = Integer.parseInt(req.getParameter("NoUtilisateur"));
+        try {
+            mgerCompte.supprimerCompte(id);
+        } catch (BLLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

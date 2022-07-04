@@ -44,6 +44,7 @@
     <input type="password" name="confirmationMotdepasse" id="confirmationMotdepasse" value="${SessionUtilisateur.motDePasse}" ${modif}>
 
     <a href="compte?action=modifier">Modifier</a>
+    <a href="compte?action=supprimer">Supprimer</a>
     <button type="submit" ${modif}>Enregistrer</button>
 
 </form>

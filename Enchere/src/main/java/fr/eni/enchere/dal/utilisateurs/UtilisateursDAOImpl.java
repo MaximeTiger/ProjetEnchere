@@ -25,6 +25,8 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
             "    ville = ?, mot_de_passe = ?" +
             "    WHERE no_utilisateur = ?";
 
+    private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";
+
 
     //Verifier que le pseudo et le mot de passe sont correctes
     @Override
@@ -147,6 +149,23 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new DALException("Erreur a la selection d'un utilisateur");
+        }
+    }
+
+    @Override
+    public void delete(int id) throws DALException {
+        Utilisateurs util;
+        try(
+            Connection conn = ConnectionProvider.getConnection();
+        ){
+            PreparedStatement stmt = conn.prepareStatement(DELETE);
+
+            stmt.setInt(1,id);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DALException("Erreur a la suppression d'un utilisateur",e);
         }
     }
 }

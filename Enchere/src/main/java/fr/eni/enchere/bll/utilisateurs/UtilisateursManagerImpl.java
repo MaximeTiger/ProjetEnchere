@@ -50,4 +50,13 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
         }
         return user;
     }
+
+    @Override
+    public void supprimerCompte(int id) throws BLLException {
+        try {
+            utilisateursDAO.delete(id);
+        } catch (DALException e) {
+            throw new BLLException("erreur BLL lors de la suppression",e);
+        }
+    }
 }

@@ -9,4 +9,5 @@ public interface UtilisateursManager {
     Utilisateurs connexion(String pseudo, String motDePasse) throws  BLLException;
     void update(Utilisateurs util) throws BLLException;
     public Utilisateurs selectById(Integer id) throws BLLException;
+    void supprimerCompte(int id) throws BLLException;
 }
