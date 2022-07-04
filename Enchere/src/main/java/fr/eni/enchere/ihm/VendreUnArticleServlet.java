@@ -34,7 +34,7 @@ public class VendreUnArticleServlet extends HttpServlet {
 
     //affichage depuis l'accueil de la page de vente d'un nouvel article
 
-    protected void doVendreUnArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         prixInitial = Integer.parseInt(req.getParameter("prixInitial"));
         LocalDate debut = LocalDate.parse(req.getParameter("debutEncheres"));

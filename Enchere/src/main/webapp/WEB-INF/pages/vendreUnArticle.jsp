@@ -56,15 +56,9 @@
                                 </label>
                             </div>
                             <div>
-                                <p class="errorNom">${error}</p>
-                            </div>
-                            <div>
                                 <label for="idDescription">Description :
                                     <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
                                 </label>
-                            </div>
-                            <div>
-                                <p class="errorDescription">${error}</p>
                             </div>
                             <div>
                                 <label for="idCategorie">Categorie </label>
@@ -83,12 +77,12 @@
                             </div>
                             <div>
                                 <label for="idDebutEnchere">Début de l'enchère :
-                                    <input type="date" name="debutEnchere" id="idDebutEnchere" min="2018-08-"required>
+                                    <input type="date" name="debutEnchere" id="idDebutEnchere" min="2018-08-05"required>
                                 </label>
                             </div>
                             <div>
                                 <label for="idFinEnchere">Fin de l'enchère :
-                                    <input type="date" name="finEnchere" id="idFinEnchere" required>
+                                    <input type="date" name="finEnchere" id="idFinEnchere" min="2018-08-05" required>
                                 </label>
                             </div>
                         </div>
@@ -101,7 +95,7 @@
                             </div>
                             <div>
                                 <label for="idCodePostal">Code postal :
-                                    <input type="text" name="codePostal" id="idCodePostal" value="${utilisateur.codePostal}" required>
+                                    <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${utilisateur.codePostal}" required>
                                 </label>
                             </div>
                             <div>
@@ -109,6 +103,9 @@
                                     <input type="text" name="ville" id="idVille" value="${utilisateur.ville}" required>
                                 </label>
                             </div>
+                        </div>
+                        <div>
+                            <p class="error">${error}</p>
                         </div>
                     </div>
 <!----------------------------------------Formulaire troisième partie boutons-----------------------------------------!>
