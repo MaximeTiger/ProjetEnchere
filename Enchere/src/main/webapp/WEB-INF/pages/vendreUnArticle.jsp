@@ -56,9 +56,15 @@
                                 </label>
                             </div>
                             <div>
+                                <p class="errorNom">${error}</p>
+                            </div>
+                            <div>
                                 <label for="idDescription">Description :
                                     <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
                                 </label>
+                            </div>
+                            <div>
+                                <p class="errorDescription">${error}</p>
                             </div>
                             <div>
                                 <label for="idCategorie">Categorie </label>
@@ -72,7 +78,7 @@
                             </div>
                             <div>
                                 <label for="idMiseAPrix">Mise à prix :
-                                    <input type="number" name="miseAPrix" id="idMiseAPrix" required>
+                                    <input type="number" name="miseAPrix" id="idMiseAPrix" min="0.00" required>
                                 </label>
                             </div>
                             <div>

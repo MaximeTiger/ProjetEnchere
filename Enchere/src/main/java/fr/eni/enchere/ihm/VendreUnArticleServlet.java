@@ -20,6 +20,8 @@ public class VendreUnArticleServlet extends HttpServlet {
     private ArticleManager articleManager;
     private int prixInitial;
     private ArticleManager articleMger;
+    private Article article;
+
     public VendreUnArticleServlet( ) {
         articleManager = BLLFactory.getArticleManager();
     }
@@ -48,23 +50,18 @@ public class VendreUnArticleServlet extends HttpServlet {
             saisie.setNoArticle(no);
         }
         try{
-
             if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
-                req.setAttribute("error","Le nom de l'article doit etre saisie");
+                req.setAttribute("errorNom","Le nom de l'article doit etre saisie");
             }
             else if(article.getDescription() == null || article.getDescription().isBlank()){
-                message.append(" Erreur description obligatoire");
-            }
-            else if(article.getLibelle() == null || article.getLibelle().isBlank())  {
-                message.append(" Erreur catégorie obligatoire");
+                req.setAttribute("errorDescription"," La descritption doit être saisie");
             }
             else if(article.getPrixInitial() <= 0) {
-                message.append(" Erreur prix unitaire doit Ãªtre positif");
+                req.setAttribute("errorPrixI", " Le prix doit être positif");
             }
             else if(article.getPrixVente() <= 0) {
-                message.append(" Erreur prix de vente doit Ãªtre positif");
+                req.setAttribute("errorPrixV"," Le prix doit être positif");
             }
-
             articleMger.ajouterUnArticle(saisie);
         }catch(BLLException e) {
             e.printStackTrace();
