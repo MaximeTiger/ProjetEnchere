@@ -27,7 +27,7 @@
 <!---------------------------------------------HEADER avec le logo ENI------------------------------------------------>
     <header>
         <div>
-            <a href="accueil">ENI-Enchères</a>
+            <a href="acceuil">ENI-Enchères</a>
         </div>
     </header>
 
