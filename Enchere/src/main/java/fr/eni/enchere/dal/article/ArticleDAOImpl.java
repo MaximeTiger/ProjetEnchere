@@ -32,7 +32,7 @@ public class ArticleDAOImpl implements ArticleDAO {
             stmt.setString(1,a.getNomArticle());
             stmt.setString(2,a.getDescription());
             stmt.setObject(3, Date.valueOf(a.getDebutEncheres()));
-            stmt.setObject(3, Date.valueOf(a.getFinEncheres()));
+            stmt.setObject(4, Date.valueOf(a.getFinEncheres()));
             stmt.setInt(5,a.getPrixInitial());
             stmt.setInt(6,a.getPrixVente());
 
