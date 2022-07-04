@@ -4,6 +4,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.dal.DALException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +48,23 @@ public class VendreUnArticleServlet extends HttpServlet {
             saisie.setNoArticle(no);
         }
         try{
+
+            if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
+                req.setAttribute("error","Le nom de l'article doit etre saisie");
+            }
+            else if(article.getDescription() == null || article.getDescription().isBlank()){
+                message.append(" Erreur description obligatoire");
+            }
+            else if(article.getLibelle() == null || article.getLibelle().isBlank())  {
+                message.append(" Erreur catégorie obligatoire");
+            }
+            else if(article.getPrixInitial() <= 0) {
+                message.append(" Erreur prix unitaire doit Ãªtre positif");
+            }
+            else if(article.getPrixVente() <= 0) {
+                message.append(" Erreur prix de vente doit Ãªtre positif");
+            }
+
             articleMger.ajouterUnArticle(saisie);
         }catch(BLLException e) {
             e.printStackTrace();
