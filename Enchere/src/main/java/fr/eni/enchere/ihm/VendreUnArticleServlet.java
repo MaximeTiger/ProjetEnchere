@@ -32,8 +32,10 @@ public class VendreUnArticleServlet extends HttpServlet {
     //affichage depuis l'accueil de la page de vente d'un nouvel article
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getParameter("nomArticle"));
 
-        Article saisie = new Article(req.getParameter("nomArticle"),
+        Article saisie = new Article(
+                req.getParameter("nom"),
                 req.getParameter("description"),
                 LocalDate.parse(req.getParameter("debutEnchere")),
                 LocalDate.parse(req.getParameter("finEnchere")),
