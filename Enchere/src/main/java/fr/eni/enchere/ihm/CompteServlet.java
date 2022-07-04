@@ -41,6 +41,8 @@ public class CompteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+
         Utilisateurs util = new Utilisateurs(Integer.parseInt(req.getParameter("NoUtilisateur")),req.getParameter("pseudo"),
                 req.getParameter("nom"),req.getParameter("prenom"),req.getParameter("mail"),req.getParameter("telephone"),
                 req.getParameter("rue"),req.getParameter("codePostal"),req.getParameter("ville"),req.getParameter("motdepasse"));
@@ -50,10 +52,16 @@ public class CompteServlet extends HttpServlet {
         } catch (BLLException e) {
             e.printStackTrace();
         }
-        HttpSession session = req.getSession();
-        session.setAttribute("utilisateur",util);
 
-        req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req,resp);
+        try {
+            util = mgerCompte.selectById(util.getNoUtilisateur());
+        } catch (BLLException e) {
+            e.printStackTrace();
+        }
+
+        session.setAttribute("SessionUtilisateur",util);
+
+        resp.sendRedirect("compte");
     }
 
     protected void doModifier(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
