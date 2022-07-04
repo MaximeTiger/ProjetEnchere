@@ -79,7 +79,7 @@
                     </table>
                 </div>
                 <div>
-                    <p>Vendeur : ${article.noUtilisateur}</p>
+                    <p>Vendeur : ${article.pseudo}</p>
                 </div>
                 <!----------formulaire---------->
                 <div>

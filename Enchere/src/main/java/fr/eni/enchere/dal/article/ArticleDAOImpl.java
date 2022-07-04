@@ -14,14 +14,14 @@ public class ArticleDAOImpl implements ArticleDAO {
     private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
         "VALUES (?,?,?,?,?,?)";
 
-    private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description," +
-            "CATEGORIES.libelle,ARTICLES_VENDUS.prix_vente," +
-            "ARTICLES_VENDUS.date_fin_encheres,RETRAITS.rue," +
-            "RETRAITS.code_postal,RETRAITS.ville,ARTICLES_VENDUS.no_utilisateur " +
-            "FROM ARTICLES_VENDUS,RETRAITS,CATEGORIES " +
-            "WHERE ARTICLES_VENDUS.no_article = ? " +
-            "AND RETRAITS.no_article=ARTICLES_VENDUS.no_article " +
-            "AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie ";
+    private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,\n" +
+            "       CATEGORIES.libelle,ARTICLES_VENDUS.prix_vente,ARTICLES_VENDUS.date_fin_encheres,\n" +
+            "       RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville,UTILISATEURS.pseudo\n" +
+            "FROM ARTICLES_VENDUS,RETRAITS,CATEGORIES,UTILISATEURS\n" +
+            "WHERE ARTICLES_VENDUS.no_article = ?\n" +
+            "  AND RETRAITS.no_article=ARTICLES_VENDUS.no_article\n" +
+            "  AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie\n" +
+            "AND UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur";
 
 
     public void insertUnArticle (Article a) throws DALException {
@@ -74,7 +74,7 @@ public class ArticleDAOImpl implements ArticleDAO {
                         rs.getString("rue"),
                         rs.getString("code_postal"),
                         rs.getString("ville"),
-                        rs.getInt("no_utilisateur")
+                        rs.getString("pseudo")
                         );
             }
         }

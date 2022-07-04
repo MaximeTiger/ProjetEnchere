@@ -22,6 +22,8 @@ public class Article{
 
     private String libelle;
 
+    private String pseudo;
+
     private Utilisateurs utilisateur;
 
     private int noUtilisateur;
@@ -98,6 +100,18 @@ public class Article{
         this.codePostale = code_postal;
         this.ville = ville;
         this.noUtilisateur = no_utilisateur;
+    }
+
+    public Article(String nom_article, String description, String libelle, int prix_vente, Date date_fin_encheres, String rue, String code_postal, String ville, String pseudo) {
+    this.nomArticle = nom_article;
+    this.description = description;
+    this.libelle = libelle;
+    this.prixVente = prix_vente;
+    this.finEncheres = getLocalDateFromDate(date_fin_encheres);
+    this.rue = rue;
+    this.codePostale = code_postal;
+    this.ville = ville;
+    this.pseudo = pseudo;
     }
 
 
@@ -205,6 +219,14 @@ public class Article{
 
 
     public void setVille(String ville) { this.ville = ville; }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
 
     public static LocalDate getLocalDateFromDate(Date date){
         return LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
