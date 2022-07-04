@@ -31,9 +31,9 @@
 </head>
 <body>
 <header>
-    <div>
-        <a href="acceuil">ENI-Echères</a>
-    </div>
+    <a href="acceuil">
+        <img alt="logo" src="./img/logo_V1-removebg-preview.png">
+    </a>
     <div>
         <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
     </div>

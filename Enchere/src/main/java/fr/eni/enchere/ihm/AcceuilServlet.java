@@ -1,8 +1,6 @@
 package fr.eni.enchere.ihm;
 
 import fr.eni.enchere.bll.BLLException;
-import fr.eni.enchere.bll.article.ArticleManager;
-import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.enchere.EnchereManager;
 
@@ -13,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
+
 
 @WebServlet("/acceuil")
 public class AcceuilServlet extends HttpServlet {
