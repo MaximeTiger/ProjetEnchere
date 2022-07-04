@@ -50,30 +50,24 @@ public class VendreUnArticleServlet extends HttpServlet {
             saisie.setNoArticle(no);
         }
         try{
-<<<<<<< HEAD
 
-            /*if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
+            if(article.getNomArticle() == null || article.getNomArticle().isBlank()) {
+                req.setAttribute("error", "Le nom de l'article doit etre saisie");
+            }
+            else if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
                 req.setAttribute("error","Le nom de l'article doit etre saisie");
-=======
-            if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
-                req.setAttribute("errorNom","Le nom de l'article doit etre saisie");
->>>>>>> 68b2a3a8fb1071e26932497f096752492505d158
             }
             else if(article.getDescription() == null || article.getDescription().isBlank()){
-                req.setAttribute("errorDescription"," La descritption doit être saisie");
+                req.setAttribute("error"," La descritption doit être saisie");
             }
             else if(article.getPrixInitial() <= 0) {
-                req.setAttribute("errorPrixI", " Le prix doit être positif");
+                req.setAttribute("error", " Le prix doit être positif");
             }
             else if(article.getPrixVente() <= 0) {
-<<<<<<< HEAD
-                message.append(" Erreur prix de vente doit Ãªtre positif");
-            }*/
-
-=======
-                req.setAttribute("errorPrixV"," Le prix doit être positif");
+                req.setAttribute("error"," Erreur prix de vente doit être positif");
             }
->>>>>>> 68b2a3a8fb1071e26932497f096752492505d158
+
+                req.setAttribute("errorPrixV"," Le prix doit être positif");
             articleMger.ajouterUnArticle(saisie);
         }catch(BLLException e) {
             e.printStackTrace();

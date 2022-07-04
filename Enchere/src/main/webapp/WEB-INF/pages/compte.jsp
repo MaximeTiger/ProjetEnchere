@@ -32,7 +32,7 @@
     <input type="text" name="rue" id="rue" value="${SessionUtilisateur.rue}" ${modif}>
 
     <label for="codePostal">Code postal :</label>
-    <input type="text" name="codePostal" id="codePostal" value="${SessionUtilisateur.codePostal}" ${modif}>
+    <input type="text" name="codePostal" id="codePostal" pattern="[0-9]{5}" value="${SessionUtilisateur.codePostal}" ${modif}>
 
     <label for="ville">Ville :</label>
     <input type="text" name="ville" id="ville" value="${SessionUtilisateur.getVille()}" ${modif}>
