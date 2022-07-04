@@ -36,32 +36,4 @@ public class ArticleManagerImpl implements ArticleManager{
         }
         return a;
     }
-
-    //Valider un article
-    public void validerUnArticle (Article article) throws BLLException {
-        StringBuilder message = new StringBuilder() ;
-
-        if (article.getNomArticle() == null) {
-            try {
-                articleDAO.insertUnArticle(article);
-                if(article.getNomArticle() == null || article.getNomArticle().isBlank()){
-                    message.append(" Erreur nom obligatoire");
-                }
-                if(article.getDescription() == null || article.getDescription().isBlank()){
-                    message.append(" Erreur description obligatoire");
-                }
-                if(article.getLibelle() == null || article.getLibelle().isBlank())  {
-                    message.append(" Erreur catégorie obligatoire");
-                }
-                if(article.getPrixInitial() <= 0) {
-                    message.append(" Erreur prix unitaire doit Ãªtre positif");
-                }
-                if(article.getPrixVente() <= 0) {
-                    message.append(" Erreur prix de vente doit Ãªtre positif");
-                }
-            }catch(DALException e){
-                throw new BLLException("Enregistrer l'article :" + article, e);
-            }
-        }
-    }
 }
