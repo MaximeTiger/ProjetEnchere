@@ -77,7 +77,7 @@
                             </div>
                             <div>
                                 <label for="idDebutEnchere">Début de l'enchère :
-                                    <input type="date" name="debutEnchere" id="idDebutEnchere" min="2018-08-05"required>
+                                    <input type="date" name="debutEnchere" id="idDebutEnchere" value ="2018-08-05" min="2018-08-05" required>
                                 </label>
                             </div>
                             <div>
