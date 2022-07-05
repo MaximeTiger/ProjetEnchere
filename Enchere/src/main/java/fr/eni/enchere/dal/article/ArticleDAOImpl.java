@@ -15,12 +15,12 @@ public class ArticleDAOImpl implements ArticleDAO {
         "VALUES (?,?,?,?,?,?)";
 
     private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,\n" +
-            "       CATEGORIES.libelle,ARTICLES_VENDUS.prix_vente,ARTICLES_VENDUS.date_fin_encheres,\n" +
-            "       RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville,UTILISATEURS.pseudo\n" +
+            "CATEGORIES.libelle,ARTICLES_VENDUS.prix_initial,ARTICLES_VENDUS.date_fin_encheres,\n" +
+            "RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville,UTILISATEURS.pseudo\n" +
             "FROM ARTICLES_VENDUS,RETRAITS,CATEGORIES,UTILISATEURS\n" +
             "WHERE ARTICLES_VENDUS.no_article = ?\n" +
-            "  AND RETRAITS.no_article=ARTICLES_VENDUS.no_article\n" +
-            "  AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie\n" +
+            "AND RETRAITS.no_article=ARTICLES_VENDUS.no_article\n" +
+            "AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie\n" +
             "AND UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur";
 
 
@@ -69,13 +69,22 @@ public class ArticleDAOImpl implements ArticleDAO {
                         rs.getString("nom_article"),
                         rs.getString("description"),
                         rs.getString("libelle"),
-                        rs.getInt("prix_vente"),
+                        rs.getInt("prix_initial"),
                         rs.getDate("date_fin_encheres"),
                         rs.getString("rue"),
                         rs.getString("code_postal"),
                         rs.getString("ville"),
                         rs.getString("pseudo")
                         );
+                System.out.println(rs.getString("nom_article"));
+                System.out.println(rs.getString("description"));
+                System.out.println(rs.getString("libelle"));
+                System.out.println("Prix initial : " + rs.getString("prix_initial"));
+                System.out.println(rs.getString("date_fin_encheres"));
+                System.out.println(rs.getString("rue"));
+                System.out.println(rs.getString("code_postal"));
+                System.out.println(rs.getString("ville"));
+                System.out.println(rs.getString("pseudo"));
             }
         }
 

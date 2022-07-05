@@ -28,11 +28,11 @@ public class ArticleManagerImpl implements ArticleManager{
 
     @Override
     public Article afficherUnArticle(int noArticle) throws BLLException {
-        Article a;
+        Article a = null;
         try {
             a = articleDAO.selectById(noArticle);
         } catch (DALException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return a;
     }
