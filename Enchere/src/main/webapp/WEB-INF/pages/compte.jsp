@@ -74,13 +74,12 @@
     <label for="confirmationMotdepasse">Confirmation du Mot de Passe</label>
     <input type="password" name="confirmationMotdepasse" id="confirmationMotdepasse" value="${SessionUtilisateur.motDePasse}" ${modif}>
 
-    <a href="compte?action=modifier">Modifier</a>
-    <a href="compte?action=supprimer">Supprimer</a>
-    <button type="submit" ${modif}>Enregistrer</button>
-
+    <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn" ${modif}>Enregistrer</button>
 </form>
 
-<a href="acceuil?action=connecter">Retour</a>
+    <a href="compte?action=modifier"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Modifier</button></a>
+    <a href="compte?action=supprimer&NoUtilisateur=${SessionUtilisateur.noUtilisateur}"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Supprimer</button></a>
+
 </main>
 </body>
 </html>

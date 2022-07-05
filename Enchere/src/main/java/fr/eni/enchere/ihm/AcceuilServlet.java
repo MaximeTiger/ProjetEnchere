@@ -37,7 +37,7 @@ public class AcceuilServlet extends HttpServlet {
 
 
 
-        //affichage de la liste d'enchères en mode déconnecter
+        //affichage de la liste d'enchères
         try {
             session.setAttribute("enchere",enchereManager.enchereEnCours());
         } catch (BLLException e) {

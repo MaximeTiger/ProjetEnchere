@@ -83,11 +83,6 @@
                         <div class="input-bouton">
                             <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Connexion</button>
                         </div>
-                        <div  class="input-bouton">
-                            <a href="${pageContext.request.contextPath}/inscription" class="inscriptionbtn btn-perso btn-white btn-bottom-animation-1">
-                                <button class="nostyle-btn">Inscription</button>
-                            </a>
-                        </div>
                     </div>
                 </form>
             </div>

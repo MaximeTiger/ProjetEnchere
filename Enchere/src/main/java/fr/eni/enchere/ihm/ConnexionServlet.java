@@ -14,9 +14,11 @@ import java.io.IOException;
 public class ConnexionServlet extends HttpServlet {
 
     private final UtilisateursManager mgerConn;
+    private final UtilisateursManager mgerInsc;
 
     public ConnexionServlet(){
         mgerConn = BLLFactory.getUtilisateursManager();
+        mgerInsc = BLLFactory.getUtilisateursManager();
     }
 
 
@@ -77,5 +79,23 @@ public class ConnexionServlet extends HttpServlet {
         HttpSession session = req.getSession();
         session.invalidate();
         resp.sendRedirect("acceuil");
+    }
+
+
+    protected void doInscription(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Utilisateurs util = new Utilisateurs(req.getParameter("pseudo"),req.getParameter("nom"),
+                req.getParameter("prenom"),req.getParameter("mail"),req.getParameter("telephone"),
+                req.getParameter("rue"),req.getParameter("codePostal"),req.getParameter("ville"),
+                req.getParameter("motdepasse"));
+
+        try {
+            mgerInsc.suscribe(util);
+            System.out.println("good!");
+        } catch (BLLException e) {
+            e.printStackTrace();
+        }
+
+        resp.sendRedirect("acceuil");
+
     }
 }
