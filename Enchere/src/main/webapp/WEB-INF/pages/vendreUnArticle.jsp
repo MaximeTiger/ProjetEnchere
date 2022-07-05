@@ -56,7 +56,7 @@
                                 </label>
                             </div>
                             <div class="alignement-div">
-                                <label for="idDescription">Description :
+                                <label for="idDescription" id="labelDescription">Description :
                                     <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
                                 </label>
                             </div>
