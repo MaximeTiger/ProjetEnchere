@@ -4,7 +4,6 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.enchere.EnchereManager;
-import fr.eni.enchere.bll.utilisateurs.UtilisateursManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Enchere;
 
@@ -13,9 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 @WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
@@ -30,17 +29,20 @@ public class ArticleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int id = Integer.parseInt(req.getParameter("noArticle"));
+        String nomArt = req.getParameter("nomArticle");
 
         Article art;
+        List<Enchere> encheres;
 
         try {
             art = articleManager.afficherUnArticle(id);
-            System.out.println(art.getPrixInitial());
+            encheres = enchereManager.enchereEnCours();
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }
 
         req.setAttribute("article",art);
+        req.setAttribute("encheres",encheres);
 
         req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
