@@ -46,21 +46,21 @@
 
 <!------------------------------------Formulaire première partie description article---------------------------------->
 
-            <div class="form">
+            <div class="form container">
                 <form action="vendreUnArticle" method="post" class="form formulaire">
                     <div >
                         <div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idNom">Article :
                                     <input type="text" name="nomArticle" id="idNom" placeholder="Exemple : Fauteuil " required>
                                 </label>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idDescription">Description :
                                     <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
                                 </label>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idCategorie">Categorie </label>
                                 <select name="categorie" id="idCategorie" required>
                                     <option value="">-- Choisir une catégorie --</option>
@@ -69,17 +69,17 @@
                                     </c:forEach>
                                 </select>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idMiseAPrix">Mise à prix :
                                     <input type="number" name="miseAPrix" id="idMiseAPrix" min="0.00" required>
                                 </label>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idDebutEnchere">Début de l'enchère :
                                     <input type="date" name="debutEnchere" id="idDebutEnchere" value ="2018-08-05" min="2018-08-05" required>
                                 </label>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idFinEnchere">Fin de l'enchère :
                                     <input type="date" name="finEnchere" id="idFinEnchere" min="2018-08-05" required>
                                 </label>
@@ -87,17 +87,17 @@
                         </div>
 <!---------------------------------------Formulaire deuxième partie retrait-------------------------------------------!>
                         <div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idRue">Rue :
                                     <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
                                 </label>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idCodePostal">Code postal :
                                     <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
                                 </label>
                             </div>
-                            <div>
+                            <div class="alignement-div">
                                 <label for="idVille">Ville :
                                     <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
                                 </label>
