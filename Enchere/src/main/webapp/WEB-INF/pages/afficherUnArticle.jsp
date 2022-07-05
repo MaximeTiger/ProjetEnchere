@@ -32,7 +32,7 @@
 <body>
 <header>
     <a href="acceuil">
-        <img alt="logo" src="./img/logo_V1-removebg-preview.png">
+        <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
     </a>
     <div>
         <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
@@ -55,7 +55,10 @@
                     <p>Catégorie : ${article.libelle}</p>
                 </div>
                 <div>
-                    <p>Mise à prix : ${article.prixInitial}</p>
+                    <p>Mise à prix : ${article.prixInitial} points</p>
+                </div>
+                <div>
+                    <p>Meilleur offre : </p>
                 </div>
                 <div>
                     <p>Fin de l'enchère : ${article.finEncheres}</p>

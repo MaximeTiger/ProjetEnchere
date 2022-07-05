@@ -102,11 +102,11 @@ public class Article{
         this.noUtilisateur = no_utilisateur;
     }
 
-    public Article(String nom_article, String description, String libelle, int prix_vente, Date date_fin_encheres, String rue, String code_postal, String ville, String pseudo) {
+    public Article(String nom_article, String description, String libelle, int prix_initial, Date date_fin_encheres, String rue, String code_postal, String ville, String pseudo) {
     this.nomArticle = nom_article;
     this.description = description;
     this.libelle = libelle;
-    this.prixVente = prix_vente;
+    this.prixInitial = prix_initial;
     this.finEncheres = getLocalDateFromDate(date_fin_encheres);
     this.rue = rue;
     this.codePostale = code_postal;

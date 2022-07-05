@@ -13,28 +13,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 
 @WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
     private final ArticleManager articleManager;
-    private final UtilisateursManager utilisateursManager;
     private final EnchereManager enchereManager;
 
     public ArticleServlet() {
         enchereManager = BLLFactory.getEnchereManager();
         articleManager = BLLFactory.getArticleManager();
-        utilisateursManager = BLLFactory.getUtilisateursManager();
     }
-    Article art;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int id = Integer.parseInt(req.getParameter("noArticle"));
 
+        Article art;
+
         try {
             art = articleManager.afficherUnArticle(id);
+            System.out.println(art.getPrixInitial());
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }

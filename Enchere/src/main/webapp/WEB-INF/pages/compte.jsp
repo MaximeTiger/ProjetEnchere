@@ -26,7 +26,7 @@
     <div>
 
         <a href="acceuil">
-            <img alt="logo" src="./img/logo_V1-removebg-preview.png">
+            <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
         </a>
     </div>
     <div>
