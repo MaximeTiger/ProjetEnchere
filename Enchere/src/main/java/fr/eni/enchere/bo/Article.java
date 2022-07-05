@@ -39,8 +39,6 @@ public class Article{
     private List<Enchere> listEnchere;
 
     //constructeurs
-
-
     public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial) {
         this.nomArticle = nomArticle;
         this.description = description;

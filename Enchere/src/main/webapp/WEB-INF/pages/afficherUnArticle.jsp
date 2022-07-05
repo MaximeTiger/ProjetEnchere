@@ -57,9 +57,15 @@
                 <div>
                     <p>Mise à prix : ${article.prixInitial} points</p>
                 </div>
-                <div>
-                    <p>Meilleur offre : </p>
-                </div>
+
+
+                    <c:if test="${article.noArticle}=${encheres.noArticle}">
+                        <div>
+                            <p>Meilleur offre : ${encheres.montantEnchere}</p>
+                        </div>
+                    </c:if>
+
+
                 <div>
                     <p>Fin de l'enchère : ${article.finEncheres}</p>
                 </div>
