@@ -55,7 +55,10 @@
                     <p>Catégorie : ${article.libelle}</p>
                 </div>
                 <div>
-                    <p>Mise à prix : ${article.prixInitial}</p>
+                    <p>Mise à prix : ${article.prixInitial} points</p>
+                </div>
+                <div>
+                    <p>Meilleur offre : </p>
                 </div>
                 <div>
                     <p>Fin de l'enchère : ${article.finEncheres}</p>
