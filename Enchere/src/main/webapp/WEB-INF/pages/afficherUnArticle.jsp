@@ -24,8 +24,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/article.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="css/article.css">
     <title>Article</title>
 
 </head>
@@ -61,26 +61,13 @@
                     <p>Fin de l'enchère : ${article.finEncheres}</p>
                 </div>
                 <!----------tableau retrait---------->
-                <div>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>Retrait : </p>
-                                </td>
-                                <td>
-                                    <p>${article.rue}</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <p>${article.codePostale} ${article.ville}</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <fieldset class="fieldset">
+                    <legend class="legend">Retour</legend>
+                    <p>Rue : ${article.rue}</p>
+                    <p>Ville : ${article.ville}</p>
+                    <p>Code Postal : ${article.codePostale}</p>
+                </fieldset>
+
                 <div>
                     <p>Vendeur : ${article.pseudo}</p>
                 </div>

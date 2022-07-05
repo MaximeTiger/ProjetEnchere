@@ -83,11 +83,11 @@ public class  UtilisateursDAOImpl implements UtilisateursDAO {
             //Executer la requete
             stmt.executeQuery();
 
-            ResultSet rs = stmt.getGeneratedKeys();
+            /*ResultSet rs = stmt.getGeneratedKeys();
 
             if (rs.next()) {
                 u.setNoUtilisateur(rs.getInt(1));
-            }
+            }*/
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
