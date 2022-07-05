@@ -29,14 +29,13 @@ public class ArticleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int id = Integer.parseInt(req.getParameter("noArticle"));
-        String nomArt = req.getParameter("nomArticle");
 
         Article art;
         List<Enchere> encheres;
 
         try {
             art = articleManager.afficherUnArticle(id);
-            encheres = enchereManager.enchereEnCours();
+            encheres = enchereManager.enchereParArticle(req.getParameter("nomArticle"));
         } catch (BLLException e) {
             throw new RuntimeException(e);
         }

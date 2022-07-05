@@ -45,7 +45,7 @@
         <div class="row">
             <div class="align-center mt-5">
                 <h1 >Détail vente</h1>
-                <div>
+                <div id="nomArticle">
                     <p>${article.nomArticle}</p>
                 </div>
                 <div>
@@ -58,13 +58,11 @@
                     <p>Mise à prix : ${article.prixInitial} points</p>
                 </div>
 
-
-                    <c:if test="${article.noArticle}=${encheres.noArticle}">
+                <c:forEach var="encheres" items="${encheres}">
                         <div>
                             <p>Meilleur offre : ${encheres.montantEnchere}</p>
                         </div>
-                    </c:if>
-
+                </c:forEach>
 
                 <div>
                     <p>Fin de l'enchère : ${article.finEncheres}</p>
