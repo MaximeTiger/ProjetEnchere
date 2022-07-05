@@ -16,6 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/article.css">
     <link rel="stylesheet" href="css/accueil.css">
+    <link rel="stylesheet" href="css/recherche.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Acceuil</title>
 </head>
@@ -33,9 +34,12 @@
                 ${connexion}
                 ${compte}
 
+                <label for="searchbar"></label>
+                <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Search animals..">
+
                 <c:forEach var="enchere" items="${enchere}">
                     <br>
-                    <div class="col-3 card">
+                    <div class="col-3 card enchere">
                         <div class="card-body">
                             <div class="card-title">
                                 <p>${enchere.nomArticle}</p>
@@ -53,7 +57,7 @@
                                 <p>Numéro enchère : ${enchere.noEnchere}</p>
                             </div>
                             <div class="card-text">
-                                <a href="afficherUnArticle?noArticle=${enchere.noArticle}">Afficher le détail de l'article</a>
+                                <a href="afficherUnArticle?noArticle=${enchere.noArticle}" ${detail}> Afficher le détail de l'article</a>
                             </div>
                         </div>
 
@@ -62,7 +66,7 @@
                     <br>
                 </c:forEach>
                 <div>
-                    <a href="vendreUnArticle">vendre un article</a>
+                    <a href="vendreUnArticle" ${detail}>vendre un article</a>
                 </div>
 
                 <br>
@@ -73,6 +77,6 @@
     </div>
 
 
-
+<script src="javascript/recherche.js"></script>
 </body>
 </html>
