@@ -8,3 +8,20 @@ body{
 .proposition{
     width: .4em;
 }
+
+.container{
+    display:table;
+}
+
+.alignement-div{
+    display :table-row;
+}
+
+label{
+    display : table-cell;
+}
+
+input{
+    display : table-cell;
+}
+
