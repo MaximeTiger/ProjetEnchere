@@ -33,13 +33,14 @@ public class CompteServlet extends HttpServlet {
 
         if ("modifier".equals(action)){
             doModifier(req, resp);
-        }
-
-        if ("supprimer".equals(action)){
+        } else if ("supprimer".equals(action)){
             doSupprimer(req, resp);
+        } else {
+            req.getRequestDispatcher("/WEB-INF/pages/compte.jsp").forward(req,resp);
         }
 
-        req.getRequestDispatcher("/WEB-INF/pages/compte.jsp").forward(req,resp);
+
+
     }
 
     @Override
@@ -70,16 +71,17 @@ public class CompteServlet extends HttpServlet {
 
     protected void doModifier(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("modif","");
+        req.getRequestDispatcher("/WEB-INF/pages/compte.jsp").forward(req,resp);
     }
 
     protected void doSupprimer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("modif","");
-
-        int id = Integer.parseInt(req.getParameter("NoUtilisateur"));
+        HttpSession session = req.getSession();
         try {
-            mgerCompte.supprimerCompte(id);
+            mgerCompte.supprimerCompte(Integer.parseInt(req.getParameter("NoUtilisateur")));
         } catch (BLLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        session.invalidate();
+        resp.sendRedirect("acceuil");
     }
 }
