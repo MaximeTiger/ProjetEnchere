@@ -45,8 +45,8 @@
         <div class="row">
             <div class="align-center mt-5">
                 <h1 >Détail vente</h1>
-                <div id="nomArticle">
-                    <p>${article.nomArticle}</p>
+                <div>
+                    <p name="nomArticle">${article.nomArticle}</p>
                 </div>
                 <div>
                     <p>Description : ${article.description}</p>
