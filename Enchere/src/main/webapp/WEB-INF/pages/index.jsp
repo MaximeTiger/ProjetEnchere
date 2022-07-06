@@ -16,6 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/article.css">
     <link rel="stylesheet" href="css/recherche.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Accueil</title>
 </head>
@@ -87,7 +88,7 @@
     </div>
 </main>
 <footer>
-
+    footer
 </footer>
 
 <script src="javascript/recherche.js"></script>
