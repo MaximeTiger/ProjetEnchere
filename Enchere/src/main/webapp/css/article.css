@@ -2,12 +2,14 @@ body{
     background-image: none;
     background: #F7F7F7;
     background: radial-gradient(ellipse at center, #F7F7F7, #C7BB9E);
-
+    justify-content: center;
+    overflow-y: hidden;
 }
 
-.proposition{
-    width: .4em;
+.h1titre{
+    text-align: center;
 }
+
 
 .container{
     display : table;
@@ -25,5 +27,63 @@ label {
 
 input {
     display : table-cell;
+
+input {
+    font-size: 1em;
+    color: black;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem 1.2rem;
+    width: 350px;
+    border-radius: 50px;
+    border: 1px solid white;
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+    color: black;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+
 }
+
+::placeholder {
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.btn-perso{
+    text-decoration: none;
+    text-transform:uppercase;
+    position:relative;
+    top:0;
+    left:0;
+    padding:10px 30px;
+    border-radius:100px;
+    display:inline-block;
+    transition: all .5s;
+}
+
+#idDescription{
+    height: 150px;
+}
+#labelDescription{
+
+}
+
+.form container{
+    display: table;
+}
+
+.alignement-div{
+    display: table-cell;
+}
+
+label{
+    display: table-cell;
+}
+
+input{
+    display: table-cell;
+}
+
 

@@ -29,10 +29,12 @@ public class AcceuilServlet extends HttpServlet {
 
         if (session.getAttribute("SessionUtilisateur") == null){
             session.setAttribute("connexion", "<a href=\"connexion\">Connexion - Inscription</a>\n<br>\n");
+            session.setAttribute("detail","hidden");
         } else if (session.getAttribute("SessionUtilisateur") != null){
             session.setAttribute("connexion", "");
             session.setAttribute("compte","<a href=\"compte\">Compte</a>\n");
             session.setAttribute("deco","<a href=\"connexion?action=deconnexion\">Deconnexion</a>");
+            session.setAttribute("detail","");
         }
 
 
