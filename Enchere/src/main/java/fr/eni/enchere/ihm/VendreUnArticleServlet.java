@@ -84,7 +84,8 @@ public class VendreUnArticleServlet extends HttpServlet {
                 req.getParameter("rue"),
                 req.getParameter("codePostal"),
                 req.getParameter("ville"),
-                util.getNoUtilisateur());
+                util.getNoUtilisateur()
+        );
 
         try{
 

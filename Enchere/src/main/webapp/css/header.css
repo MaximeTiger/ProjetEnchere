@@ -1,10 +1,30 @@
 header{
     background-color: #79B4B7 ;
-    padding-bottom: 2em;
     display: flex;
     justify-content: space-around;
 }
 
 #recherche{
     flex: content;
+    margin-top: 2em;
+}
+
+#compte{
+    margin-top: 3em;
+    margin-right: 3em;
+}
+
+#vendre{
+    margin-top: 3em;
+    margin-right: 3em;
+}
+
+#deco{
+    margin-top: 3em;
+    margin-right: 3em;
+}
+
+#co{
+    margin-top: 3em;
+    margin-right: 3em;
 }

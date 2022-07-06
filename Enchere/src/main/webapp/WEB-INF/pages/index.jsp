@@ -29,8 +29,21 @@
         <label for="searchbar"></label>
         <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
     </div>
+
     <div id="compte">
         ${compte}
+    </div>
+
+    <div id="vendre">
+        <a href="vendreUnArticle" ${detail}>Vendre un article</a>
+    </div>
+
+    <div id="deco">
+        ${deco}
+    </div>
+
+    <div id="co">
+        ${connexion}
     </div>
 
 </header>
@@ -39,11 +52,6 @@
         <div class="row">
             <div class="align-center mt-5">
                 <h1>Accueil</h1>
-
-                <p>${bonjour}</p>
-
-                ${connexion}
-
 
                 <div class="container">
                     <div class="row">
@@ -78,13 +86,6 @@
                     </div>
                 </div>
 
-
-                <div>
-                    <a href="vendreUnArticle" ${detail}>vendre un article</a>
-                </div>
-
-                <br>
-                ${deco}
             </div>
 
         </div>
