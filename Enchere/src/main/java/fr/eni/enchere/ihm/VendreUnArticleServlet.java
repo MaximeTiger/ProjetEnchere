@@ -57,18 +57,21 @@ public class VendreUnArticleServlet extends HttpServlet {
         System.out.println(req.getParameter("nomArticle"));
 
         int numLibel = 0;
-        switch (req.getParameter("libelle")){
-            case "Informatique" :
+        switch (req.getParameter("categorie")){
+            case "voiture" :
                 numLibel = 1;
                 break;
-            case "Ameublement" :
+            case "Informatique" :
                 numLibel = 2;
                 break;
-            case "Vêtements" :
+            case "Ameublement" :
                 numLibel = 3;
                 break;
-            case "Sport et Loisirs" :
+            case "Vêtements" :
                 numLibel = 4;
+                break;
+            case "Sport et Loisirs" :
+                numLibel = 5;
                 break;
         }
         Article saisie = new Article(
