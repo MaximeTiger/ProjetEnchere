@@ -113,7 +113,7 @@ public class Article{
     this.pseudo = pseudo;
     }
 
-    public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial, int noCategorie, String rue, String codePostale, String ville) {
+    public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial, int noCategorie, String rue, String codePostale, String ville, int noUtilisateurs) {
         this.nomArticle = nomArticle;
         this.description = description;
         this.debutEncheres = debutEncheres;
@@ -123,6 +123,7 @@ public class Article{
         this.rue = rue;
         this.codePostale = codePostale;
         this.ville = ville;
+        this.noUtilisateur = noUtilisateurs;
     }
 
     //accesseurs

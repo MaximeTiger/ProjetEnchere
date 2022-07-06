@@ -56,16 +56,32 @@ public class VendreUnArticleServlet extends HttpServlet {
 
         System.out.println(req.getParameter("nomArticle"));
 
+        int numLibel = 0;
+        switch (req.getParameter("libelle")){
+            case "Informatique" :
+                numLibel = 1;
+                break;
+            case "Ameublement" :
+                numLibel = 2;
+                break;
+            case "Vêtements" :
+                numLibel = 3;
+                break;
+            case "Sport et Loisirs" :
+                numLibel = 4;
+                break;
+        }
         Article saisie = new Article(
                 req.getParameter("nomArticle"),
                 req.getParameter("description"),
                 LocalDate.parse(req.getParameter("debutEnchere")),
                 LocalDate.parse(req.getParameter("finEnchere")),
                 Integer.parseInt(req.getParameter("miseAPrix")),
-                req.getParameter("libelle"),
+                numLibel,
                 req.getParameter("rue"),
                 req.getParameter("codePostal"),
-                req.getParameter("ville"));
+                req.getParameter("ville"),
+                util.getNoUtilisateur());
 
         try{
 
