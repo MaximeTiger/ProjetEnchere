@@ -11,8 +11,8 @@ import java.time.ZoneId;
 
 public class ArticleDAOImpl implements ArticleDAO {
 
-    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
-        "VALUES (?,?,?,?,?,?)";
+    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
+        "VALUES (?,?,?,?,?,?,?)";
 
     private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,\n" +
             "CATEGORIES.libelle,ARTICLES_VENDUS.prix_initial,ARTICLES_VENDUS.date_fin_encheres,\n" +
@@ -31,10 +31,11 @@ public class ArticleDAOImpl implements ArticleDAO {
 
             stmt.setString(1,a.getNomArticle());
             stmt.setString(2,a.getDescription());
-            stmt.setObject(3, Date.valueOf(a.getDebutEncheres()));
-            stmt.setObject(4, Date.valueOf(a.getFinEncheres()));
-            stmt.setInt(5,a.getPrixInitial());
-            stmt.setInt(6,a.getPrixVente());
+            stmt.setInt(3, a.getNoCategorie());
+            stmt.setObject(4, Date.valueOf(a.getDebutEncheres()));
+            stmt.setObject(5, Date.valueOf(a.getFinEncheres()));
+            stmt.setInt(6,a.getPrixInitial());
+            stmt.setInt(7,a.getPrixVente());
 
             stmt.executeQuery();
 
