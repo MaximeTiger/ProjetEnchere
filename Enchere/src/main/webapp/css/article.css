@@ -1,10 +1,15 @@
-body{
+main{
     background-image: none;
     background: #F7F7F7;
     background: radial-gradient(ellipse at center, #F7F7F7, #C7BB9E);
     justify-content: center;
     overflow-y: hidden;
 }
+
+header{
+    color: blue;
+}
+
 
 .h1titre{
     text-align: center;
