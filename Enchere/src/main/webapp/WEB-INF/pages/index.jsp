@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/accueil.css">
     <link rel="stylesheet" href="css/recherche.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <title>Acceuil</title>
+    <title>Accueil</title>
 </head>
 <body>
     <a href="acceuil">
@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="align-center mt-5">
-                <h1>Acceuil</h1>
+                <h1>Accueil</h1>
 
                 <p>${bonjour}</p>
 
