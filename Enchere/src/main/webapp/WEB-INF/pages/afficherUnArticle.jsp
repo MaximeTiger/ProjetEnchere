@@ -57,6 +57,12 @@
                 <div>
                     <p>Mise à prix : ${article.prixInitial} points</p>
                 </div>
+                <div>
+                    <p>${encherisseur}${pseudoAcheteur}</p>
+                </div>
+                <div>
+                    <p>${prixEnchere}${meilleur_enchere}</p>
+                </div>
 
                 <c:forEach var="encheres" items="${encheres}">
                         <div>
@@ -81,7 +87,7 @@
                 <!----------formulaire---------->
                 <div>
                     <form action="afficherUnArticle" method="post">
-                        <label for="proposition">Ma proposition :
+                        <label for="proposition">
                             <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
                         </label>
                         <input type="hidden" id="noUtilisateur" name="noUtilisateur" value="${article.noUtilisateur}">

@@ -31,6 +31,8 @@ public class EnchereDAOImpl implements EnchereDAO {
     private static final String INSERT = "INSERT INTO ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur) " +
             "VALUES (?,?,?,?)";
 
+    private static final String SELECT_BY_ID_LAST_ENCHERE = "select * from ENCHERES where no_article = ? order by montant_enchere desc";
+
     @Override
     public Enchere selectById(Integer id) throws DALException {
 
@@ -202,5 +204,36 @@ public class EnchereDAOImpl implements EnchereDAO {
             throw new DALException("Erreur dal a la recherche d'une enchère");
         }
         return listeEnchere;
+    }
+
+    @Override
+    public Enchere selectMaxEnchere(Integer no_article) throws DALException {
+
+        Enchere ench = null;
+        try(
+                Connection conn = ConnectionProvider.getConnection()
+        ) {
+
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID_LAST_ENCHERE);
+
+            stmt.setInt(1,no_article);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()){
+                ench = new Enchere(
+                        rs.getInt("no_enchere"),
+                        rs.getObject("date_enchere",LocalDate.class),
+                        rs.getInt("montant_enchere"),
+                        rs.getInt("no_article"),
+                        rs.getInt("no_utilisateur")
+                );
+            }
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur a la selection d'une enchère");
+        }
+        return ench;
     }
 }

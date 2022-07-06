@@ -4,6 +4,7 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.enchere.EnchereManager;
+import fr.eni.enchere.bll.utilisateurs.UtilisateursManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Utilisateurs;
@@ -23,13 +24,14 @@ import java.util.List;
 public class ArticleServlet extends HttpServlet {
     private final ArticleManager articleManager;
     private final EnchereManager enchereManager;
+    private final UtilisateursManager utilisateursManager;
 
     public ArticleServlet() {
         enchereManager = BLLFactory.getEnchereManager();
         articleManager = BLLFactory.getArticleManager();
+        utilisateursManager = BLLFactory.getUtilisateursManager();
     }
-    List<String> nomUtil = new ArrayList<>();
-    List<Integer> montants = new ArrayList<>();
+    int nbEnch = 0;
 
     int id;
 
@@ -42,6 +44,8 @@ public class ArticleServlet extends HttpServlet {
         id = Integer.parseInt(req.getParameter("noArticle"));
 
         Article art;
+        Enchere lastEnch;
+        Utilisateurs lastUtil;
 
         try {
             art = articleManager.afficherUnArticle(id);
@@ -49,8 +53,31 @@ public class ArticleServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
+        try {
+            lastEnch = enchereManager.selectMaxEnchere(id);
+        } catch (BLLException e) {
+            throw new RuntimeException(e);
+        }
 
-        req.setAttribute("article",art);
+        try {
+            lastUtil = utilisateursManager.selectById(lastEnch.getNoUtilisateur());
+        } catch (BLLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (lastEnch.getNoArticle() == 0){
+            session.setAttribute("encherisseur","");
+            session.setAttribute("prixEnchere","");
+        } else {
+            session.setAttribute("encherisseur","Encherisseur : ");
+            session.setAttribute("prixEnchere","Prix : ");
+
+            session.setAttribute("pseudoAcheteur",lastUtil.getPseudo());
+            session.setAttribute("meilleur_enchere",lastEnch.getMontantEnchere());
+        }
+
+
+        session.setAttribute("article",art);
 
         req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
@@ -60,21 +87,13 @@ public class ArticleServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Utilisateurs util = (Utilisateurs) session.getAttribute("SessionUtilisateur");
 
+
         int montantEnchere = Integer.parseInt(req.getParameter("proposition"));
         LocalDate dateEnchere = LocalDate.now();
 
-        int noArt = Integer.parseInt(req.getParameter("noArticle"));
+        Enchere ench = new Enchere(dateEnchere, montantEnchere, util.getNoUtilisateur(), id);
 
-        Enchere ench = new Enchere(dateEnchere, montantEnchere, util.getNoUtilisateur(), noArt);
-
-        nomUtil.add(util.getPseudo());
-        montants.add(montantEnchere);
-
-        String pseudoAcheteur = nomUtil.get(nomUtil.size()-1);
-        int montant = montants.get(montants.size()-1);
-
-        req.setAttribute("pseudoAcheteur",pseudoAcheteur);
-        req.setAttribute("meilleur_enchere",montant);
+        nbEnch ++;
 
         try {
             enchereManager.faireEnchere(ench);
@@ -84,4 +103,9 @@ public class ArticleServlet extends HttpServlet {
 
         resp.sendRedirect("afficherUnArticle?noArticle=" + id);
     }
+
+    protected void doRefresh(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+    }
+
 }
