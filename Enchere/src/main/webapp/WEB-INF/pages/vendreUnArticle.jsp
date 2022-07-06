@@ -6,123 +6,123 @@
 <head>
     <title>Vendre un article</title>
 </head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    <!-- CSS ONLY -->
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+<!-- CSS ONLY -->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="css/article.css">
-    <link rel="stylesheet" href="css/header.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="css/article.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <body>
 <!---------------------------------------------HEADER avec le logo ENI------------------------------------------------>
-    <header>
-        <a href="acceuil">
-            <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
-        </a>
-    </header>
+<header>
+    <a href="acceuil">
+        <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
+    </a>
+</header>
 
 <!-------------------------------------------------------MAIN--------------------------------------------------------->
-    <main>
+<main>
+    <div>
+        <!--------------------------------------EnTete du Main avec bouton retour et titre------------------------------------>
         <div>
-<!--------------------------------------EnTete du Main avec bouton retour et titre------------------------------------>
             <div>
-                <div>
-                    <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
-                </div>
-                <div>
-                    <h1 class="h1titre">Nouvelle vente</h1>
-                </div>
+                <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn retour">Retour</button></a>
             </div>
+            <div>
+                <h1 class="h1titre">Nouvelle vente</h1>
+            </div>
+        </div>
 
-<!------------------------------------Formulaire première partie description article---------------------------------->
+        <!------------------------------------Formulaire première partie description article---------------------------------->
 
-            <div class="form container">
-                <form action="vendreUnArticle" method="post" class="form formulaire">
-                    <div >
+        <div class="container">
+            <form action="vendreUnArticle" method="post" class="form formulaire">
+                <div >
+                    <div>
                         <div>
-                            <div class="alignement-div">
-                                <label for="idNom">Article :
-                                    <input type="text" name="nomArticle" id="idNom" placeholder="Exemple : Fauteuil " required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idDescription" id="labelDescription">Description :
-                                    <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idCategorie">Categorie </label>
-                                <select name="categorie" id="idCategorie" required>
+                            <label for="idNom" >Article :
+                                <input type="text" name="nomArticle" id="idNom" placeholder="Exemple : Fauteuil " class="right" required>
+                            </label>
+                        </div>
+                        <div >
+                            <label for="idDescription" id="labelDescription">Description :
+                                <input type="textarea" name="description" id="idDescription" placeholder="Exemple : Fauteuil en cuir" class="right" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idCategorie" >Categorie
+                                <select name="categorie" id="idCategorie" class="select" required>
                                     <option value="">-- Choisir une catégorie --</option>
                                     <c:forEach var="labelle" items="${labelle}">
                                         <option value="${labelle}">${labelle}</option>
                                     </c:forEach>
                                 </select>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idMiseAPrix">Mise à prix :
-                                    <input type="number" name="miseAPrix" id="idMiseAPrix" min="0.00" required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idDebutEnchere">Début de l'enchère :
-                                    <input type="date" name="debutEnchere" id="idDebutEnchere" value ="2018-08-05" min="2018-08-05" required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idFinEnchere">Fin de l'enchère :
-                                    <input type="date" name="finEnchere" id="idFinEnchere" value ="2018-08-06" min="2018-08-06" required>
-                                </label>
-                            </div>
+                            </label>
                         </div>
-<!---------------------------------------Formulaire deuxième partie retrait------------------------------------------->
-                        <fieldset class="fieldset">
-                            <legend class="legend">Retrait</legend>
-                                <div class="alignement-div">
-                                    <label for="idRue">Rue :
-                                        <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
-                                    </label>
-                                </div>
-                                <div class="alignement-div">
-                                    <label for="idCodePostal">Code postal :
-                                        <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
-                                    </label>
-                                </div>
-                                <div class="alignement-div">
-                                    <label for="idVille">Ville :
-                                        <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
-                                    </label>
-                                </div>
-                        </fieldset>
                         <div>
-                            <p class="error">${error}</p>
+                            <label for="idMiseAPrix">Mise à prix :
+                                <input type="number" name="miseAPrix" id="idMiseAPrix" min="0.00" class="right" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idDebutEnchere">Début de l'enchère :
+                                <input type="date" name="debutEnchere" id="idDebutEnchere" value ="2018-08-05" min="2018-08-05" class="right" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="idFinEnchere">Fin de l'enchère :
+                                <input type="date" name="finEnchere" id="idFinEnchere" value ="2018-08-06" min="2018-08-06" class="right" required>
+                            </label>
                         </div>
                     </div>
-<!----------------------------------------Formulaire troisième partie boutons----------------------------------------->
-                    <div class="button">
-                        <div class="registrerbtn">
-                            <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enregistrer</button>
+                    <!---------------------------------------Formulaire deuxième partie retrait------------------------------------------->
+                    <fieldset class="fieldset">
+                        <legend class="legend">Retrait</legend>
+                        <div class="alignement-div">
+                            <label for="idRue">Rue :
+                                <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}" class="rightRetrait" required>
+                            </label>
                         </div>
-                        <div class="resetbtn">
-                            <button type="reset" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Annuler</button>
+                        <div class="alignement-div">
+                            <label for="idCodePostal">Code postal :
+                                <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" class="rightRetrait" required>
+                            </label>
                         </div>
+                        <div class="alignement-div">
+                            <label for="idVille">Ville :
+                                <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" class="rightRetrait" required>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <div>
+                        <p class="error">${error}</p>
                     </div>
+                </div>
+                <!----------------------------------------Formulaire troisième partie boutons----------------------------------------->
+                <div class="button">
+                    <div class="registrerbtn">
+                        <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enregistrer</button>
+                    </div>
+                    <div class="resetbtn">
+                        <button type="reset" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Annuler</button>
+                    </div>
+                </div>
 
-                </form>
-            </div>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons"></script>
