@@ -1,7 +1,8 @@
 header{
     background-color: #C74631 ;
+    padding-bottom: 2em;
 }
 
-footer{
-    background-color: #C74631 ;
+#recherche{
+    flex: content;
 }

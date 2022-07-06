@@ -25,6 +25,11 @@
     <a href="acceuil">
         <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
     </a>
+    <div id="recherche">
+        <label for="searchbar"></label>
+        <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
+    </div>
+
 </header>
 <main>
     <div class="container">
@@ -36,11 +41,6 @@
 
                 ${connexion}
                 ${compte}
-
-                <label for="searchbar"></label>
-                <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Search animals..">
-
-
 
                 <div class="container">
                     <div class="row">
@@ -87,9 +87,6 @@
         </div>
     </div>
 </main>
-<footer>
-    footer
-</footer>
 
 <script src="javascript/recherche.js"></script>
 </body>
