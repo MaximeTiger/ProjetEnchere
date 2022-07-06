@@ -22,18 +22,21 @@
     <title>Compte</title>
 </head>
 <body>
-<header>
-    <div>
+<div class="header">
+    <header id="accueil">
+        <div>
 
-        <a href="acceuil">
-            <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
-        </a>
-    </div>
-    <div>
-        <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
-    </div>
+            <a href="acceuil">
+                <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
+            </a>
+        </div>
+        <div>
+            <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
+        </div>
 
-</header>
+    </header>
+</div>
+
 <main class="justify-content-center">
 
 
