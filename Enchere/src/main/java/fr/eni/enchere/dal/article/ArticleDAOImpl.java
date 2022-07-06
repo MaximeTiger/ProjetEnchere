@@ -11,7 +11,7 @@ import java.time.ZoneId;
 
 public class ArticleDAOImpl implements ArticleDAO {
 
-    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente)"+
+    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres,date_fin_encheres,prix_initial,no_utilisateur)"+
         "VALUES (?,?,?,?,?,?,?)";
 
     private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,\n" +
@@ -35,7 +35,8 @@ public class ArticleDAOImpl implements ArticleDAO {
             stmt.setObject(4, Date.valueOf(a.getDebutEncheres()));
             stmt.setObject(5, Date.valueOf(a.getFinEncheres()));
             stmt.setInt(6,a.getPrixInitial());
-            stmt.setInt(7,a.getPrixVente());
+            stmt.setInt(7, a.getNoUtilisateur());
+
 
             stmt.executeQuery();
 
