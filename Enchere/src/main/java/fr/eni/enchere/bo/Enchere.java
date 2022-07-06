@@ -66,6 +66,14 @@ public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String 
         this.noArticle = noArticle;
         this.noUtilisateur = noUtilisateur;
     }
+
+    public Enchere(int no_enchere, LocalDate date_enchere, int montant_enchere, int no_article, int no_utilisateur) {
+    this.noEnchere = no_enchere;
+    this.dateEnchere = date_enchere;
+    this.montantEnchere = montant_enchere;
+    this.noArticle = no_article;
+    this.noUtilisateur = no_utilisateur;
+    }
     //accesseurs
 
     public int getNoUtilisateur() {
@@ -139,15 +147,7 @@ public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String 
         this.article = article;
     }
 
-//affichage
-    @Override
-    public String toString() {
-        return "nom Utilisateur = " + nomUtilisateur + "\n" +
-                " nomArticle = " + nomArticle + "\n" +
-                " noEnchere = " + noEnchere + "\n" +
-                " dateEnchere = " + dateEnchere + "\n" +
-                " montantEnchere = " + montantEnchere + "\n";
-    }
+
 
 }
 

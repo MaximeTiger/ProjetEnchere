@@ -24,8 +24,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="css/style.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="css/article.css">
+
+    <link rel="stylesheet" href="css/header.css">
     <title>Article</title>
 
 </head>
@@ -57,6 +60,12 @@
                 <div>
                     <p>Mise à prix : ${article.prixInitial} points</p>
                 </div>
+                <div>
+                    <p>${encherisseur}${pseudoAcheteur}</p>
+                </div>
+                <div>
+                    <p>${prixEnchere}${meilleur_enchere}</p>
+                </div>
 
                 <c:forEach var="encheres" items="${encheres}">
                         <div>
@@ -81,7 +90,7 @@
                 <!----------formulaire---------->
                 <div>
                     <form action="afficherUnArticle" method="post">
-                        <label for="proposition">Ma proposition :
+                        <label for="proposition">
                             <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
                         </label>
                         <input type="hidden" id="noUtilisateur" name="noUtilisateur" value="${article.noUtilisateur}">

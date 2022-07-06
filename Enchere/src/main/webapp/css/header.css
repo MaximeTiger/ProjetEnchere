@@ -1,0 +1,10 @@
+header{
+    background-color: #79B4B7 ;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+#recherche{
+    flex: content;
+}

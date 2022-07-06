@@ -68,5 +68,16 @@ public class EnchereManagerImpl implements  EnchereManager{
         }
     }
 
+    @Override
+    public Enchere selectMaxEnchere(Integer no_article) throws BLLException {
+        Enchere enchere;
+        try {
+            enchere = enchereDAO.selectMaxEnchere(no_article);
+        } catch (DALException e) {
+            throw new RuntimeException(e);
+        }
+        return enchere;
+    }
+
 
 }

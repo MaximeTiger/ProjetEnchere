@@ -16,6 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/article.css">
     <link rel="stylesheet" href="css/recherche.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Accueil</title>
 </head>
@@ -24,6 +25,14 @@
     <a href="acceuil">
         <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
     </a>
+    <div id="recherche">
+        <label for="searchbar"></label>
+        <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
+    </div>
+    <div id="compte">
+        ${compte}
+    </div>
+
 </header>
 <main>
     <div class="container">
@@ -34,11 +43,6 @@
                 <p>${bonjour}</p>
 
                 ${connexion}
-                ${compte}
-
-                <label for="searchbar"></label>
-                <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Search animals..">
-
 
 
                 <div class="container">
@@ -86,9 +90,6 @@
         </div>
     </div>
 </main>
-<footer>
-
-</footer>
 
 <script src="javascript/recherche.js"></script>
 </body>

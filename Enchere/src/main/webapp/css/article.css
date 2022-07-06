@@ -1,15 +1,9 @@
-main{
+body{
     background-image: none;
-    background: #F7F7F7;
-    background: radial-gradient(ellipse at center, #F7F7F7, #C7BB9E);
+    background-color: #FEFBF3;
+    color: #9D9D9D;
     justify-content: center;
-    overflow-y: hidden;
 }
-
-header{
-    color: blue;
-}
-
 
 .h1titre{
     text-align: center;
@@ -97,4 +91,7 @@ input {
     color: black;
 }
 
+#compte{
+    margin: auto;
+}
 

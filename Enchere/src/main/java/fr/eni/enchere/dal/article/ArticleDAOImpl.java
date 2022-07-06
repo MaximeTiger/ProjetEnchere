@@ -58,12 +58,9 @@ public class ArticleDAOImpl implements ArticleDAO {
 
             PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);
 
-            System.out.println(noArticle);
-
             stmt.setInt(1,noArticle);
 
             ResultSet rs = stmt.executeQuery();
-
 
             if (rs.next()) {
                 art = new Article(
@@ -77,15 +74,6 @@ public class ArticleDAOImpl implements ArticleDAO {
                         rs.getString("ville"),
                         rs.getString("pseudo")
                         );
-                System.out.println(rs.getString("nom_article"));
-                System.out.println(rs.getString("description"));
-                System.out.println(rs.getString("libelle"));
-                System.out.println("Prix initial : " + rs.getString("prix_initial"));
-                System.out.println(rs.getString("date_fin_encheres"));
-                System.out.println(rs.getString("rue"));
-                System.out.println(rs.getString("code_postal"));
-                System.out.println(rs.getString("ville"));
-                System.out.println(rs.getString("pseudo"));
             }
         }
 

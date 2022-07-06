@@ -2,6 +2,7 @@ package fr.eni.enchere.bll.enchere;
 
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bo.Enchere;
+import fr.eni.enchere.dal.DALException;
 
 import java.util.List;
 
@@ -12,5 +13,6 @@ public interface EnchereManager {
     List<Enchere> enchereParArticle(String nomArt) throws BLLException;
     List<Enchere> enchereParCategorie(String libelle) throws BLLException;
     void faireEnchere (Enchere enchere) throws  BLLException;
+    Enchere selectMaxEnchere(Integer no_article) throws BLLException;
 
 }

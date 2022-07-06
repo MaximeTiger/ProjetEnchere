@@ -18,22 +18,25 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/article.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Compte</title>
 </head>
 <body>
-<header>
-    <div>
 
-        <a href="acceuil">
-            <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
-        </a>
-    </div>
-    <div>
-        <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
-    </div>
+    <header id="accueil">
+        <div>
 
-</header>
+            <a href="acceuil">
+                <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
+            </a>
+        </div>
+        <div>
+            <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
+        </div>
+
+    </header>
+
 <main class="justify-content-center">
 
 
