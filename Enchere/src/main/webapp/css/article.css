@@ -10,6 +10,24 @@ body{
     text-align: center;
 }
 
+
+.container{
+    display : table;
+}
+
+.alignement-div{
+    display : table-row;
+}
+
+label {
+    display : inline-block;
+    width : 100px;
+
+}
+
+input {
+    display : table-cell;
+
 input {
     font-size: 1em;
     color: black;
@@ -24,6 +42,7 @@ input {
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+
 }
 
 ::placeholder {

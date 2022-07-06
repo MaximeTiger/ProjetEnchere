@@ -37,34 +37,42 @@
                 <label for="searchbar"></label>
                 <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Search animals..">
 
-                <c:forEach var="enchere" items="${enchere}">
-                    <br>
-                    <div class="col-3 card enchere">
-                        <div class="card-body">
-                            <div class="card-title">
-                                <p>${enchere.nomArticle}</p>
-                            </div>
-                            <div class="card-subtitle mb-2 text-muted">
-                                <p>Prix : ${enchere.montantEnchere} points</p>
-                            </div>
-                            <div class="card-text">
-                                <p>Date de fin de l'enchère ${enchere.dateEnchere}</p>
-                            </div>
-                            <div class="card-text">
-                                <p>Vendeur : ${enchere.nomUtilisateur}</p>
-                            </div>
-                            <div class="card-text">
-                                <p>Numéro enchère : ${enchere.noEnchere}</p>
-                            </div>
-                            <div class="card-text">
-                                <a href="afficherUnArticle?noArticle=${enchere.noArticle}" ${detail}> Afficher le détail de l'article</a>
-                            </div>
-                        </div>
 
+
+                <div class="container">
+                    <div class="row">
+
+                        <c:forEach var="enchere" items="${enchere}">
+                            <div class="col-2 card enchere">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <p>${enchere.nomArticle}</p>
+                                    </div>
+                                    <div class="card-subtitle mb-2 text-muted">
+                                        <p>Prix : ${enchere.montantEnchere} points</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <p>Date de fin de l'enchère ${enchere.dateEnchere}</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <p>Vendeur : ${enchere.nomUtilisateur}</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <p>Numéro enchère : ${enchere.noEnchere}</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <a href="afficherUnArticle?noArticle=${enchere.noArticle}" ${detail}> Afficher le détail de l'article</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </c:forEach>
 
                     </div>
-                    <br>
-                </c:forEach>
+                </div>
+
+
                 <div>
                     <a href="vendreUnArticle" ${detail}>vendre un article</a>
                 </div>
