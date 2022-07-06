@@ -85,29 +85,30 @@
                                 </label>
                             </div>
                         </div>
-<!---------------------------------------Formulaire deuxième partie retrait-------------------------------------------!>
-                        <div>
-                            <div class="alignement-div">
-                                <label for="idRue">Rue :
-                                    <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idCodePostal">Code postal :
-                                    <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idVille">Ville :
-                                    <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
-                                </label>
-                            </div>
-                        </div>
+<!---------------------------------------Formulaire deuxième partie retrait------------------------------------------->
+                        <fieldset class="fieldset">
+                            <legend class="legend">Retrait</legend>
+                                <div class="alignement-div">
+                                    <label for="idRue">Rue :
+                                        <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
+                                    </label>
+                                </div>
+                                <div class="alignement-div">
+                                    <label for="idCodePostal">Code postal :
+                                        <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
+                                    </label>
+                                </div>
+                                <div class="alignement-div">
+                                    <label for="idVille">Ville :
+                                        <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
+                                    </label>
+                                </div>
+                        </fieldset>
                         <div>
                             <p class="error">${error}</p>
                         </div>
                     </div>
-<!----------------------------------------Formulaire troisième partie boutons-----------------------------------------!>
+<!----------------------------------------Formulaire troisième partie boutons----------------------------------------->
                     <div class="button">
                         <div class="registrerbtn">
                             <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enregistrer</button>
