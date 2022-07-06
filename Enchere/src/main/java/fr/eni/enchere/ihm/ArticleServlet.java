@@ -31,7 +31,7 @@ public class ArticleServlet extends HttpServlet {
     List<String> nomUtil = new ArrayList<>();
     List<Integer> montants = new ArrayList<>();
 
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -75,12 +75,19 @@ public class ArticleServlet extends HttpServlet {
         nomUtil.add(util.getPseudo());
         montants.add(montantEnchere);
 
+        String pseudoAcheteur = nomUtil.get(nomUtil.size()-1);
+        int montant = montants.get(montants.size()-1);
+
+        req.setAttribute("pseudoAcheteur",pseudoAcheteur);
+        req.setAttribute("meilleur_enchere",montant);
+
         try {
             enchereManager.faireEnchere(ench);
         } catch (BLLException e) {
             e.printStackTrace();
         }
-        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
+
+        resp.sendRedirect("afficherUnArticle");
 
     }
 }

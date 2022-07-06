@@ -60,7 +60,7 @@
 
                 <c:forEach var="encheres" items="${encheres}">
                         <div>
-                            <p>Meilleur offre : ${encheres.montantEnchere}</p>
+                            <p>Meilleur offre : ${meilleur_enchere} par ${pseudoAcheteur}</p>
                         </div>
                 </c:forEach>
 
