@@ -19,8 +19,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
 
-
     <link rel="stylesheet" href="css/article.css">
+    <link rel="stylesheet" href="css/header.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <body>
@@ -81,33 +82,34 @@
                             </div>
                             <div class="alignement-div">
                                 <label for="idFinEnchere">Fin de l'enchère :
-                                    <input type="date" name="finEnchere" id="idFinEnchere" min="2018-08-05" required>
+                                    <input type="date" name="finEnchere" id="idFinEnchere" value ="2018-08-06" min="2018-08-06" required>
                                 </label>
                             </div>
                         </div>
-<!---------------------------------------Formulaire deuxième partie retrait-------------------------------------------!>
-                        <div>
-                            <div class="alignement-div">
-                                <label for="idRue">Rue :
-                                    <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idCodePostal">Code postal :
-                                    <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
-                                </label>
-                            </div>
-                            <div class="alignement-div">
-                                <label for="idVille">Ville :
-                                    <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
-                                </label>
-                            </div>
-                        </div>
+<!---------------------------------------Formulaire deuxième partie retrait------------------------------------------->
+                        <fieldset class="fieldset">
+                            <legend class="legend">Retrait</legend>
+                                <div class="alignement-div">
+                                    <label for="idRue">Rue :
+                                        <input type="text" name="rue" id="idRue" value="${SessionUtilisateur.rue}"required>
+                                    </label>
+                                </div>
+                                <div class="alignement-div">
+                                    <label for="idCodePostal">Code postal :
+                                        <input type="text" name="codePostal" id="idCodePostal" pattern =[0-9]{5} value="${SessionUtilisateur.codePostal}" required>
+                                    </label>
+                                </div>
+                                <div class="alignement-div">
+                                    <label for="idVille">Ville :
+                                        <input type="text" name="ville" id="idVille" value="${SessionUtilisateur.ville}" required>
+                                    </label>
+                                </div>
+                        </fieldset>
                         <div>
                             <p class="error">${error}</p>
                         </div>
                     </div>
-<!----------------------------------------Formulaire troisième partie boutons-----------------------------------------!>
+<!----------------------------------------Formulaire troisième partie boutons----------------------------------------->
                     <div class="button">
                         <div class="registrerbtn">
                             <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enregistrer</button>

@@ -3,8 +3,10 @@ body{
     background: #F7F7F7;
     background: radial-gradient(ellipse at center, #F7F7F7, #C7BB9E);
     justify-content: center;
-    overflow-y: hidden;
 }
+
+
+
 
 .h1titre{
     text-align: center;
@@ -27,6 +29,7 @@ label {
 
 input {
     display : table-cell;
+}
 
 input {
     font-size: 1em;
@@ -70,20 +73,25 @@ input {
 
 }
 
-.form container{
-    display: table;
+.fieldset {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+    margin-top: 30px !important;
 }
 
-.alignement-div{
-    display: table-cell;
-}
-
-label{
-    display: table-cell;
-}
-
-input{
-    display: table-cell;
+.legend {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+    margin-top: -15px;
+    background-color: white;
+    color: black;
 }
 
 

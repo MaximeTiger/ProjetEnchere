@@ -5,6 +5,7 @@ import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.categorie.CategorieManager;
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Utilisateurs;
 import fr.eni.enchere.dal.DALException;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,6 +31,10 @@ public class VendreUnArticleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
+        Utilisateurs util = (Utilisateurs) session.getAttribute("SessionUtilisateur");
+
         List<String> nomLabelle;
 
         try {
@@ -45,6 +51,9 @@ public class VendreUnArticleServlet extends HttpServlet {
     //affichage depuis l'accueil de la page de vente d'un nouvel article
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        Utilisateurs util = (Utilisateurs) session.getAttribute("SessionUtilisateur");
+
         System.out.println(req.getParameter("nomArticle"));
 
         Article saisie = new Article(
@@ -72,15 +81,13 @@ public class VendreUnArticleServlet extends HttpServlet {
             else if(saisie.getPrixInitial() <= 0) {
                 req.setAttribute("error", " Le prix doit être positif");
             }
-            else if(saisie.getPrixVente() <= 0) {
-                req.setAttribute("error"," Erreur prix de vente doit être positif");
-            }
 
-                req.setAttribute("errorPrixV"," Le prix doit être positif");
             articleManager.ajouterUnArticle(saisie);
+
         }catch(BLLException e) {
             e.printStackTrace();
         }
+
         resp.sendRedirect(req.getContextPath()+"/vendreUnArticle");
     }
 }

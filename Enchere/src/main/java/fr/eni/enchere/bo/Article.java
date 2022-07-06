@@ -15,6 +15,7 @@ public class Article{
     private LocalDate finEncheres;
     private int prixInitial;
     private int prixVente;
+    private int noCategorie;
 
 
     //association
@@ -112,6 +113,17 @@ public class Article{
     this.pseudo = pseudo;
     }
 
+    public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial, int noCategorie, String rue, String codePostale, String ville) {
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.debutEncheres = debutEncheres;
+        this.finEncheres = finEncheres;
+        this.prixInitial = prixInitial;
+        this.noCategorie = noCategorie;
+        this.rue = rue;
+        this.codePostale = codePostale;
+        this.ville = ville;
+    }
 
     //accesseurs
     public int getNoArticle() {
@@ -169,6 +181,10 @@ public class Article{
     public void setPrixVente(int prixVente) {
         this.prixVente = prixVente;
     }
+
+    public int getNoCategorie() {return noCategorie;}
+
+    public void setNoCategorie(int noCategorie) {this.noCategorie = noCategorie;}
 
     //Accesseurs par association
     public String getLibelle() { return libelle; }
