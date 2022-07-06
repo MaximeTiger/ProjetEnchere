@@ -1,7 +1,6 @@
 header{
     background-color: #79B4B7 ;
-    display: flex;
-    justify-content: space-around;
+
 }
 
 #recherche{
@@ -27,4 +26,8 @@ header{
 #co{
     margin-top: 3em;
     margin-right: 3em;
+}
+
+.logo {
+    margin-left: 30px;
 }

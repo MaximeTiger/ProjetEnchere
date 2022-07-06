@@ -5,13 +5,19 @@ body{
 
 }
 
+.h1titre{
+    text-align: center;
+    color: #9D9D9D;
+    margin-bottom: 15px;
+}
+
 .btn-perso{
     text-decoration: none;
     text-transform:uppercase;
     position:relative;
     top:0;
     left:0;
-    padding:20px 40px;
+    padding:10px 30px;
     border-radius:100px;
     display:inline-block;
     transition: all .5s;
@@ -22,8 +28,53 @@ body{
     color:#000;
 }
 
+.container {
+    width: 600px;
+}
+
 ::placeholder {
     font-weight: 400;
     color: rgb(0, 0, 0);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.retour {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.fieldset {
+    border: 2px solid #79B4B7 !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+    margin-top: 30px !important;
+    border-radius: 10px;
+    
+}
+
+.legend {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+    margin-top: -15px;
+    background-color: #79B4B7;
+    color: black;
+    border-radius: 10px;
+}
+
+#proposition {
+    width: 90px;
+}
+
+.encherir {
+    margin-left: 50px;
+}
+
+.marg-div {
+    margin-bottom: 30px;
 }

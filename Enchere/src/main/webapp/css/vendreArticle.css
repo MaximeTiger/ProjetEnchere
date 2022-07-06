@@ -1,9 +1,9 @@
 main{
-    background-image: none;
-    background: #F7F7F7;
-    background: radial-gradient(ellipse at center, #F7F7F7, #C7BB9E);
     justify-content: center;
     overflow-y: hidden;
+    background-image: none;
+    background-color: #FEFBF3;
+    color: #9D9D9D;
 }
 
 .h1titre{
@@ -78,6 +78,11 @@ main{
     border-radius:100px;
     display:inline-block;
     transition: all .5s;
+}
+
+.btn-white{
+    background:rgba(255,255,255,0.2);
+    color:#000;
 }
 
 #idDescription{

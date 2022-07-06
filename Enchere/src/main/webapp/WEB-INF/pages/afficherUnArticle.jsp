@@ -23,7 +23,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
 
-  <%--  <link rel="stylesheet" href="css/style.css">--%>
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="css/afficher.css">
@@ -33,52 +33,59 @@
 
 </head>
 <body>
+<!-----------------------------------------------------------------------------Header----------------------------------------------------------------------------->
 <header>
     <a href="acceuil">
-        <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
+        <img alt="logo" src="./img/logo_redimenssionner-removebg.png" class="logo">
     </a>
-    <div>
-        <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Retour</button></a>
-    </div>
+
 
 </header>
+<!------------------------------------------------------------------------------Main------------------------------------------------------------------------------>
 <main>
+
+    <div>
+        <a href="acceuil"><button class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn retour">Retour</button></a>
+    </div>
+
     <div class="container">
 
-        <div class="row">
-            <div class="align-center mt-5">
-                <h1 >Détail vente</h1>
+        <div>
+            <div>
+                <h1 class="h1titre">Détail vente</h1>
                 <div>
-                    <p name="nomArticle">${article.nomArticle}</p>
-                </div>
-                <div>
-                    <p>Description : ${article.description}</p>
-                </div>
-                <div>
-                    <p>Catégorie : ${article.libelle}</p>
-                </div>
-                <div>
-                    <p>Mise à prix : ${article.prixInitial} points</p>
-                </div>
-                <div>
-                    <p>${encherisseur}${pseudoAcheteur}</p>
-                </div>
-                <div>
-                    <p>${prixEnchere}${meilleur_enchere}</p>
-                </div>
+                    <div class="marg-div">
+                        <p name="nomArticle">${article.nomArticle}</p>
+                    </div>
+                    <div class="marg-div">
+                        <p>Description : ${article.description}</p>
+                    </div>
+                    <div class="marg-div">
+                        <p>Catégorie : ${article.libelle}</p>
+                    </div>
+                    <div class="marg-div">
+                        <p>Mise à prix : ${article.prixInitial} points</p>
+                    </div>
+                    <div class="marg-div">
+                        <p>${encherisseur}${pseudoAcheteur}</p>
+                    </div>
+                    <div class="marg-div">
+                        <p>${prixEnchere}${meilleur_enchere}</p>
+                    </div>
 
-                <c:forEach var="encheres" items="${encheres}">
-                        <div>
+                    <c:forEach var="encheres" items="${encheres}">
+                        <div class="marg-div">
                             <p>Meilleur offre : ${meilleur_enchere} par ${pseudoAcheteur}</p>
                         </div>
-                </c:forEach>
+                    </c:forEach>
 
-                <div>
-                    <p>Fin de l'enchère : ${article.finEncheres}</p>
+                    <div class="marg-div">
+                        <p>Fin de l'enchère : ${article.finEncheres}</p>
+                    </div>
                 </div>
-                <!----------tableau retrait---------->
+                <!------------------------------------------------------------------------tableau retrait--------------------------------------------------------------------->
                 <fieldset class="fieldset">
-                    <legend class="legend">Retour</legend>
+                    <legend class="legend">Retrait</legend>
                     <p>Rue : ${article.rue}</p>
                     <p>Ville : ${article.ville}</p>
                     <p>Code Postal : ${article.codePostale}</p>
@@ -87,15 +94,15 @@
                 <div>
                     <p>Vendeur : ${article.pseudo}</p>
                 </div>
-                <!----------formulaire---------->
+                <!---------------------------------------------------------------------------formulaire------------------------------------------------------------------------>
                 <div>
                     <form action="afficherUnArticle" method="post">
-                        <label for="proposition">
-                            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" placeholder="Quel est le montant de votre enchère ?" required>
+                        <label for="proposition"> Ma proposition :
+                            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" id="proposition" required>
                         </label>
                         <input type="hidden" id="noUtilisateur" name="noUtilisateur" value="${article.noUtilisateur}">
                         <input type="hidden" id="noArticle" name="noArticle" value="${article.noArticle}">
-                        <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn">Enchérir</button>
+                        <button type="submit" class="btn-perso btn-white btn-bottom-animation-1 nostyle-btn encherir">Enchérir</button>
                     </form>
                 </div>
             </div>
