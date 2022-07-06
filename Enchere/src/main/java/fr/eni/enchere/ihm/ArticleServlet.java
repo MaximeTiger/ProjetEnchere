@@ -31,6 +31,7 @@ public class ArticleServlet extends HttpServlet {
     List<String> nomUtil = new ArrayList<>();
     List<Integer> montants = new ArrayList<>();
 
+    int id;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +39,7 @@ public class ArticleServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Utilisateurs util = (Utilisateurs) session.getAttribute("SessionUtilisateur");
 
-        int id = Integer.parseInt(req.getParameter("noArticle"));
+        id = Integer.parseInt(req.getParameter("noArticle"));
 
         Article art;
 
@@ -48,12 +49,8 @@ public class ArticleServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        System.out.println();
 
         req.setAttribute("article",art);
-/*
-        req.setAttribute("encheres",encheres);
-*/
 
         req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
@@ -68,9 +65,7 @@ public class ArticleServlet extends HttpServlet {
 
         int noArt = Integer.parseInt(req.getParameter("noArticle"));
 
-        Enchere ench = new Enchere(
-                dateEnchere, montantEnchere, util.getNoUtilisateur(), noArt
-        );
+        Enchere ench = new Enchere(dateEnchere, montantEnchere, util.getNoUtilisateur(), noArt);
 
         nomUtil.add(util.getPseudo());
         montants.add(montantEnchere);
@@ -87,7 +82,6 @@ public class ArticleServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        resp.sendRedirect("afficherUnArticle");
-
+        resp.sendRedirect("afficherUnArticle?noArticle=" + id);
     }
 }

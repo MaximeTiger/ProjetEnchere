@@ -48,7 +48,7 @@ public class VendreUnArticleServlet extends HttpServlet {
         System.out.println(req.getParameter("nomArticle"));
 
         Article saisie = new Article(
-                req.getParameter("nom"),
+                req.getParameter("nomArticle"),
                 req.getParameter("description"),
                 LocalDate.parse(req.getParameter("debutEnchere")),
                 LocalDate.parse(req.getParameter("finEnchere")),
