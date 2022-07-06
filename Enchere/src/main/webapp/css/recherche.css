@@ -24,3 +24,7 @@ input[type=text]:focus {
 .recherche{
     display: list-item;
 }
+
+.enchere{
+    margin: 2em;
+}
