@@ -81,7 +81,7 @@
                             </div>
                             <div class="alignement-div">
                                 <label for="idFinEnchere">Fin de l'enchère :
-                                    <input type="date" name="finEnchere" id="idFinEnchere" min="2018-08-05" required>
+                                    <input type="date" name="finEnchere" id="idFinEnchere" value ="2018-08-06" min="2018-08-06" required>
                                 </label>
                             </div>
                         </div>

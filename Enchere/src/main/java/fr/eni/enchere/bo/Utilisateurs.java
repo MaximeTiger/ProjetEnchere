@@ -101,6 +101,10 @@ public class Utilisateurs {
         this.listeEnchere = listeEnchere;
     }
 
+    public Utilisateurs() {
+
+    }
+
     //Accesseurs
     public int getNoUtilisateur() {
         return noUtilisateur;
