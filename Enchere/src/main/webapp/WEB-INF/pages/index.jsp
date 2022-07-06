@@ -29,6 +29,9 @@
         <label for="searchbar"></label>
         <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
     </div>
+    <div id="compte">
+        ${compte}
+    </div>
 
 </header>
 <main>
@@ -40,7 +43,7 @@
                 <p>${bonjour}</p>
 
                 ${connexion}
-                ${compte}
+
 
                 <div class="container">
                     <div class="row">
