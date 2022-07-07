@@ -46,5 +46,6 @@ header{
 }
 */
 .logo {
-    margin-left: 30px;
+    display : flex ;
+    justify-content: flex-start;
 }
