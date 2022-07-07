@@ -1,7 +1,9 @@
 package fr.eni.enchere.bo;
 
 import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 public class Enchere {
     //attributs
@@ -67,13 +69,14 @@ public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String 
         this.noUtilisateur = noUtilisateur;
     }
 
-    public Enchere(int no_enchere, LocalDate date_enchere, int montant_enchere, int no_article, int no_utilisateur) {
+    public Enchere(int no_enchere, Date date_enchere, int montant_enchere, int no_article, int no_utilisateur) {
     this.noEnchere = no_enchere;
-    this.dateEnchere = date_enchere;
+    this.dateEnchere = getLocalDateFromDate(date_enchere);
     this.montantEnchere = montant_enchere;
     this.noArticle = no_article;
     this.noUtilisateur = no_utilisateur;
     }
+
     //accesseurs
 
     public int getNoUtilisateur() {
@@ -147,7 +150,9 @@ public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, String 
         this.article = article;
     }
 
-
+    public static LocalDate getLocalDateFromDate(Date date){
+        return LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
+    }
 
 }
 

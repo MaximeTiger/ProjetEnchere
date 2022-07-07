@@ -14,5 +14,6 @@ public interface EnchereManager {
     List<Enchere> enchereParCategorie(String libelle) throws BLLException;
     void faireEnchere (Enchere enchere) throws  BLLException;
     Enchere selectMaxEnchere(Integer no_article) throws BLLException;
+    Enchere selectByArticle(Integer id) throws BLLException;
 
 }

@@ -14,7 +14,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../../css/vendreArticle.css">
+    <%--<link rel="stylesheet" href="css/vendreArticle.css">--%>
     <link rel="stylesheet" href="css/recherche.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -56,26 +56,21 @@
                 <div class="container">
                     <div class="row">
 
-                        <c:forEach var="enchere" items="${enchere}">
+                        <c:forEach var="article" items="${article}">
                             <div class="col-2 card enchere">
                                 <div class="card-body">
+                                    <input type="hidden" name="id_article" id="id_article" value="${article.noArticle}">
                                     <div class="card-title">
-                                        <p>${enchere.nomArticle}</p>
+                                        <p>${article.nomArticle}</p>
                                     </div>
                                     <div class="card-subtitle mb-2 text-muted">
-                                        <p>Prix : ${enchere.montantEnchere} points</p>
+                                        <p>${article.description}</p>
                                     </div>
                                     <div class="card-text">
-                                        <p>Date de fin de l'enchère ${enchere.dateEnchere}</p>
+                                        <p>Fin de l'enchère ${article.finEncheres}</p>
                                     </div>
                                     <div class="card-text">
-                                        <p>Vendeur : ${enchere.nomUtilisateur}</p>
-                                    </div>
-                                    <div class="card-text">
-                                        <p>Numéro enchère : ${enchere.noEnchere}</p>
-                                    </div>
-                                    <div class="card-text">
-                                        <a href="afficherUnArticle?noArticle=${enchere.noArticle}" ${detail}> Afficher le détail de l'article</a>
+                                        <a href="afficherUnArticle?noArticle=${article.noArticle}" ${detail}>Détail</a>
                                     </div>
                                 </div>
 

@@ -39,6 +39,14 @@ public class Article{
 
     private List<Enchere> listEnchere;
 
+    private int noEnchere;
+
+    private LocalDate dateEnchere;
+    private int montantEnchere;
+    private int noArticleEnchere;
+    private int noUtilisateurEnchere;
+
+
     //constructeurs
     public Article(String nomArticle, String description, LocalDate debutEncheres, LocalDate finEncheres, int prixInitial) {
         this.nomArticle = nomArticle;
@@ -124,6 +132,35 @@ public class Article{
         this.codePostale = codePostale;
         this.ville = ville;
         this.noUtilisateur = noUtilisateurs;
+    }
+
+    public Article(int no_article, String nom_article, String description, Date date_debut_encheres, Date date_fin_encheres, int prix_initial, int prix_vente, int no_utilisateur, int no_categorie) {
+        this.noArticle = no_article;
+        this.nomArticle = nom_article;
+        this.description = description;
+        this.debutEncheres = getLocalDateFromDate(date_debut_encheres);
+        this.finEncheres = getLocalDateFromDate(date_fin_encheres);
+        this.prixInitial = prix_initial;
+        this.prixVente = prix_vente;
+        this.noUtilisateur = no_utilisateur;
+        this.noCategorie = no_categorie;
+    }
+
+    public Article(int no_article, String nom_article, String description, Date date_debut_encheres, Date date_fin_encheres, int prix_initial, int prix_vente, int no_utilisateur, int no_categorie, int no_enchere, Date date_enchere, int montant_enchere, int no_article_enchere, int no_utilisateur_enchere) {
+    this.noArticle = no_article;
+    this.nomArticle = nom_article;
+    this.description = description;
+    this.debutEncheres = getLocalDateFromDate(date_debut_encheres);
+    this.finEncheres = getLocalDateFromDate(date_fin_encheres);
+    this.prixInitial = prix_initial;
+    this.prixVente = prix_vente;
+    this.noUtilisateur = no_utilisateur;
+    this.noCategorie = no_categorie;
+    this.noEnchere = no_enchere;
+    this.dateEnchere = getLocalDateFromDate(date_enchere);
+    this.montantEnchere = montant_enchere;
+    this.noArticleEnchere = no_article_enchere;
+    this.noUtilisateurEnchere = no_utilisateur_enchere;
     }
 
     //accesseurs
