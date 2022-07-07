@@ -5,13 +5,11 @@ import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
 
 import java.sql.*;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 
 public class ArticleDAOImpl implements ArticleDAO {
 
-    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres,date_fin_encheres,prix_initial,no_utilisateur)"+
+    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres," +
+            "date_fin_encheres,prix_initial,no_utilisateur)"+
         "VALUES (?,?,?,?,?,?,?)";
 
     private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,\n" +
@@ -22,6 +20,10 @@ public class ArticleDAOImpl implements ArticleDAO {
             "AND RETRAITS.no_article=ARTICLES_VENDUS.no_article\n" +
             "AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie\n" +
             "AND UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur";
+
+    private static final String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres,\n" +
+            "prix_initial, prix_vente, no_utilisateur, no_categorie \n" +
+            "FROM ARTICLES_VENDUS WHERE no_article = ?";
 
 
     public void insertUnArticle (Article a) throws DALException {

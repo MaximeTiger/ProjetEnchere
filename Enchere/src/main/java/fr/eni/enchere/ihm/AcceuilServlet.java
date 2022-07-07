@@ -2,6 +2,7 @@ package fr.eni.enchere.ihm;
 
 import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
+import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.enchere.EnchereManager;
 
 import javax.servlet.ServletException;
@@ -17,9 +18,11 @@ import java.io.IOException;
 public class AcceuilServlet extends HttpServlet {
 
     private final EnchereManager enchereManager;
+    private final ArticleManager articleManager;
 
     public AcceuilServlet() {
         enchereManager = BLLFactory.getEnchereManager();
+        articleManager = BLLFactory.getArticleManager();
     }
 
     @Override
