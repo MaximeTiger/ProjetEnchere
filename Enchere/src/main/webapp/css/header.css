@@ -5,6 +5,10 @@ header{
     justify-content: center;
 }
 
+body{
+    background-image: none;
+}
+
 #content{
     width: 100vw;
     display: flex;
