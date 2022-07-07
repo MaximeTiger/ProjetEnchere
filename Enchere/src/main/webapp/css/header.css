@@ -5,27 +5,27 @@ header{
 
 #recherche{
     flex: content;
-    margin-top: 2em;
+
 }
 
 #compte{
-    margin-top: 3em;
-    margin-right: 3em;
+    margin-left: 2em;
 }
 
 #vendre{
-    margin-top: 3em;
-    margin-right: 3em;
+    margin-top: 0.5em;
+    margin-left: 2em;
 }
 
 #deco{
-    margin-top: 3em;
-    margin-right: 3em;
+    
+    margin-left: 114em;
 }
 
 #co{
-    margin-top: 3em;
-    margin-right: 3em;
+    margin-top: 0.5em;
+    margin-left: 112em;
+
 }
 
 .logo {

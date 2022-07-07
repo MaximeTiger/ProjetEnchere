@@ -14,8 +14,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../../css/vendreArticle.css">
-    <link rel="stylesheet" href="css/recherche.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Accueil</title>
@@ -23,35 +22,34 @@
 <body>
 <header>
     <a href="acceuil">
-        <img alt="logo" src="./img/logo_redimenssionner-removebg.png">
+        <img alt="logo" src="./img/logo_redimenssionner-removebg.png"  class="logo">
     </a>
     <div id="recherche">
         <label for="searchbar"></label>
         <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
     </div>
-
-    <div id="compte">
-        ${compte}
+    <div>
+        <div id="compte">
+            ${compte}
+        </div>
+        <div id="deco">
+            ${deco}
+        </div>
     </div>
-
-    <div id="vendre">
-        <a href="vendreUnArticle" ${detail}>Vendre un article</a>
+    <div>
+        <div id="vendre">
+            <a href="vendreUnArticle" ${detail}>Vendre un article</a>
+        </div>
+        <div id="co">
+            ${connexion}
+        </div>
     </div>
-
-    <div id="deco">
-        ${deco}
-    </div>
-
-    <div id="co">
-        ${connexion}
-    </div>
-
 </header>
 <main>
     <div class="container">
         <div class="row">
             <div class="align-center mt-5">
-                <h1>Accueil</h1>
+                <h1 class="h1titre">Accueil</h1>
 
                 <div class="container">
                     <div class="row">

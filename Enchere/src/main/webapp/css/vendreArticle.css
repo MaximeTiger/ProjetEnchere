@@ -125,5 +125,19 @@ main{
     margin-left: 20px;
 }
 
+.btn-bottom-animation-1{
+    animation:comeFromBottom 1s ease-out .8s;
+}
+
+.btn-white::after {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.btn-animation-1:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
 
 

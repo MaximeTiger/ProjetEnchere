@@ -68,7 +68,18 @@ body{
 }
 
 #proposition {
-    width: 90px;
+    width: 150px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.6rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid white;
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    
 }
 
 .encherir {
@@ -78,3 +89,18 @@ body{
 .marg-div {
     margin-bottom: 30px;
 }
+
+.btn-bottom-animation-1{
+    animation:comeFromBottom 1s ease-out .8s;
+}
+
+.btn-white::after {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.btn-animation-1:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
