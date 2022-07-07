@@ -1,8 +1,25 @@
 header{
     background-color: #79B4B7 ;
-
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }
 
+#content{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+#searchbar{
+    align-items: center;
+    width: 100%;
+    padding:15px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+}
+
+/*
 #recherche{
     flex: content;
 
@@ -30,4 +47,4 @@ header{
 
 .logo {
     margin-left: 30px;
-}
+}*/

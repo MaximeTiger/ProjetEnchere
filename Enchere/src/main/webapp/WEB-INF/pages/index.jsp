@@ -22,27 +22,27 @@
 </head>
 <body>
 <header>
-    <a href="acceuil">
-        <img alt="logo" src="./img/logo_redimenssionner-removebg.png"  class="logo">
-    </a>
-    <div id="recherche">
-        <label for="searchbar"></label>
-        <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
-    </div>
-    <div>
-        <div id="compte">
-            ${compte}
+    <div id="content">
+        <a href="acceuil">
+            <img alt="logo" src="./img/logo_redimenssionner-removebg.png"  class="logo">
+        </a>
+        <div id="recherche">
+            <label for="searchbar"></label>
+            <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez un article ici..">
         </div>
-        <div id="deco">
-            ${deco}
-        </div>
-    </div>
-    <div>
-        <div id="vendre">
-            <a href="vendreUnArticle" ${detail}>Vendre un article</a>
-        </div>
-        <div id="co">
-            ${connexion}
+        <div id="lien">
+            <div id="compte">
+                ${compte}
+            </div>
+            <div id="deco">
+                ${deco}
+            </div>
+            <div id="vendre">
+                <a href="vendreUnArticle" ${detail}>Vendre un article</a>
+            </div>
+            <div id="co">
+                ${connexion}
+            </div>
         </div>
     </div>
 </header>
