@@ -14,5 +14,6 @@ public interface EnchereDAO {
     List<Enchere> selectByCategorie(String libelle) throws DALException;
     void insertEnchere(Enchere enchere) throws  DALException;
     Enchere selectMaxEnchere(Integer no_article) throws DALException;
+    Enchere selectByArticle(Integer id) throws DALException;
 
 }

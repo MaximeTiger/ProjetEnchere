@@ -6,6 +6,9 @@ import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.article.ArticleDAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArticleManagerImpl implements ArticleManager{
 
     //attributs
@@ -35,5 +38,16 @@ public class ArticleManagerImpl implements ArticleManager{
             e.printStackTrace();
         }
         return a;
+    }
+
+    @Override
+    public List<Article> selectAll() throws BLLException {
+        List<Article> listeArticle = new ArrayList<>();
+        try {
+            listeArticle = articleDAO.selectAll();
+        } catch (DALException e) {
+            e.printStackTrace();
+        }
+        return listeArticle;
     }
 }

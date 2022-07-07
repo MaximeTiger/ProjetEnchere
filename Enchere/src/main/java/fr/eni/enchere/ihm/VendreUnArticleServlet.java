@@ -100,15 +100,15 @@ public class VendreUnArticleServlet extends HttpServlet {
             }
             else if(saisie.getPrixInitial() <= 0) {
                 req.setAttribute("error", " Le prix doit être positif");
+            }else{
+                articleManager.ajouterUnArticle(saisie);
             }
-
-            articleManager.ajouterUnArticle(saisie);
 
         }catch(BLLException e) {
             e.printStackTrace();
         }
 
-        resp.sendRedirect(req.getContextPath()+"/vendreUnArticle");
+        resp.sendRedirect("acceuil");
     }
 }
 

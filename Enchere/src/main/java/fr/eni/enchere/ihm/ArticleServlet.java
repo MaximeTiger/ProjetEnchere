@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/afficherUnArticle")
 public class ArticleServlet extends HttpServlet {
@@ -39,7 +37,6 @@ public class ArticleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        Utilisateurs util = (Utilisateurs) session.getAttribute("SessionUtilisateur");
 
         id = Integer.parseInt(req.getParameter("noArticle"));
 
@@ -102,10 +99,6 @@ public class ArticleServlet extends HttpServlet {
         }
 
         resp.sendRedirect("afficherUnArticle?noArticle=" + id);
-    }
-
-    protected void doRefresh(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
 
 }

@@ -5,13 +5,14 @@ import fr.eni.enchere.dal.ConnectionProvider;
 import fr.eni.enchere.dal.DALException;
 
 import java.sql.*;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArticleDAOImpl implements ArticleDAO {
 
-    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres,date_fin_encheres,prix_initial,no_utilisateur)"+
+    private static final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article,description,no_categorie,date_debut_encheres," +
+            "date_fin_encheres,prix_initial,no_utilisateur)"+
         "VALUES (?,?,?,?,?,?,?)";
 
     private static final String SELECT_BY_ID = "SELECT ARTICLES_VENDUS.nom_article,ARTICLES_VENDUS.description,\n" +
@@ -22,6 +23,9 @@ public class ArticleDAOImpl implements ArticleDAO {
             "AND RETRAITS.no_article=ARTICLES_VENDUS.no_article\n" +
             "AND CATEGORIES.no_categorie=ARTICLES_VENDUS.no_categorie\n" +
             "AND UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur";
+
+    private static final String SELECT_ALL = "SELECT ARTICLES_VENDUS.*\n" +
+            "FROM ARTICLES_VENDUS";
 
 
     public void insertUnArticle (Article a) throws DALException {
@@ -40,11 +44,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 
             stmt.executeQuery();
 
-            ResultSet rs = stmt.getGeneratedKeys();
-
-            if (rs.next()) {
-                a.setNoArticle(rs.getInt(1));
-            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -84,6 +83,36 @@ public class ArticleDAOImpl implements ArticleDAO {
             throw new DALException("Erreur a la selection d'un article");
         }
         return art;
+    }
+    
+    public List<Article> selectAll() throws DALException{
+        List<Article> listeArticle = new ArrayList<>();
+        
+        try(Connection conn = ConnectionProvider.getConnection()) {
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_ALL);
+
+            while (rs.next()) {
+                Article article = new Article(
+                        rs.getInt("no_article"),
+                        rs.getString("nom_article"),
+                        rs.getString("description"),
+                        rs.getDate("date_debut_encheres"),
+                        rs.getDate("date_fin_encheres"),
+                        rs.getInt("prix_initial"),
+                        rs.getInt("prix_vente"),
+                        rs.getInt("no_utilisateur"),
+                        rs.getInt("no_categorie")
+                );
+                listeArticle.add(article);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur dal a la selection des articles");
+        }
+        return listeArticle;
     }
     
 }

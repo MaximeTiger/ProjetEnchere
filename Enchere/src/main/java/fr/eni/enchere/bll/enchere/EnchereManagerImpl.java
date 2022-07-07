@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnchereManagerImpl implements  EnchereManager{
-
-
     private final EnchereDAO enchereDAO;
 
     public EnchereManagerImpl(){enchereDAO = DAOFactory.getEnchereDAO();}
@@ -73,6 +71,17 @@ public class EnchereManagerImpl implements  EnchereManager{
         Enchere enchere;
         try {
             enchere = enchereDAO.selectMaxEnchere(no_article);
+        } catch (DALException e) {
+            throw new RuntimeException(e);
+        }
+        return enchere;
+    }
+
+    @Override
+    public Enchere selectByArticle(Integer id) throws BLLException {
+        Enchere enchere;
+        try {
+            enchere = enchereDAO.selectByArticle(id);
         } catch (DALException e) {
             throw new RuntimeException(e);
         }

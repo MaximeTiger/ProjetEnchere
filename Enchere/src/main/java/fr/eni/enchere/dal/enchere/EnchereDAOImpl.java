@@ -33,6 +33,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 
     private static final String SELECT_BY_ID_LAST_ENCHERE = "select * from ENCHERES where no_article = ? order by montant_enchere desc";
 
+    private static final String SELECT_BY_ARTICLE = "SELECT * FROM ENCHERES WHERE no_article = ?";
     @Override
     public Enchere selectById(Integer id) throws DALException {
 
@@ -70,10 +71,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 
         List<Enchere> listeEnchere = new ArrayList<>();
 
-        try (
-                //Try with resources
-                Connection conn = ConnectionProvider.getConnection()
-        )
+        try (Connection conn = ConnectionProvider.getConnection())
         {
 
             //Executer la requete
@@ -223,7 +221,38 @@ public class EnchereDAOImpl implements EnchereDAO {
             if (rs.next()){
                 ench = new Enchere(
                         rs.getInt("no_enchere"),
-                        rs.getObject("date_enchere",LocalDate.class),
+                        rs.getDate("date_enchere"),
+                        rs.getInt("montant_enchere"),
+                        rs.getInt("no_article"),
+                        rs.getInt("no_utilisateur")
+                );
+            }
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur a la selection d'une enchère");
+        }
+        return ench;
+    }
+
+    @Override
+    public Enchere selectByArticle(Integer id) throws DALException {
+
+        Enchere ench = null;
+        try(
+                Connection conn = ConnectionProvider.getConnection()
+        ) {
+
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ARTICLE);
+
+            stmt.setInt(1,id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()){
+                ench = new Enchere(
+                        rs.getInt("no_enchere"),
+                        rs.getDate("date_enchere"),
                         rs.getInt("montant_enchere"),
                         rs.getInt("no_article"),
                         rs.getInt("no_utilisateur")
