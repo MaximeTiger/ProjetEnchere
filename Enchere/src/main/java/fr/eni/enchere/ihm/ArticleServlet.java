@@ -37,44 +37,49 @@ public class ArticleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
+        Article art = null;
+        Enchere lastEnch = null;
+        Utilisateurs lastUtil = null;
+        int prixMin;
 
         id = Integer.parseInt(req.getParameter("noArticle"));
-
-        Article art;
-        Enchere lastEnch;
-        Utilisateurs lastUtil;
 
         try {
             art = articleManager.afficherUnArticle(id);
         } catch (BLLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
+        session.setAttribute("article",art);
 
         try {
             lastEnch = enchereManager.selectMaxEnchere(id);
         } catch (BLLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
-        try {
-            lastUtil = utilisateursManager.selectById(lastEnch.getNoUtilisateur());
-        } catch (BLLException e) {
-            throw new RuntimeException(e);
-        }
-
-        if (lastEnch.getNoArticle() == 0){
+        if (lastEnch == null){
+            prixMin = art.getPrixInitial()+1;
+            session.setAttribute("prixMin",prixMin);
             session.setAttribute("encherisseur","");
             session.setAttribute("prixEnchere","");
         } else {
+
+            try {
+                lastUtil = utilisateursManager.selectById(lastEnch.getNoUtilisateur());
+            } catch (BLLException e) {
+                e.printStackTrace();
+            }
+
+            prixMin = lastEnch.getMontantEnchere()+1;
+
+            session.setAttribute("prixMin",prixMin);
             session.setAttribute("encherisseur","Encherisseur : ");
             session.setAttribute("prixEnchere","Prix : ");
-
             session.setAttribute("pseudoAcheteur",lastUtil.getPseudo());
             session.setAttribute("meilleur_enchere",lastEnch.getMontantEnchere());
         }
 
-
-        session.setAttribute("article",art);
 
         req.getRequestDispatcher("/WEB-INF/pages/afficherUnArticle.jsp").forward(req,resp);
     }
@@ -87,6 +92,8 @@ public class ArticleServlet extends HttpServlet {
 
         int montantEnchere = Integer.parseInt(req.getParameter("proposition"));
         LocalDate dateEnchere = LocalDate.now();
+
+
 
         Enchere ench = new Enchere(dateEnchere, montantEnchere, util.getNoUtilisateur(), id);
 

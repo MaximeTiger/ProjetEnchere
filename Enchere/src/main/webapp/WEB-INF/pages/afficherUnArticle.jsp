@@ -98,7 +98,7 @@
                 <div>
                     <form action="afficherUnArticle" method="post">
                         <label for="proposition"> Ma proposition :
-                            <input id="proposition" type="number" name="proposition" min="${article.prixInitial}" id="proposition" required>
+                            <input id="proposition" type="number" name="proposition" min="${prixMin}" id="proposition" required>
                         </label>
                         <input type="hidden" id="noUtilisateur" name="noUtilisateur" value="${article.noUtilisateur}">
                         <input type="hidden" id="noArticle" name="noArticle" value="${article.noArticle}">

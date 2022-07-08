@@ -41,7 +41,6 @@ public class ArticleDAOImpl implements ArticleDAO {
             stmt.setInt(6,a.getPrixInitial());
             stmt.setInt(7, a.getNoUtilisateur());
 
-
             stmt.executeQuery();
 
         } catch (SQLException e) {

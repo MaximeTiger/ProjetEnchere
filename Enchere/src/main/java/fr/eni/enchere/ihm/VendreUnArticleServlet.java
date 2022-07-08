@@ -4,7 +4,9 @@ import fr.eni.enchere.bll.BLLException;
 import fr.eni.enchere.bll.BLLFactory;
 import fr.eni.enchere.bll.article.ArticleManager;
 import fr.eni.enchere.bll.categorie.CategorieManager;
+import fr.eni.enchere.bll.retrait.RetraitManager;
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Retrait;
 import fr.eni.enchere.bo.Utilisateurs;
 import fr.eni.enchere.dal.DALException;
 
@@ -22,12 +24,15 @@ import java.util.List;
 @WebServlet("/vendreUnArticle")
 public class VendreUnArticleServlet extends HttpServlet {
 
-    private ArticleManager articleManager;
-    private CategorieManager categorieManager;
+    private final ArticleManager articleManager;
+    private final CategorieManager categorieManager;
+    private final RetraitManager retraitManager;
 
     public VendreUnArticleServlet( ) {
         articleManager = BLLFactory.getArticleManager();
-        categorieManager = BLLFactory.getCategorieManager();}
+        categorieManager = BLLFactory.getCategorieManager();
+        retraitManager = BLLFactory.getRetraitManager();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,8 +59,6 @@ public class VendreUnArticleServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Utilisateurs util = (Utilisateurs) session.getAttribute("SessionUtilisateur");
 
-        System.out.println(req.getParameter("nomArticle"));
-
         int numLibel = 0;
         switch (req.getParameter("categorie")){
             case "voiture" :
@@ -67,13 +70,15 @@ public class VendreUnArticleServlet extends HttpServlet {
             case "Ameublement" :
                 numLibel = 3;
                 break;
-            case "Vêtements" :
+            case "Vetements" :
                 numLibel = 4;
                 break;
             case "Sport et Loisirs" :
                 numLibel = 5;
                 break;
         }
+
+        System.out.println("Num libelle : " + numLibel);
         Article saisie = new Article(
                 req.getParameter("nomArticle"),
                 req.getParameter("description"),
@@ -85,6 +90,13 @@ public class VendreUnArticleServlet extends HttpServlet {
                 req.getParameter("codePostal"),
                 req.getParameter("ville"),
                 util.getNoUtilisateur()
+        );
+
+        Retrait retrait = new Retrait(
+                saisie.getNoArticle(),
+                util.getRue(),
+                util.getCodePostal(),
+                util.getVille()
         );
 
         try{
@@ -102,6 +114,7 @@ public class VendreUnArticleServlet extends HttpServlet {
                 req.setAttribute("error", " Le prix doit être positif");
             }else{
                 articleManager.ajouterUnArticle(saisie);
+                retraitManager.ajouterRetrait(retrait);
             }
 
         }catch(BLLException e) {

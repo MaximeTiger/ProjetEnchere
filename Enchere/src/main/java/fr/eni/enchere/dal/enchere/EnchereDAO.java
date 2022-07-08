@@ -10,7 +10,6 @@ import java.util.List;
 public interface EnchereDAO {
     Enchere selectById(Integer id) throws DALException;
     List<Enchere> selectAll() throws DALException;
-    List<Enchere> selectByNomArticle(String nomArt) throws DALException;
     List<Enchere> selectByCategorie(String libelle) throws DALException;
     void insertEnchere(Enchere enchere) throws  DALException;
     Enchere selectMaxEnchere(Integer no_article) throws DALException;

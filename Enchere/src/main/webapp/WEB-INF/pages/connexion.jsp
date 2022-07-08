@@ -130,7 +130,7 @@
                         <div class="col-12 mt-2 d-flex justify-content-center">
                             <div class="p-0 size-div-gauche">
                                 <label for="telephone" class="fit-div">
-                                    <input type="tel" name="telephone" id="telephone" placeholder="Telephone" class="fit-div">
+                                    <input type="tel" name="telephone" id="telephone" placeholder="Telephone" pattern=[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2} class="fit-div">
                                 </label>
                             </div>
                             <div class="p-0 size-div-droite">
@@ -143,7 +143,7 @@
                         <div class="col-12 mt-2 d-flex justify-content-center">
                             <div class="p-0 size-div-gauche">
                                 <label for="codePostal" class="fit-div">
-                                    <input type="text" name="codePostal" id="codePostal" placeholder="Code postal" class="fit-div">
+                                    <input type="text" name="codePostal" id="codePostal" placeholder="Code postal" pattern =[0-9]{5} class="fit-div">
                                 </label>
                             </div>
                             <div class="p-0 size-div-droite">

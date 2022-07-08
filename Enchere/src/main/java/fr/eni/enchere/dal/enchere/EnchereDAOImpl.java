@@ -151,9 +151,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 
             //Valoriser les parametres
             stmt.setDate(1,Date.valueOf(enchere.getDateEnchere()));
-            stmt.setString(2, String.valueOf(enchere.getMontantEnchere()));
-            stmt.setString(3, String.valueOf(enchere.getNoArticle()));
-            stmt.setString(4, String.valueOf(enchere.getNoUtilisateur()));
+            stmt.setInt(2,enchere.getMontantEnchere());
+            stmt.setInt(3,enchere.getNoArticle());
+            stmt.setInt(4,enchere.getNoUtilisateur());
 
             //Executer la requete
             stmt.executeQuery();
@@ -166,42 +166,6 @@ public class EnchereDAOImpl implements EnchereDAO {
         catch (SQLException e) {
             throw new DALException("Erreur insert ", e);
         }
-    }
-
-    @Override
-    public List<Enchere> selectByNomArticle(String nomArt) throws DALException {
-
-        List<Enchere> listeEnchere = new ArrayList<>();
-
-        try(
-                Connection conn = ConnectionProvider.getConnection()
-        ) {
-
-            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_NOM_ARTICLE);
-
-            stmt.setString(1,nomArt);
-
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()){
-                //Créer l'enchère
-                Enchere enchere = new Enchere(
-                        rs.getInt("no_enchere"),
-                        rs.getObject("date_enchere",LocalDate.class),
-                        rs.getInt("montant_enchere"),
-                        rs.getString("nom_article"),
-                        rs.getString("nom")
-                );
-                //Ajoute l'enchère à la liste
-                listeEnchere.add(enchere);
-            }
-        }
-
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            throw new DALException("Erreur dal a la recherche d'une enchère");
-        }
-        return listeEnchere;
     }
 
     @Override

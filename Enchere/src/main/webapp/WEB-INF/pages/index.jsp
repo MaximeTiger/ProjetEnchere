@@ -34,11 +34,11 @@
             <div id="compte">
                 ${compte}
             </div>
-            <div id="deco">
-                ${deco}
-            </div>
             <div id="vendre">
                 <a href="vendreUnArticle" ${detail}>Vendre un article</a>
+            </div>
+            <div id="deco">
+                ${deco}
             </div>
             <div id="co">
                 ${connexion}
@@ -60,7 +60,7 @@
                                 <div class="card-body">
                                     <input type="hidden" name="id_article" id="id_article" value="${article.noArticle}">
                                     <div class="card-title">
-                                        <p>${article.nomArticle}</p>
+                                        <p><strong>${article.nomArticle}</strong></p>
                                     </div>
                                     <div class="card-subtitle mb-2 text-muted">
                                         <p>${article.description}</p>
