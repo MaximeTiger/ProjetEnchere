@@ -44,6 +44,8 @@ public class ArticleServlet extends HttpServlet {
 
         id = Integer.parseInt(req.getParameter("noArticle"));
 
+        System.out.println(id);
+
         try {
             art = articleManager.afficherUnArticle(id);
         } catch (BLLException e) {
@@ -51,6 +53,8 @@ public class ArticleServlet extends HttpServlet {
         }
 
         session.setAttribute("article",art);
+
+        System.out.println("article a afficher : " + art);
 
         try {
             lastEnch = enchereManager.selectMaxEnchere(id);

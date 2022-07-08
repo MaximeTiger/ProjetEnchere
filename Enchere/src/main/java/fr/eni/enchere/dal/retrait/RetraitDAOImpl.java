@@ -28,6 +28,11 @@ public class RetraitDAOImpl implements RetraitDAO{
             stmt.setString(3,r.getCodePostal());
             stmt.setString(4,r.getVille());
 
+            System.out.println("no art r : " + r.getNoArticle());
+            System.out.println("Rue r : " + r.getRue());
+            System.out.println("code postal r : " + r.getCodePostal());
+            System.out.println("ville r : " + r.getVille());
+
             //Executer la requete
             stmt.executeQuery();
 

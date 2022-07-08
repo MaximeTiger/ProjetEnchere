@@ -163,6 +163,10 @@ public class Article{
     this.noUtilisateurEnchere = no_utilisateur_enchere;
     }
 
+    public Article(int no_article) {
+        this.noArticle = no_article;
+    }
+
     //accesseurs
     public int getNoArticle() {
         return noArticle;

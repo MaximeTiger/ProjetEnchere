@@ -50,4 +50,15 @@ public class ArticleManagerImpl implements ArticleManager{
         }
         return listeArticle;
     }
+
+    @Override
+    public Article selectId(String nomArticle, String description, int noUtil, int noCat) throws BLLException {
+        Article art = null;
+        try {
+            art = articleDAO.selectId(nomArticle,description,noUtil,noCat);
+        } catch (DALException e) {
+            e.printStackTrace();
+        }
+        return art;
+    }
 }

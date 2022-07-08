@@ -12,5 +12,6 @@ public interface ArticleManager {
 
     Article afficherUnArticle(int noArticle) throws BLLException;
     List<Article> selectAll() throws BLLException;
+    Article selectId(String nomArticle,String description, int noUtil, int noCat) throws BLLException;
 
     }

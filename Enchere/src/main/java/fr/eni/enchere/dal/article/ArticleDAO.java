@@ -9,4 +9,5 @@ public interface ArticleDAO {
     void insertUnArticle(Article a) throws DALException;
     Article selectById(int noArticle) throws DALException;
     List<Article> selectAll() throws DALException;
+    Article selectId(String nomArticle,String description, int noUtil, int noCat) throws DALException;
 }

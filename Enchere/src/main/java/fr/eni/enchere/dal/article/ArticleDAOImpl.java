@@ -27,6 +27,10 @@ public class ArticleDAOImpl implements ArticleDAO {
     private static final String SELECT_ALL = "SELECT ARTICLES_VENDUS.*\n" +
             "FROM ARTICLES_VENDUS";
 
+    private static final String SELECT_ID = "SELECT no_article from ARTICLES_VENDUS " +
+            "where nom_article = ?\n" +
+            "AND description = ? and no_utilisateur = ? and no_categorie = ?";
+
 
     public void insertUnArticle (Article a) throws DALException {
 
@@ -40,6 +44,14 @@ public class ArticleDAOImpl implements ArticleDAO {
             stmt.setObject(5, Date.valueOf(a.getFinEncheres()));
             stmt.setInt(6,a.getPrixInitial());
             stmt.setInt(7, a.getNoUtilisateur());
+
+            System.out.println("no art a : " + a.getNomArticle());
+            System.out.println("desc a : " + a.getDescription());
+            System.out.println("no cat a : " + a.getNoCategorie());
+            System.out.println("debut ench a : " + a.getDebutEncheres());
+            System.out.println("fin ench a : " + a.getFinEncheres());
+            System.out.println("prix init a : " + a.getPrixInitial());
+            System.out.println("no util a : " + a.getNoUtilisateur());
 
             stmt.executeQuery();
 
@@ -72,6 +84,37 @@ public class ArticleDAOImpl implements ArticleDAO {
                         rs.getString("code_postal"),
                         rs.getString("ville"),
                         rs.getString("pseudo")
+                        );
+            }
+        }
+
+        //message d'erreur si un problème est rencontré
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DALException("Erreur a la selection d'un article");
+        }
+        return art;
+    }
+
+    @Override
+    public Article selectId(String nomArticle,String description, int noUtil, int noCat) throws DALException {
+
+        Article art = null;
+
+        try (Connection conn = ConnectionProvider.getConnection()) {
+
+            PreparedStatement stmt = conn.prepareStatement(SELECT_ID);
+
+            stmt.setString(1,nomArticle);
+            stmt.setString(2,description);
+            stmt.setInt(3,noUtil);
+            stmt.setInt(4,noCat);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                art = new Article(
+                        rs.getInt("no_article")
                         );
             }
         }
